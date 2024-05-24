@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F790D598-DF07-E34B-6EA9-7C8FC2343B2F" name="DetalleCompra">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:43:50 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Compra_id_compra" id="6505F409-22C2-A07B-CB55-8E96C4172632">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:43:50 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="7D62A342-7D73-796D-CB57-1A6FAB77C72A" referredColumn="93B9EEA5-EECB-A0B2-56C1-0966DC583163"/>
+</associations>
+</Column>
+<Column name="Producto_id_producto" id="9243609C-B4C9-B0FE-686E-6F32FFEC42E2">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:43:50 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="2F84E355-2F16-6468-7BAF-C0371705EB44" referredColumn="803F663B-34F2-98B4-70FE-99D4D00E07F0"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="47D67342-7B34-253D-16C1-861B9EB81CCE" name="DetalleCompra_PK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:43:50 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6505F409-22C2-A07B-CB55-8E96C4172632"/>
+<colUsage columnID="9243609C-B4C9-B0FE-686E-6F32FFEC42E2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EA1DCA99-8EE8-91AF-2D71-3B5D2C91F5FC" name="DetalleCompra_Compra_FK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:43:50 UTC</createdTime>
+<generatorID>D230EF8E-E3D9-F27B-9956-ACD8A21424C8</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6505F409-22C2-A07B-CB55-8E96C4172632"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4C3292F1-93D0-492C-F563-94E91ED9EED4" name="DetalleCompra_Producto_FK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:43:50 UTC</createdTime>
+<generatorID>D230EF8E-E3D9-F27B-9956-ACD8A21424C8</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9243609C-B4C9-B0FE-686E-6F32FFEC42E2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

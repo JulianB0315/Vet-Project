@@ -1,0 +1,117 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="79077902-4C8F-2778-C5A8-C93C021FE148" name="Producto">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:31:14 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_producto" id="B93B906B-1EC7-1ED1-2E84-76374DA003C7">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:31:23 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="53B21CA7-DA0E-98EF-4A66-47EE1C935DC4">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:31:36 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="descripcion" id="9E8D8A0C-B570-4275-4517-56046EB5A3D7">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:31:46 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="tipo" id="A439F2C4-BFDA-68B4-D45F-BB03EE78BA80">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:31:57 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="precio" id="65AE8DBF-62B8-6221-2965-7B70A134F218">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:32:10 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="stock" id="7243BA44-60AC-1C69-A839-F37B433F2FD8">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:32:34 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="ABE3000D-9E7A-42D9-00B1-20AB60AFBAA5" name="Producto PK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:32:44 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B93B906B-1EC7-1ED1-2E84-76374DA003C7</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

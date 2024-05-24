@@ -1,0 +1,90 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5AA52C9C-FF18-5E28-E7C4-D28D7BFEA445" name="Usuario">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>FA923A04-0CAE-1F24-9B5A-4B40B0C0215B</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_user" id="2812F0C9-9BA5-5A89-AE94-2949D6D1DFA1">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>61D67B7B-4893-2230-9CE1-C91C4CB66DFB</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="A0D310BF-CD1F-896F-80F3-1384976B4CF0">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>68FE8209-B476-3D18-D3FB-D8D2FC2EB442</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="correo" id="F11C97EB-7CA1-8F46-CC84-FD079D82283E">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>5A659EBD-0803-D9F8-5C7D-79336CC43B1E</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="contraseña" id="7A55B8AF-1EE2-9D13-60E9-D4060F3A0728">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>CD5E9855-8252-DB0F-ABF8-72301B29626A</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>12</dataTypeSize>
+<ownDataTypeParameters>12,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rol" id="C7652F4F-64F8-8CFE-33C7-522FE2CDFBD8">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>823D8D2A-7821-99C1-C38E-707AF8AF95DD</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="756E88FB-11A4-A20B-D800-694DAB8FAD28" name="Usuario_PK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>2095119E-0D7D-3BB1-FDBE-9160F1A9AE1C</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2812F0C9-9BA5-5A89-AE94-2949D6D1DFA1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

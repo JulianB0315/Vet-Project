@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8FAE220C-95DB-1B6D-3A25-8C3D3CDA7729" name="Producto">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>79077902-4C8F-2778-C5A8-C93C021FE148</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_producto" id="803F663B-34F2-98B4-70FE-99D4D00E07F0">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>B93B906B-1EC7-1ED1-2E84-76374DA003C7</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre" id="4F5FDC08-10BF-1729-16FE-01C284ED79EC">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>53B21CA7-DA0E-98EF-4A66-47EE1C935DC4</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="descripcion" id="D8CB89F5-211D-0BB2-DD7B-55EC446AD1ED">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>9E8D8A0C-B570-4275-4517-56046EB5A3D7</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT040</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tipo" id="7A7881D0-B863-5E20-252B-C72D87A13134">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>A439F2C4-BFDA-68B4-D45F-BB03EE78BA80</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="precio" id="ACFBE562-E812-EF44-CDB0-DFF5A9740D54">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>65AE8DBF-62B8-6221-2965-7B70A134F218</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="stock" id="E5323BEE-B7AE-9A9C-B69F-CA84F885A01E">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>7243BA44-60AC-1C69-A839-F37B433F2FD8</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="A42D6EAA-8D77-1A13-7A3D-FB62B6103794" name="Producto_PK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>ABE3000D-9E7A-42D9-00B1-20AB60AFBAA5</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="803F663B-34F2-98B4-70FE-99D4D00E07F0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
