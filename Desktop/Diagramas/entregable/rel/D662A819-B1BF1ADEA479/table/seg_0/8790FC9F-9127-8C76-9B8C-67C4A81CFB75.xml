@@ -1,0 +1,130 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8790FC9F-9127-8C76-9B8C-67C4A81CFB75" name="Cuenta_Bancaria">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>29AC56AC-8201-586D-4CFE-461DB75A9537</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_Cuenta" id="499CAF1D-21FB-265B-B840-2CFFE52A061C">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>E37EB544-7FC6-ED11-3F0F-6593D466BFC4</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ID_Cliente" id="2EACBE91-F929-85D1-8C92-95E2B4C8520A">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>C0985918-DB6B-FF61-3642-D870610AF2B9</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Tipo_Cuenta" id="DF89120E-9251-55AF-A936-4A05F97F4550">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>0C978448-69E7-1E58-4101-71FD049E399A</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Saldo" id="4B404A05-E4B6-4A3E-E63F-AD8481681C99">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>8C71D9B8-E951-3790-A307-461FD9062D12</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>15</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,15,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Fecha_Creacion" id="CBBAAB8B-262F-8536-B39B-83F9589C4A68">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>6798874A-8ED4-1E11-726E-916B15BC54D4</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Estado" id="E486DC84-2E4B-F4FB-A0B5-100FF248542A">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>F9E624B4-A7C8-8C50-1E2D-B11C792E88BD</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Empleado_ID_Empleado" id="CB6E2A0C-239D-1A4C-3293-35ABB6FDED91">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>939531BF-CAC9-AB97-CDCB-291E74D28770</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C0A07FDE-DFD5-6E01-1AFA-F25A2C098258" referredColumn="08C9601B-CF8F-F9A3-B603-ABD041E3B00C"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E86BD311-9967-18E8-2DCE-5969CF23CBB2" name="Cuenta_Bancaria_PK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>787F859D-BA6E-18CF-7031-168B58F2037B</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="499CAF1D-21FB-265B-B840-2CFFE52A061C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="201B2975-B775-C54D-6CE2-EA03FE9E06F3" name="Cuenta_Bancaria_Empleado_FK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>01F11BDF-10A8-1C37-8994-DC98CE70270F</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CB6E2A0C-239D-1A4C-3293-35ABB6FDED91"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
