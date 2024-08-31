@@ -253,6 +253,11 @@ public class RegistroConsulta extends javax.swing.JFrame {
                 btnRegistroMouseExited(evt);
             }
         });
+        btnRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroActionPerformed(evt);
+            }
+        });
         panelRegistro.add(btnRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 530, 260, 50));
 
         labelTiempo.setBackground(new java.awt.Color(13, 92, 141));
@@ -316,6 +321,13 @@ public class RegistroConsulta extends javax.swing.JFrame {
     private void btnExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseExited
        btnExit.setBackground(new Color(121,180,211));
     }//GEN-LAST:event_btnExitMouseExited
+
+    private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
+       Boleta boleta=new Boleta();
+       boleta.setVisible(true);
+       boleta.setLocationRelativeTo(null);
+       this.dispose();
+    }//GEN-LAST:event_btnRegistroActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
