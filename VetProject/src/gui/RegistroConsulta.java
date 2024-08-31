@@ -6,6 +6,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
 
     public RegistroConsulta() {
         initComponents();
+        this.setTitle("Vet Link - Registro Consulta");
     }
 
     @SuppressWarnings("unchecked")
