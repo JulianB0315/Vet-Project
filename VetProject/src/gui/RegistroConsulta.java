@@ -1,5 +1,7 @@
 package gui;
 
+import java.awt.Color;
+
 public class RegistroConsulta extends javax.swing.JFrame {
 
     public RegistroConsulta() {
@@ -11,28 +13,35 @@ public class RegistroConsulta extends javax.swing.JFrame {
     private void initComponents() {
 
         panelRegistro = new javax.swing.JPanel();
-        labelLogo2 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        labelTitleConsulta = new javax.swing.JLabel();
+        labelLogo = new javax.swing.JLabel();
+        panelLogo = new javax.swing.JPanel();
         labelDueño = new javax.swing.JLabel();
         txtDueño = new javax.swing.JTextField();
         separador1 = new javax.swing.JSeparator();
-        labellDueño1 = new javax.swing.JLabel();
-        TXTmascota = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        labellDueño2 = new javax.swing.JLabel();
-        TXTedad = new javax.swing.JTextField();
-        jSeparator3 = new javax.swing.JSeparator();
-        labellDueño3 = new javax.swing.JLabel();
-        TXTpeso = new javax.swing.JTextField();
-        jSeparator4 = new javax.swing.JSeparator();
-        labellDueño4 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jSeparator6 = new javax.swing.JSeparator();
-        labellDueño5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        labelMascot = new javax.swing.JLabel();
+        txtMascota = new javax.swing.JTextField();
+        separador4 = new javax.swing.JSeparator();
+        labelEdad = new javax.swing.JLabel();
+        txtEdad = new javax.swing.JTextField();
+        separador3 = new javax.swing.JSeparator();
+        labelPeso = new javax.swing.JLabel();
+        txtPeso = new javax.swing.JTextField();
+        separador5 = new javax.swing.JSeparator();
+        labelTPrim = new javax.swing.JLabel();
+        separador6 = new javax.swing.JSeparator();
+        cbxTPrim = new javax.swing.JComboBox<>();
+        separador2 = new javax.swing.JSeparator();
+        labelTSec = new javax.swing.JLabel();
+        cbxTSec = new javax.swing.JComboBox<>();
         jSeparator7 = new javax.swing.JSeparator();
+        labelEspecie = new javax.swing.JLabel();
+        cbxEspecie = new javax.swing.JComboBox<>();
+        btnExit = new javax.swing.JButton();
+        btnCancel = new javax.swing.JButton();
+        btnRegistro = new javax.swing.JButton();
+        labelTiempo = new javax.swing.JLabel();
+        cbxTiempo = new javax.swing.JComboBox<>();
+        separador7 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -40,190 +49,303 @@ public class RegistroConsulta extends javax.swing.JFrame {
         panelRegistro.setBackground(new java.awt.Color(151, 189, 183));
         panelRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        labelLogo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logocircle.png"))); // NOI18N
-        panelRegistro.add(labelLogo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 180, 190));
+        labelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logocircle.png"))); // NOI18N
+        panelRegistro.add(labelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 0, 180, 190));
 
-        jPanel1.setBackground(new java.awt.Color(243, 244, 247));
+        panelLogo.setBackground(new java.awt.Color(243, 244, 247));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        javax.swing.GroupLayout panelLogoLayout = new javax.swing.GroupLayout(panelLogo);
+        panelLogo.setLayout(panelLogoLayout);
+        panelLogoLayout.setHorizontalGroup(
+            panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1050, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        panelLogoLayout.setVerticalGroup(
+            panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
-        panelRegistro.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 100));
-
-        labelTitleConsulta.setFont(new java.awt.Font("Leelawadee", 1, 36)); // NOI18N
-        labelTitleConsulta.setForeground(new java.awt.Color(13, 92, 141));
-        labelTitleConsulta.setText("Registrar Consulta");
-        panelRegistro.add(labelTitleConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+        panelRegistro.add(panelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 100));
 
         labelDueño.setBackground(new java.awt.Color(13, 92, 141));
         labelDueño.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         labelDueño.setForeground(new java.awt.Color(13, 92, 141));
         labelDueño.setText("Dueño:");
         labelDueño.setToolTipText("");
-        panelRegistro.add(labelDueño, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        panelRegistro.add(labelDueño, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
 
         txtDueño.setBackground(new java.awt.Color(151, 189, 183));
         txtDueño.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         txtDueño.setForeground(new java.awt.Color(13, 92, 141));
         txtDueño.setBorder(null);
-        panelRegistro.add(txtDueño, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 270, 40));
+        panelRegistro.add(txtDueño, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 270, 40));
 
         separador1.setBackground(new java.awt.Color(13, 92, 141));
         separador1.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(separador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 270, 10));
+        panelRegistro.add(separador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 270, 10));
 
-        labellDueño1.setBackground(new java.awt.Color(13, 92, 141));
-        labellDueño1.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        labellDueño1.setForeground(new java.awt.Color(13, 92, 141));
-        labellDueño1.setText("Mascota:");
-        labellDueño1.setToolTipText("");
-        panelRegistro.add(labellDueño1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+        labelMascot.setBackground(new java.awt.Color(13, 92, 141));
+        labelMascot.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        labelMascot.setForeground(new java.awt.Color(13, 92, 141));
+        labelMascot.setText("Mascota:");
+        labelMascot.setToolTipText("");
+        panelRegistro.add(labelMascot, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
 
-        TXTmascota.setBackground(new java.awt.Color(151, 189, 183));
-        TXTmascota.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        TXTmascota.setForeground(new java.awt.Color(13, 92, 141));
-        TXTmascota.setBorder(null);
-        TXTmascota.addActionListener(new java.awt.event.ActionListener() {
+        txtMascota.setBackground(new java.awt.Color(151, 189, 183));
+        txtMascota.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        txtMascota.setForeground(new java.awt.Color(13, 92, 141));
+        txtMascota.setBorder(null);
+        txtMascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TXTmascotaActionPerformed(evt);
+                txtMascotaActionPerformed(evt);
             }
         });
-        panelRegistro.add(TXTmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 270, 40));
+        panelRegistro.add(txtMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 270, 40));
 
-        jSeparator2.setBackground(new java.awt.Color(13, 92, 141));
-        jSeparator2.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 270, 10));
+        separador4.setBackground(new java.awt.Color(13, 92, 141));
+        separador4.setForeground(new java.awt.Color(13, 92, 141));
+        panelRegistro.add(separador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 270, 10));
 
-        labellDueño2.setBackground(new java.awt.Color(13, 92, 141));
-        labellDueño2.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        labellDueño2.setForeground(new java.awt.Color(13, 92, 141));
-        labellDueño2.setText("Edad:");
-        labellDueño2.setToolTipText("");
-        panelRegistro.add(labellDueño2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, -1, -1));
+        labelEdad.setBackground(new java.awt.Color(13, 92, 141));
+        labelEdad.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        labelEdad.setForeground(new java.awt.Color(13, 92, 141));
+        labelEdad.setText("Edad:");
+        labelEdad.setToolTipText("");
+        panelRegistro.add(labelEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 610, -1, -1));
 
-        TXTedad.setBackground(new java.awt.Color(151, 189, 183));
-        TXTedad.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        TXTedad.setForeground(new java.awt.Color(13, 92, 141));
-        TXTedad.setBorder(null);
-        TXTedad.addActionListener(new java.awt.event.ActionListener() {
+        txtEdad.setBackground(new java.awt.Color(151, 189, 183));
+        txtEdad.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        txtEdad.setForeground(new java.awt.Color(13, 92, 141));
+        txtEdad.setBorder(null);
+        txtEdad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TXTedadActionPerformed(evt);
+                txtEdadActionPerformed(evt);
             }
         });
-        panelRegistro.add(TXTedad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 270, 40));
+        panelRegistro.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 650, 270, 40));
 
-        jSeparator3.setBackground(new java.awt.Color(13, 92, 141));
-        jSeparator3.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, 270, 10));
+        separador3.setBackground(new java.awt.Color(13, 92, 141));
+        separador3.setForeground(new java.awt.Color(13, 92, 141));
+        panelRegistro.add(separador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 690, 270, 10));
 
-        labellDueño3.setBackground(new java.awt.Color(13, 92, 141));
-        labellDueño3.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        labellDueño3.setForeground(new java.awt.Color(13, 92, 141));
-        labellDueño3.setText("Peso:");
-        labellDueño3.setToolTipText("");
-        panelRegistro.add(labellDueño3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, -1, -1));
+        labelPeso.setBackground(new java.awt.Color(13, 92, 141));
+        labelPeso.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        labelPeso.setForeground(new java.awt.Color(13, 92, 141));
+        labelPeso.setText("Peso:");
+        labelPeso.setToolTipText("");
+        panelRegistro.add(labelPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, -1, -1));
 
-        TXTpeso.setBackground(new java.awt.Color(151, 189, 183));
-        TXTpeso.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        TXTpeso.setForeground(new java.awt.Color(13, 92, 141));
-        TXTpeso.setBorder(null);
-        TXTpeso.addActionListener(new java.awt.event.ActionListener() {
+        txtPeso.setBackground(new java.awt.Color(151, 189, 183));
+        txtPeso.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        txtPeso.setForeground(new java.awt.Color(13, 92, 141));
+        txtPeso.setBorder(null);
+        txtPeso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TXTpesoActionPerformed(evt);
+                txtPesoActionPerformed(evt);
             }
         });
-        panelRegistro.add(TXTpeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 260, 270, 40));
+        panelRegistro.add(txtPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 270, 40));
 
-        jSeparator4.setBackground(new java.awt.Color(13, 92, 141));
-        jSeparator4.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 300, 270, 10));
+        separador5.setBackground(new java.awt.Color(13, 92, 141));
+        separador5.setForeground(new java.awt.Color(13, 92, 141));
+        panelRegistro.add(separador5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 270, 10));
 
-        labellDueño4.setBackground(new java.awt.Color(13, 92, 141));
-        labellDueño4.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        labellDueño4.setForeground(new java.awt.Color(13, 92, 141));
-        labellDueño4.setText("Tratamientos primarios:");
-        labellDueño4.setToolTipText("");
-        panelRegistro.add(labellDueño4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
+        labelTPrim.setBackground(new java.awt.Color(13, 92, 141));
+        labelTPrim.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        labelTPrim.setForeground(new java.awt.Color(13, 92, 141));
+        labelTPrim.setText("Tratamientos primarios:");
+        labelTPrim.setToolTipText("");
+        panelRegistro.add(labelTPrim, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, -1, -1));
 
-        jSeparator5.setBackground(new java.awt.Color(13, 92, 141));
-        jSeparator5.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 410, 270, 10));
+        separador6.setBackground(new java.awt.Color(13, 92, 141));
+        separador6.setForeground(new java.awt.Color(13, 92, 141));
+        panelRegistro.add(separador6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 270, 10));
 
-        jComboBox1.setBackground(new java.awt.Color(151, 189, 183));
-        jComboBox1.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        jComboBox1.setForeground(new java.awt.Color(13, 92, 141));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Vacunación", "Desparasitación", "Esterilización", "Urgencias", "Cirugía" }));
-        panelRegistro.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 270, 40));
+        cbxTPrim.setBackground(new java.awt.Color(151, 189, 183));
+        cbxTPrim.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        cbxTPrim.setForeground(new java.awt.Color(13, 92, 141));
+        cbxTPrim.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Vacunación", "Desparasitación", "Esterilización", "Urgencias", "Cirugía" }));
+        panelRegistro.add(cbxTPrim, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, 270, 40));
 
-        jSeparator6.setBackground(new java.awt.Color(13, 92, 141));
-        jSeparator6.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 270, 10));
+        separador2.setBackground(new java.awt.Color(13, 92, 141));
+        separador2.setForeground(new java.awt.Color(13, 92, 141));
+        panelRegistro.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 270, 10));
 
-        labellDueño5.setBackground(new java.awt.Color(13, 92, 141));
-        labellDueño5.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
-        labellDueño5.setForeground(new java.awt.Color(13, 92, 141));
-        labellDueño5.setText("Tratamientos primarios:");
-        labellDueño5.setToolTipText("");
-        panelRegistro.add(labellDueño5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 440, -1, -1));
+        labelTSec.setBackground(new java.awt.Color(13, 92, 141));
+        labelTSec.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        labelTSec.setForeground(new java.awt.Color(13, 92, 141));
+        labelTSec.setText("Tratamientos secundarios:");
+        labelTSec.setToolTipText("");
+        panelRegistro.add(labelTSec, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, -1, -1));
 
-        jComboBox2.setBackground(new java.awt.Color(151, 189, 183));
-        jComboBox2.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        jComboBox2.setForeground(new java.awt.Color(13, 92, 141));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Cuidado Dental", "Baño medicado", "Corte de pelo", "Corte de uñas", "Adiestramiento" }));
-        panelRegistro.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, 270, 40));
+        cbxTSec.setBackground(new java.awt.Color(151, 189, 183));
+        cbxTSec.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        cbxTSec.setForeground(new java.awt.Color(13, 92, 141));
+        cbxTSec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Cuidado Dental", "Baño medicado", "Corte de pelo", "Corte de uñas", "Adiestramiento" }));
+        panelRegistro.add(cbxTSec, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, 270, 40));
 
         jSeparator7.setBackground(new java.awt.Color(13, 92, 141));
         jSeparator7.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 520, 270, 10));
+        panelRegistro.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, 270, 10));
 
-        getContentPane().add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 680));
+        labelEspecie.setBackground(new java.awt.Color(13, 92, 141));
+        labelEspecie.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        labelEspecie.setForeground(new java.awt.Color(13, 92, 141));
+        labelEspecie.setText("Especie:");
+        labelEspecie.setToolTipText("");
+        panelRegistro.add(labelEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
+
+        cbxEspecie.setBackground(new java.awt.Color(151, 189, 183));
+        cbxEspecie.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        cbxEspecie.setForeground(new java.awt.Color(13, 92, 141));
+        cbxEspecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perro", "Gato", "Conejo", "Cuy", "Pajaro", "Reptil" }));
+        panelRegistro.add(cbxEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 270, 40));
+
+        btnExit.setBackground(new java.awt.Color(121, 180, 211));
+        btnExit.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(0, 51, 153));
+        btnExit.setText("Salir");
+        btnExit.setBorder(null);
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnExitMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnExitMouseExited(evt);
+            }
+        });
+        panelRegistro.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 650, 260, 50));
+
+        btnCancel.setBackground(new java.awt.Color(121, 180, 211));
+        btnCancel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(0, 51, 153));
+        btnCancel.setText("Cancelar");
+        btnCancel.setBorder(null);
+        btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancelMouseExited(evt);
+            }
+        });
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
+        panelRegistro.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, 260, 50));
+
+        btnRegistro.setBackground(new java.awt.Color(13, 92, 141));
+        btnRegistro.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        btnRegistro.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistro.setText("Registrar");
+        btnRegistro.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.white));
+        btnRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRegistroMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRegistroMouseExited(evt);
+            }
+        });
+        panelRegistro.add(btnRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 530, 260, 50));
+
+        labelTiempo.setBackground(new java.awt.Color(13, 92, 141));
+        labelTiempo.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        labelTiempo.setForeground(new java.awt.Color(13, 92, 141));
+        labelTiempo.setText("Tiempo:");
+        labelTiempo.setToolTipText("");
+        panelRegistro.add(labelTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, -1, -1));
+
+        cbxTiempo.setBackground(new java.awt.Color(151, 189, 183));
+        cbxTiempo.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        cbxTiempo.setForeground(new java.awt.Color(13, 92, 141));
+        cbxTiempo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Años", "Meses" }));
+        panelRegistro.add(cbxTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 550, 270, 40));
+
+        separador7.setBackground(new java.awt.Color(13, 92, 141));
+        separador7.setForeground(new java.awt.Color(13, 92, 141));
+        panelRegistro.add(separador7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 590, 270, 10));
+
+        getContentPane().add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TXTmascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTmascotaActionPerformed
+    private void txtMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMascotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TXTmascotaActionPerformed
+    }//GEN-LAST:event_txtMascotaActionPerformed
 
-    private void TXTedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTedadActionPerformed
+    private void txtEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TXTedadActionPerformed
+    }//GEN-LAST:event_txtEdadActionPerformed
 
-    private void TXTpesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTpesoActionPerformed
+    private void txtPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TXTpesoActionPerformed
+    }//GEN-LAST:event_txtPesoActionPerformed
+
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnRegistroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroMouseEntered
+       btnRegistro.setBackground(new Color(121, 180, 211));
+    }//GEN-LAST:event_btnRegistroMouseEntered
+
+    private void btnRegistroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroMouseExited
+        btnRegistro.setBackground(new Color(13,92,141));
+    }//GEN-LAST:event_btnRegistroMouseExited
+
+    private void btnCancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseEntered
+        btnCancel.setBackground(new Color(202, 210, 210));
+    }//GEN-LAST:event_btnCancelMouseEntered
+
+    private void btnCancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseExited
+       btnCancel.setBackground(new Color(121,180,211));
+    }//GEN-LAST:event_btnCancelMouseExited
+
+    private void btnExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseEntered
+        btnExit.setBackground(new Color(202, 210, 210));
+    }//GEN-LAST:event_btnExitMouseEntered
+
+    private void btnExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseExited
+       btnExit.setBackground(new Color(121,180,211));
+    }//GEN-LAST:event_btnExitMouseExited
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField TXTedad;
-    private javax.swing.JTextField TXTmascota;
-    private javax.swing.JTextField TXTpeso;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JButton btnCancel;
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnRegistro;
+    private javax.swing.JComboBox<String> cbxEspecie;
+    private javax.swing.JComboBox<String> cbxTPrim;
+    private javax.swing.JComboBox<String> cbxTSec;
+    private javax.swing.JComboBox<String> cbxTiempo;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JLabel labelDueño;
-    private javax.swing.JLabel labelLogo2;
-    private javax.swing.JLabel labelTitleConsulta;
-    private javax.swing.JLabel labellDueño1;
-    private javax.swing.JLabel labellDueño2;
-    private javax.swing.JLabel labellDueño3;
-    private javax.swing.JLabel labellDueño4;
-    private javax.swing.JLabel labellDueño5;
+    private javax.swing.JLabel labelEdad;
+    private javax.swing.JLabel labelEspecie;
+    private javax.swing.JLabel labelLogo;
+    private javax.swing.JLabel labelMascot;
+    private javax.swing.JLabel labelPeso;
+    private javax.swing.JLabel labelTPrim;
+    private javax.swing.JLabel labelTSec;
+    private javax.swing.JLabel labelTiempo;
+    private javax.swing.JPanel panelLogo;
     private javax.swing.JPanel panelRegistro;
     private javax.swing.JSeparator separador1;
+    private javax.swing.JSeparator separador2;
+    private javax.swing.JSeparator separador3;
+    private javax.swing.JSeparator separador4;
+    private javax.swing.JSeparator separador5;
+    private javax.swing.JSeparator separador6;
+    private javax.swing.JSeparator separador7;
     private javax.swing.JTextField txtDueño;
+    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtMascota;
+    private javax.swing.JTextField txtPeso;
     // End of variables declaration//GEN-END:variables
 }
