@@ -116,7 +116,6 @@ public class Boleta extends javax.swing.JFrame {
             Logger.getLogger(Boleta.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnPrintActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnPrint;
