@@ -95,7 +95,7 @@ public class Boleta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAcceptMouseExited
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
-        // Aqui debe insertar a la tabla Boleta
+        // Aqui debe insertar los datos a la tabla Boleta
     }//GEN-LAST:event_btnAcceptActionPerformed
 
     private void btnPrintMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintMouseEntered
@@ -107,6 +107,7 @@ public class Boleta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPrintMouseExited
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        // Impresión de la boleta
         try {
             txtBoleta.print();
         } catch (PrinterException ex) {

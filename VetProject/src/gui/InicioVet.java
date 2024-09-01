@@ -82,6 +82,7 @@ public class InicioVet extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
+        // Hace aparecer la ventana de Registro
         RegistroConsulta register = new RegistroConsulta();
         register.setVisible(true);
         register.setLocationRelativeTo(null);

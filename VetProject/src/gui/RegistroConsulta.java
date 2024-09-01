@@ -216,6 +216,11 @@ public class RegistroConsulta extends javax.swing.JFrame {
                 btnExitMouseExited(evt);
             }
         });
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
         panelRegistro.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 650, 260, 50));
 
         btnCancel.setBackground(new java.awt.Color(121, 180, 211));
@@ -295,7 +300,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPesoActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        // TODO add your handling code here:
+        // Este boton debe limpiar los campos a null o " "
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnRegistroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroMouseEntered
@@ -323,11 +328,18 @@ public class RegistroConsulta extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitMouseExited
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-       Boleta boleta=new Boleta();
+        // Este boton debe mostrar un Joption Pane para confirmar el registro de los datos
+        // If se confirma el registro debe mandar le ventana de Boleta donde deben aparecer todos los datos del formulario más el subtotal
+        // Else, no se abrirá nada
+        Boleta boleta=new Boleta(); // esto es solo una prueba, debe ser el bloque a ejecutar cuando el if sea true
        boleta.setVisible(true);
        boleta.setLocationRelativeTo(null);
        this.dispose();
     }//GEN-LAST:event_btnRegistroActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // Este boton debe mostrar un JOpton Pane preguntando si se desea salir o no, si se elige que si, cerrará la aplicación
+    }//GEN-LAST:event_btnExitActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
