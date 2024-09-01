@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DBConexion {
     public static Connection getConnection() throws SQLException{
-        String url = " ";//Url de acuerdo ala configuracion
+        String url = "";//Url de acuerdo ala configuracion
         String user ="";//Usuario de la conexion
         String password = "";//Contraseña de la conexion
 
