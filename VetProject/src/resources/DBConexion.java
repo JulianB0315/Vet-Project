@@ -14,7 +14,7 @@ public class DBConexion {
             Class.forName("");//Diver de la base de datos
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            System.out.println("Conctado");
+            System.out.println("Conectado");
         }
 
         return DriverManager.getConnection(url, user, password);
