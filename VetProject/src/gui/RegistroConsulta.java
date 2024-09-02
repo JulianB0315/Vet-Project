@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import java.util.Random;
 
 public class RegistroConsulta extends javax.swing.JFrame {
 
@@ -10,7 +12,8 @@ public class RegistroConsulta extends javax.swing.JFrame {
     }
 
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         panelRegistro = new javax.swing.JPanel();
@@ -58,13 +61,11 @@ public class RegistroConsulta extends javax.swing.JFrame {
         javax.swing.GroupLayout panelLogoLayout = new javax.swing.GroupLayout(panelLogo);
         panelLogo.setLayout(panelLogoLayout);
         panelLogoLayout.setHorizontalGroup(
-            panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1050, Short.MAX_VALUE)
-        );
+                panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1050, Short.MAX_VALUE));
         panelLogoLayout.setVerticalGroup(
-            panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+                panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 100, Short.MAX_VALUE));
 
         panelRegistro.add(panelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 100));
 
@@ -165,7 +166,8 @@ public class RegistroConsulta extends javax.swing.JFrame {
         cbxTPrim.setBackground(new java.awt.Color(151, 189, 183));
         cbxTPrim.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         cbxTPrim.setForeground(new java.awt.Color(13, 92, 141));
-        cbxTPrim.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Vacunación", "Desparasitación", "Esterilización", "Urgencias", "Cirugía" }));
+        cbxTPrim.setModel(new javax.swing.DefaultComboBoxModel<>(
+                new String[] { "Ninguno", "Vacunación", "Desparasitación", "Esterilización", "Urgencias", "Cirugía" }));
         panelRegistro.add(cbxTPrim, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, 270, 40));
 
         separador2.setBackground(new java.awt.Color(13, 92, 141));
@@ -182,7 +184,8 @@ public class RegistroConsulta extends javax.swing.JFrame {
         cbxTSec.setBackground(new java.awt.Color(151, 189, 183));
         cbxTSec.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         cbxTSec.setForeground(new java.awt.Color(13, 92, 141));
-        cbxTSec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Cuidado Dental", "Baño medicado", "Corte de pelo", "Corte de uñas", "Adiestramiento" }));
+        cbxTSec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Cuidado Dental",
+                "Baño medicado", "Corte de pelo", "Corte de uñas", "Adiestramiento" }));
         panelRegistro.add(cbxTSec, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, 270, 40));
 
         jSeparator7.setBackground(new java.awt.Color(13, 92, 141));
@@ -199,7 +202,8 @@ public class RegistroConsulta extends javax.swing.JFrame {
         cbxEspecie.setBackground(new java.awt.Color(151, 189, 183));
         cbxEspecie.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         cbxEspecie.setForeground(new java.awt.Color(13, 92, 141));
-        cbxEspecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perro", "Gato", "Conejo", "Cuy", "Pajaro", "Reptil" }));
+        cbxEspecie.setModel(new javax.swing.DefaultComboBoxModel<>(
+                new String[] { "Perro", "Gato", "Conejo", "Cuy", "Pajaro", "Reptil" }));
         panelRegistro.add(cbxEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 270, 40));
 
         btnExit.setBackground(new java.awt.Color(121, 180, 211));
@@ -212,6 +216,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnExitMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnExitMouseExited(evt);
             }
@@ -233,6 +238,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCancelMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnCancelMouseExited(evt);
             }
@@ -254,6 +260,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnRegistroMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnRegistroMouseExited(evt);
             }
@@ -287,60 +294,135 @@ public class RegistroConsulta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMascotaActionPerformed
+    private void txtMascotaActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtMascotaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMascotaActionPerformed
+    }// GEN-LAST:event_txtMascotaActionPerformed
 
-    private void txtEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadActionPerformed
+    private void txtEdadActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtEdadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEdadActionPerformed
+    }// GEN-LAST:event_txtEdadActionPerformed
 
-    private void txtPesoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPesoActionPerformed
+    private void txtPesoActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_txtPesoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPesoActionPerformed
+    }// GEN-LAST:event_txtPesoActionPerformed
 
-    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnCancelActionPerformed
         // Este boton debe limpiar los campos a null o " "
-    }//GEN-LAST:event_btnCancelActionPerformed
+    }// GEN-LAST:event_btnCancelActionPerformed
 
-    private void btnRegistroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroMouseEntered
-       btnRegistro.setBackground(new Color(121, 180, 211));
-    }//GEN-LAST:event_btnRegistroMouseEntered
+    private void btnRegistroMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnRegistroMouseEntered
+        btnRegistro.setBackground(new Color(121, 180, 211));
+    }// GEN-LAST:event_btnRegistroMouseEntered
 
-    private void btnRegistroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroMouseExited
-        btnRegistro.setBackground(new Color(13,92,141));
-    }//GEN-LAST:event_btnRegistroMouseExited
+    private void btnRegistroMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnRegistroMouseExited
+        btnRegistro.setBackground(new Color(13, 92, 141));
+    }// GEN-LAST:event_btnRegistroMouseExited
 
-    private void btnCancelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseEntered
+    private void btnCancelMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnCancelMouseEntered
         btnCancel.setBackground(new Color(202, 210, 210));
-    }//GEN-LAST:event_btnCancelMouseEntered
+    }// GEN-LAST:event_btnCancelMouseEntered
 
-    private void btnCancelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseExited
-       btnCancel.setBackground(new Color(121,180,211));
-    }//GEN-LAST:event_btnCancelMouseExited
+    private void btnCancelMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnCancelMouseExited
+        btnCancel.setBackground(new Color(121, 180, 211));
+    }// GEN-LAST:event_btnCancelMouseExited
 
-    private void btnExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseEntered
+    private void btnExitMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnExitMouseEntered
         btnExit.setBackground(new Color(202, 210, 210));
-    }//GEN-LAST:event_btnExitMouseEntered
+    }// GEN-LAST:event_btnExitMouseEntered
 
-    private void btnExitMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseExited
-       btnExit.setBackground(new Color(121,180,211));
-    }//GEN-LAST:event_btnExitMouseExited
+    private void btnExitMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnExitMouseExited
+        btnExit.setBackground(new Color(121, 180, 211));
+    }// GEN-LAST:event_btnExitMouseExited
 
-    private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-        // Este boton debe mostrar un Joption Pane para confirmar el registro de los datos
-        // If se confirma el registro debe mandar le ventana de Boleta donde deben aparecer todos los datos del formulario más el subtotal
+    private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnRegistroActionPerformed
+        // Este boton debe mostrar un Joption Pane para confirmar el registro de los
+        // datos
+        // If se confirma el registro debe mandar le ventana de Boleta donde deben
+        // aparecer todos los datos del formulario más el subtotal
         // Else, no se abrirá nada
-        Boleta boleta=new Boleta(); // esto es solo una prueba, debe ser el bloque a ejecutar cuando el if sea true
-       boleta.setVisible(true);
-       boleta.setLocationRelativeTo(null);
-       this.dispose();
-    }//GEN-LAST:event_btnRegistroActionPerformed
+        // Recuperar los datos
+        String idCita = generateIdCita();
+        String dueño = txtDueño.getText();
+        String mascota = txtMascota.getText();
+        String peso = txtPeso.getText();
+        String especie = (String) cbxEspecie.getSelectedItem();
+        String TPrimario = (String) cbxTPrim.getSelectedItem();
+        String TSegundario = (String) cbxTSec.getSelectedItem();
+        String edad = txtEdad.getText();
+        // Meses o años
+        String STiempo = (String) cbxTiempo.getSelectedItem();
+        switch (STiempo) {
+            case "Meses" -> {
+                if (Integer.parseInt(edad) > 11) {
+                    JOptionPane.showMessageDialog(null, "Error");
+                    return;
+                }
+            }
+            case "Años" ->{
+                if (Integer.parseInt(edad)>18) {
+                    JOptionPane.showConfirmDialog(null,"Error");
+                    return;        
+                }
+            }
 
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        // Este boton debe mostrar un JOpton Pane preguntando si se desea salir o no, si se elige que si, cerrará la aplicación
-    }//GEN-LAST:event_btnExitActionPerformed
+            default -> {
+                JOptionPane.showMessageDialog(null, "Ingresar edad del la mascota");
+                return;
+            }
+        }
 
+        // validar edad
+        if (!edad.matches("\\d{2}")) {
+            JOptionPane.showMessageDialog(null, "Ingresar una edad correcta!!");
+            return;
+        }
+
+        // validare el nombre del dueño este bien
+        if (!dueño.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(null, "Ingresar un nombre valido");
+            return;
+        }
+
+        // Validar nombre de la mascota
+        if (!mascota.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(null, "Ingresar un nombre valido para la mascota");
+            return;
+        }
+        // Validar peso
+        if (!peso.matches("\\d{2}")) {
+            JOptionPane.showMessageDialog(null, "Poner un peso valido");
+            return;
+        }
+        if (dueño.isEmpty() || mascota.isEmpty() || peso.isEmpty() || especie.isEmpty()
+                || TPrimario.isEmpty() || edad.isEmpty() || STiempo.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor Ingresar completar todos los datos");
+            return;
+        }
+        Boleta boleta = new Boleta(idCita,dueño,mascota,peso,especie,TPrimario,TSegundario,edad); 
+        boleta.setVisible(true);
+        boleta.setLocationRelativeTo(null);
+        this.dispose();
+    }// GEN-LAST:event_btnRegistroActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnExitActionPerformed
+        // Este boton debe mostrar un JOpton Pane preguntando si se desea salir o no, si
+        // se elige que si, cerrará la aplicación
+    }// GEN-LAST:event_btnExitActionPerformed
+
+    //metodo para crear idCita
+    private String generateIdCita() {
+        String characters = "0123456789";
+        Random rnd = new Random();
+        StringBuilder sb = new StringBuilder();
+
+        // Generar 8 dígitos aleatorios
+        for (int i = 0; i < 8; i++) {
+            int index = rnd.nextInt(characters.length());
+            sb.append(characters.charAt(index));
+        }
+
+        return sb.toString();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnExit;

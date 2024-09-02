@@ -6,9 +6,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Boleta extends javax.swing.JFrame {
-    public Boleta() {
+    public Boleta(String idCita,String dueño, String mascota, String peso, String especie, String tPrimario, String tSegundario, String edad) {
         initComponents();
         this.setTitle("Vet Link - Boleta");
+        String textoBoleta="Dueño "+idCita+dueño+mascota+peso+especie+tPrimario+tSegundario+edad;
+        txtBoleta.setText(textoBoleta);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -114,7 +116,6 @@ public class Boleta extends javax.swing.JFrame {
             Logger.getLogger(Boleta.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnPrintActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnPrint;

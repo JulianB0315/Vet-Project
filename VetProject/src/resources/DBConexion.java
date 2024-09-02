@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DBConexion {
     public static Connection getConnection() throws SQLException{
-        String url = " ";//Url de acuerdo ala configuracion
+        String url = "";//Url de acuerdo ala configuracion
         String user ="";//Usuario de la conexion
         String password = "";//Contraseña de la conexion
 
@@ -14,7 +14,7 @@ public class DBConexion {
             Class.forName("");//Diver de la base de datos
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            System.out.println("Conctado");
+            System.out.println("Conectado");
         }
 
         return DriverManager.getConnection(url, user, password);
