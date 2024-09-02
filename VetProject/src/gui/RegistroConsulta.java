@@ -13,7 +13,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         panelRegistro = new javax.swing.JPanel();
@@ -46,6 +46,9 @@ public class RegistroConsulta extends javax.swing.JFrame {
         labelTiempo = new javax.swing.JLabel();
         cbxTiempo = new javax.swing.JComboBox<>();
         separador7 = new javax.swing.JSeparator();
+        labelTelf = new javax.swing.JLabel();
+        txtTelf = new javax.swing.JTextField();
+        separador8 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,11 +64,13 @@ public class RegistroConsulta extends javax.swing.JFrame {
         javax.swing.GroupLayout panelLogoLayout = new javax.swing.GroupLayout(panelLogo);
         panelLogo.setLayout(panelLogoLayout);
         panelLogoLayout.setHorizontalGroup(
-                panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 1050, Short.MAX_VALUE));
+            panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1050, Short.MAX_VALUE)
+        );
         panelLogoLayout.setVerticalGroup(
-                panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 100, Short.MAX_VALUE));
+            panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         panelRegistro.add(panelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 100));
 
@@ -74,24 +79,24 @@ public class RegistroConsulta extends javax.swing.JFrame {
         labelDueño.setForeground(new java.awt.Color(13, 92, 141));
         labelDueño.setText("Dueño:");
         labelDueño.setToolTipText("");
-        panelRegistro.add(labelDueño, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, -1));
+        panelRegistro.add(labelDueño, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         txtDueño.setBackground(new java.awt.Color(151, 189, 183));
         txtDueño.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         txtDueño.setForeground(new java.awt.Color(13, 92, 141));
         txtDueño.setBorder(null);
-        panelRegistro.add(txtDueño, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 270, 40));
+        panelRegistro.add(txtDueño, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 270, 40));
 
         separador1.setBackground(new java.awt.Color(13, 92, 141));
         separador1.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(separador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, 270, 10));
+        panelRegistro.add(separador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 270, 10));
 
         labelMascot.setBackground(new java.awt.Color(13, 92, 141));
         labelMascot.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         labelMascot.setForeground(new java.awt.Color(13, 92, 141));
         labelMascot.setText("Mascota:");
         labelMascot.setToolTipText("");
-        panelRegistro.add(labelMascot, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
+        panelRegistro.add(labelMascot, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
         txtMascota.setBackground(new java.awt.Color(151, 189, 183));
         txtMascota.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
@@ -102,18 +107,18 @@ public class RegistroConsulta extends javax.swing.JFrame {
                 txtMascotaActionPerformed(evt);
             }
         });
-        panelRegistro.add(txtMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 270, 40));
+        panelRegistro.add(txtMascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 270, 40));
 
         separador4.setBackground(new java.awt.Color(13, 92, 141));
         separador4.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(separador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 270, 10));
+        panelRegistro.add(separador4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 270, 10));
 
         labelEdad.setBackground(new java.awt.Color(13, 92, 141));
         labelEdad.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         labelEdad.setForeground(new java.awt.Color(13, 92, 141));
         labelEdad.setText("Edad:");
         labelEdad.setToolTipText("");
-        panelRegistro.add(labelEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 610, -1, -1));
+        panelRegistro.add(labelEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 340, -1, -1));
 
         txtEdad.setBackground(new java.awt.Color(151, 189, 183));
         txtEdad.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
@@ -124,18 +129,18 @@ public class RegistroConsulta extends javax.swing.JFrame {
                 txtEdadActionPerformed(evt);
             }
         });
-        panelRegistro.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 650, 270, 40));
+        panelRegistro.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, 270, 40));
 
         separador3.setBackground(new java.awt.Color(13, 92, 141));
         separador3.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(separador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 690, 270, 10));
+        panelRegistro.add(separador3, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 410, 270, 10));
 
         labelPeso.setBackground(new java.awt.Color(13, 92, 141));
         labelPeso.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         labelPeso.setForeground(new java.awt.Color(13, 92, 141));
         labelPeso.setText("Peso:");
         labelPeso.setToolTipText("");
-        panelRegistro.add(labelPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 190, -1, -1));
+        panelRegistro.add(labelPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, -1, -1));
 
         txtPeso.setBackground(new java.awt.Color(151, 189, 183));
         txtPeso.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
@@ -146,65 +151,62 @@ public class RegistroConsulta extends javax.swing.JFrame {
                 txtPesoActionPerformed(evt);
             }
         });
-        panelRegistro.add(txtPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 270, 40));
+        panelRegistro.add(txtPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 270, 40));
 
         separador5.setBackground(new java.awt.Color(13, 92, 141));
         separador5.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(separador5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 270, 270, 10));
+        panelRegistro.add(separador5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 270, 10));
 
         labelTPrim.setBackground(new java.awt.Color(13, 92, 141));
         labelTPrim.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         labelTPrim.setForeground(new java.awt.Color(13, 92, 141));
         labelTPrim.setText("Tratamientos primarios:");
         labelTPrim.setToolTipText("");
-        panelRegistro.add(labelTPrim, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, -1, -1));
+        panelRegistro.add(labelTPrim, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 440, -1, -1));
 
         separador6.setBackground(new java.awt.Color(13, 92, 141));
         separador6.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(separador6, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 380, 270, 10));
+        panelRegistro.add(separador6, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 520, 270, 10));
 
         cbxTPrim.setBackground(new java.awt.Color(151, 189, 183));
         cbxTPrim.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         cbxTPrim.setForeground(new java.awt.Color(13, 92, 141));
-        cbxTPrim.setModel(new javax.swing.DefaultComboBoxModel<>(
-                new String[] { "Ninguno", "Vacunación", "Desparasitación", "Esterilización", "Urgencias", "Cirugía" }));
-        panelRegistro.add(cbxTPrim, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 340, 270, 40));
+        cbxTPrim.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Vacunación", "Desparasitación", "Esterilización", "Urgencias", "Cirugía" }));
+        panelRegistro.add(cbxTPrim, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 480, 270, 40));
 
         separador2.setBackground(new java.awt.Color(13, 92, 141));
         separador2.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 270, 10));
+        panelRegistro.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 270, 10));
 
         labelTSec.setBackground(new java.awt.Color(13, 92, 141));
         labelTSec.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         labelTSec.setForeground(new java.awt.Color(13, 92, 141));
         labelTSec.setText("Tratamientos secundarios:");
         labelTSec.setToolTipText("");
-        panelRegistro.add(labelTSec, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 410, -1, -1));
+        panelRegistro.add(labelTSec, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 560, -1, -1));
 
         cbxTSec.setBackground(new java.awt.Color(151, 189, 183));
         cbxTSec.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         cbxTSec.setForeground(new java.awt.Color(13, 92, 141));
-        cbxTSec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Cuidado Dental",
-                "Baño medicado", "Corte de pelo", "Corte de uñas", "Adiestramiento" }));
-        panelRegistro.add(cbxTSec, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 450, 270, 40));
+        cbxTSec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Cuidado Dental", "Baño medicado", "Corte de pelo", "Corte de uñas", "Adiestramiento" }));
+        panelRegistro.add(cbxTSec, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 270, 40));
 
         jSeparator7.setBackground(new java.awt.Color(13, 92, 141));
         jSeparator7.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, 270, 10));
+        panelRegistro.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 640, 270, 10));
 
         labelEspecie.setBackground(new java.awt.Color(13, 92, 141));
         labelEspecie.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         labelEspecie.setForeground(new java.awt.Color(13, 92, 141));
         labelEspecie.setText("Especie:");
         labelEspecie.setToolTipText("");
-        panelRegistro.add(labelEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
+        panelRegistro.add(labelEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 230, -1, -1));
 
         cbxEspecie.setBackground(new java.awt.Color(151, 189, 183));
         cbxEspecie.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         cbxEspecie.setForeground(new java.awt.Color(13, 92, 141));
-        cbxEspecie.setModel(new javax.swing.DefaultComboBoxModel<>(
-                new String[] { "Perro", "Gato", "Conejo", "Cuy", "Pajaro", "Reptil" }));
-        panelRegistro.add(cbxEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, 270, 40));
+        cbxEspecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perro", "Gato", "Conejo", "Cuy", "Pajaro", "Reptil" }));
+        panelRegistro.add(cbxEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 270, 40));
 
         btnExit.setBackground(new java.awt.Color(121, 180, 211));
         btnExit.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
@@ -216,7 +218,6 @@ public class RegistroConsulta extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnExitMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnExitMouseExited(evt);
             }
@@ -226,7 +227,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        panelRegistro.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 650, 260, 50));
+        panelRegistro.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 660, 270, 50));
 
         btnCancel.setBackground(new java.awt.Color(121, 180, 211));
         btnCancel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
@@ -238,7 +239,6 @@ public class RegistroConsulta extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnCancelMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnCancelMouseExited(evt);
             }
@@ -248,7 +248,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
                 btnCancelActionPerformed(evt);
             }
         });
-        panelRegistro.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, 260, 50));
+        panelRegistro.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 600, 270, 50));
 
         btnRegistro.setBackground(new java.awt.Color(13, 92, 141));
         btnRegistro.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
@@ -260,7 +260,6 @@ public class RegistroConsulta extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnRegistroMouseEntered(evt);
             }
-
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnRegistroMouseExited(evt);
             }
@@ -270,26 +269,43 @@ public class RegistroConsulta extends javax.swing.JFrame {
                 btnRegistroActionPerformed(evt);
             }
         });
-        panelRegistro.add(btnRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 530, 260, 50));
+        panelRegistro.add(btnRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 540, 270, 50));
 
         labelTiempo.setBackground(new java.awt.Color(13, 92, 141));
         labelTiempo.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         labelTiempo.setForeground(new java.awt.Color(13, 92, 141));
         labelTiempo.setText("Tiempo:");
         labelTiempo.setToolTipText("");
-        panelRegistro.add(labelTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, -1, -1));
+        panelRegistro.add(labelTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
         cbxTiempo.setBackground(new java.awt.Color(151, 189, 183));
         cbxTiempo.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         cbxTiempo.setForeground(new java.awt.Color(13, 92, 141));
         cbxTiempo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Años", "Meses" }));
-        panelRegistro.add(cbxTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 550, 270, 40));
+        panelRegistro.add(cbxTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 270, 40));
 
         separador7.setBackground(new java.awt.Color(13, 92, 141));
         separador7.setForeground(new java.awt.Color(13, 92, 141));
-        panelRegistro.add(separador7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 590, 270, 10));
+        panelRegistro.add(separador7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 270, 10));
 
-        getContentPane().add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 720));
+        labelTelf.setBackground(new java.awt.Color(13, 92, 141));
+        labelTelf.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        labelTelf.setForeground(new java.awt.Color(13, 92, 141));
+        labelTelf.setText("Teléfono:");
+        labelTelf.setToolTipText("");
+        panelRegistro.add(labelTelf, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, -1, -1));
+
+        txtTelf.setBackground(new java.awt.Color(151, 189, 183));
+        txtTelf.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        txtTelf.setForeground(new java.awt.Color(13, 92, 141));
+        txtTelf.setBorder(null);
+        panelRegistro.add(txtTelf, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 270, 40));
+
+        separador8.setBackground(new java.awt.Color(13, 92, 141));
+        separador8.setForeground(new java.awt.Color(13, 92, 141));
+        panelRegistro.add(separador8, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 200, 270, 10));
+
+        getContentPane().add(panelRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 730));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -440,6 +456,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
     private javax.swing.JLabel labelPeso;
     private javax.swing.JLabel labelTPrim;
     private javax.swing.JLabel labelTSec;
+    private javax.swing.JLabel labelTelf;
     private javax.swing.JLabel labelTiempo;
     private javax.swing.JPanel panelLogo;
     private javax.swing.JPanel panelRegistro;
@@ -450,9 +467,11 @@ public class RegistroConsulta extends javax.swing.JFrame {
     private javax.swing.JSeparator separador5;
     private javax.swing.JSeparator separador6;
     private javax.swing.JSeparator separador7;
+    private javax.swing.JSeparator separador8;
     private javax.swing.JTextField txtDueño;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtMascota;
     private javax.swing.JTextField txtPeso;
+    private javax.swing.JTextField txtTelf;
     // End of variables declaration//GEN-END:variables
 }
