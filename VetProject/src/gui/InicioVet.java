@@ -163,7 +163,10 @@ public class InicioVet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnManiMouseReleased
 
     private void btnManiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManiActionPerformed
-        // TODO add your handling code here:
+        Manipulacion man=new Manipulacion();
+        man.setLocationRelativeTo(null);
+        man.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnManiActionPerformed
 
 
