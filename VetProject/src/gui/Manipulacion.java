@@ -1,7 +1,7 @@
 package gui;
 
 import java.awt.Color;
-
+import gui.InicioVet;
 public class Manipulacion extends javax.swing.JFrame {
     public Manipulacion() {
         initComponents();
@@ -54,6 +54,11 @@ public class Manipulacion extends javax.swing.JFrame {
         btnSalir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(13, 92, 141), 3, true));
         btnSalir.setContentAreaFilled(false);
         btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
         panelMain.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, 190, 50));
 
         btnUpdate.setBackground(new java.awt.Color(13, 92, 141));
@@ -125,6 +130,12 @@ public class Manipulacion extends javax.swing.JFrame {
     private void btnDelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDelMouseExited
         btnDel.setBackground(new Color(13, 92, 141));
     }//GEN-LAST:event_btnDelMouseExited
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        this.dispose();
+        InicioVet principal = new InicioVet();
+        principal.setVisible(true);
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDel;
