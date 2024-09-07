@@ -85,6 +85,11 @@ public class RegistroConsulta extends javax.swing.JFrame {
         txtDueño.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         txtDueño.setForeground(new java.awt.Color(13, 92, 141));
         txtDueño.setBorder(null);
+        txtDueño.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDueñoActionPerformed(evt);
+            }
+        });
         panelRegistro.add(txtDueño, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 270, 40));
 
         separador1.setBackground(new java.awt.Color(13, 92, 141));
@@ -319,6 +324,10 @@ public class RegistroConsulta extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCancelMouseClicked
 
+    private void txtDueñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDueñoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDueñoActionPerformed
+
     private void txtMascotaActionPerformed(java.awt.event.ActionEvent evt) {
         
     }
@@ -434,7 +443,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
     }
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {
-        int x=JOptionPane.showConfirmDialog(null, "¿Desea Salir?","Nuevo Perú Bank",
+        int x=JOptionPane.showConfirmDialog(null, "¿Desea Salir?","Veterinaria",
                JOptionPane.YES_NO_OPTION ); 
                 if(x==0){
                     System.exit(0);
