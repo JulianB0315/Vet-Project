@@ -210,9 +210,10 @@ public class RegistroConsulta extends javax.swing.JFrame {
 
         btnExit.setBackground(new java.awt.Color(121, 180, 211));
         btnExit.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        btnExit.setForeground(new java.awt.Color(0, 51, 153));
+        btnExit.setForeground(new java.awt.Color(13, 92, 141));
         btnExit.setText("Salir");
-        btnExit.setBorder(null);
+        btnExit.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(121, 180, 211), 3, true));
+        btnExit.setContentAreaFilled(false);
         btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -231,9 +232,10 @@ public class RegistroConsulta extends javax.swing.JFrame {
 
         btnCancel.setBackground(new java.awt.Color(121, 180, 211));
         btnCancel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
-        btnCancel.setForeground(new java.awt.Color(0, 51, 153));
+        btnCancel.setForeground(new java.awt.Color(13, 92, 141));
         btnCancel.setText("Cancelar");
-        btnCancel.setBorder(null);
+        btnCancel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(121, 180, 211), 3, true));
+        btnCancel.setContentAreaFilled(false);
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -254,7 +256,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
         btnRegistro.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         btnRegistro.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistro.setText("Registrar");
-        btnRegistro.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.white));
+        btnRegistro.setBorder(null);
         btnRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -421,8 +423,11 @@ public class RegistroConsulta extends javax.swing.JFrame {
     }// GEN-LAST:event_btnRegistroActionPerformed
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnExitActionPerformed
-        // Este boton debe mostrar un JOpton Pane preguntando si se desea salir o no, si
-        // se elige que si, cerrará la aplicación
+        int x=JOptionPane.showConfirmDialog(null, "¿Desea Salir?","Nuevo Perú Bank",
+               JOptionPane.YES_NO_OPTION ); 
+                if(x==0){
+                    System.exit(0);
+                 }
     }// GEN-LAST:event_btnExitActionPerformed
 
     //metodo para crear idCita

@@ -18,6 +18,7 @@ public class InicioVet extends javax.swing.JFrame {
         labelSlogan = new javax.swing.JLabel();
         labelSubt = new javax.swing.JLabel();
         labelTitle = new javax.swing.JLabel();
+        btnMani = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -36,6 +37,7 @@ public class InicioVet extends javax.swing.JFrame {
         btnRegistro.setFont(new java.awt.Font("Lucida Sans", 1, 24)); // NOI18N
         btnRegistro.setForeground(new java.awt.Color(217, 227, 234));
         btnRegistro.setText("Registrar Consulta");
+        btnRegistro.setBorder(null);
         btnRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistro.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -59,7 +61,7 @@ public class InicioVet extends javax.swing.JFrame {
                 btnRegistroActionPerformed(evt);
             }
         });
-        panelInicioVet.add(btnRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, 270, 80));
+        panelInicioVet.add(btnRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, 270, 60));
 
         labelSlogan.setFont(new java.awt.Font("Calibri Light", 1, 28)); // NOI18N
         labelSlogan.setForeground(new java.awt.Color(0, 102, 102));
@@ -69,12 +71,43 @@ public class InicioVet extends javax.swing.JFrame {
         labelSubt.setFont(new java.awt.Font("Calibri Light", 1, 36)); // NOI18N
         labelSubt.setForeground(new java.awt.Color(0, 102, 102));
         labelSubt.setText("Registre su Consulta");
-        panelInicioVet.add(labelSubt, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 380, -1, -1));
+        panelInicioVet.add(labelSubt, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, -1, -1));
 
         labelTitle.setFont(new java.awt.Font("Leelawadee", 1, 48)); // NOI18N
         labelTitle.setForeground(new java.awt.Color(0, 102, 102));
         labelTitle.setText("Bienvenido a VetLink");
-        panelInicioVet.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, -1, -1));
+        panelInicioVet.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
+
+        btnMani.setBackground(new java.awt.Color(28, 155, 128));
+        btnMani.setFont(new java.awt.Font("Lucida Sans", 1, 24)); // NOI18N
+        btnMani.setForeground(new java.awt.Color(28, 155, 128));
+        btnMani.setText("Manipular Datos");
+        btnMani.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(28, 155, 128), 3, true));
+        btnMani.setContentAreaFilled(false);
+        btnMani.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMani.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnManiMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnManiMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnManiMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnManiMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnManiMouseReleased(evt);
+            }
+        });
+        btnMani.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManiActionPerformed(evt);
+            }
+        });
+        panelInicioVet.add(btnMani, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 500, 270, 60));
 
         getContentPane().add(panelInicioVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 600));
 
@@ -109,8 +142,33 @@ public class InicioVet extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnRegistroMouseReleased
 
+    private void btnManiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManiMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnManiMouseClicked
+
+    private void btnManiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManiMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnManiMouseEntered
+
+    private void btnManiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManiMouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnManiMouseExited
+
+    private void btnManiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManiMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnManiMousePressed
+
+    private void btnManiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnManiMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnManiMouseReleased
+
+    private void btnManiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnManiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMani;
     private javax.swing.JButton btnRegistro;
     private javax.swing.JLabel labelBanner;
     private javax.swing.JLabel labelLogo;
