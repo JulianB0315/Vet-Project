@@ -135,6 +135,7 @@ public class Manipulacion extends javax.swing.JFrame {
         this.dispose();
         InicioVet principal = new InicioVet();
         principal.setVisible(true);
+        principal.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
