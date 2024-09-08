@@ -340,6 +340,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
     }
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {
+        //Limpiar todos los datos
         txtDueño.setText("");
         txtMascota.setText("");
         txtTelf.setText("");
@@ -440,6 +441,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
         boleta.setVisible(true);
         boleta.setLocationRelativeTo(null);
         this.dispose();
+        //Registrar en la base de datos 
     }
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {
