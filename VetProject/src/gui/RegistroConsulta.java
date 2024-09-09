@@ -380,40 +380,33 @@ public class RegistroConsulta extends javax.swing.JFrame {
         // aparecer todos los datos del formulario más el subtotal
         // Else, no se abrirá nada
         // Recuperar los datos
-        String idCita = generateIdCita();
+        String idCliente = generateIdCliente();
         String dueño = txtDueño.getText();
         String mascota = txtMascota.getText();
-        String peso = txtPeso.getText();
+        double peso = Double.parseDouble(txtPeso.getText());
         String especie = (String) cbxEspecie.getSelectedItem();
         String TPrimario = (String) cbxTPrim.getSelectedItem();
         String TSegundario = (String) cbxTSec.getSelectedItem();
-        String edad = txtEdad.getText();
+        int edad = Integer.parseInt(txtEdad.getText());
+        String telefono = txtTelf.getText();
         // Meses o años
         String STiempo = (String) cbxTiempo.getSelectedItem();
         switch (STiempo) {
-            case "Meses" -> {
-                if (Integer.parseInt(edad) > 11) {
+            case "Meses":
+                if (edad > 11) {
                     JOptionPane.showMessageDialog(null, "Error");
                     return;
                 }
-            }
-            case "Años" ->{
-                if (Integer.parseInt(edad)>18) {
+            break;
+            case "Años":
+                if (edad>18) {
                     JOptionPane.showConfirmDialog(null,"Error");
                     return;        
                 }
-            }
-
-            default -> {
+            break;
+            default: 
                 JOptionPane.showMessageDialog(null, "Ingresar edad del la mascota");
-                return;
-            }
-        }
-
-        // validar edad
-        if (!edad.matches("\\d{2}")) {
-            JOptionPane.showMessageDialog(null, "Ingresar una edad correcta!!");
-            return;
+            break;
         }
 
         // validare el nombre del dueño este bien
@@ -427,17 +420,15 @@ public class RegistroConsulta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingresar un nombre valido para la mascota");
             return;
         }
-        // Validar peso
-        if (!peso.matches("\\d{2}")) {
-            JOptionPane.showMessageDialog(null, "Poner un peso valido");
+        if(!telefono.matches("\\d{9}")){
+            JOptionPane.showMessageDialog(null, "Numero invalido");
             return;
         }
-        if (dueño.isEmpty() || mascota.isEmpty() || peso.isEmpty() || especie.isEmpty()
-                || TPrimario.isEmpty() || edad.isEmpty() || STiempo.isEmpty()) {
+        if (dueño.isEmpty() || mascota.isEmpty() || peso==0.0 || especie.isEmpty()|| TPrimario.isEmpty() || edad==0 || STiempo.isEmpty()||telefono.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor Ingresar completar todos los datos");
             return;
         }
-        Boleta boleta = new Boleta(idCita,dueño,mascota,peso,especie,TPrimario,TSegundario,edad); 
+        Boleta boleta = new Boleta(idCliente,dueño,mascota,peso,especie,TPrimario,TSegundario,edad,telefono); 
         boleta.setVisible(true);
         boleta.setLocationRelativeTo(null);
         this.dispose();
@@ -453,7 +444,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
     }
 
     //metodo para crear idCita
-    private String generateIdCita() {
+    private String generateIdCliente() {
         String characters = "0123456789";
         Random rnd = new Random();
         StringBuilder sb = new StringBuilder();
