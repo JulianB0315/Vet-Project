@@ -34,7 +34,7 @@ public class Boleta extends javax.swing.JFrame {
         String.format("%-20s : %s\n", "Especie", especie) +
         String.format("%-20s : %s\n", "Tratamiento Primario", tPrimario) +
         String.format("%-20s : %s\n", "Tratamiento Secundario", tSegundario) +
-        String.format("%-20s : %s años\n", "Edad", edad) +
+        String.format("%-20s : %s \n", "Edad", edad) +
         String.format("%-20s : %s\n", "Teléfono", telefono) +
         "*****************************************";
 
@@ -141,15 +141,15 @@ public class Boleta extends javax.swing.JFrame {
         String veterinario = "00000001";
         try (Connection conn = ConexionOracle.getConnection()) {
             // tabla Cliente
-            String sqlDueño = "INSERT INTO GRUPO.CLIENTE (CLIENTE_ID, NOMBRE, TELEFONO) VALUES (?, ?, ?)";
+            String sqlDueño = "INSERT INTO CLIENTE (CLIENTE_ID, NOMBRE, TELEFONO) VALUES (?, ?, ?)";
             PreparedStatement due = conn.prepareStatement(sqlDueño);
             due.setString(1, idCliente);
             due.setString(2, dueño);
             due.setString(3, telefono);
             due.executeQuery();
-            System.out.println("Dueño");
+
             // Tabla mascota
-            String sqlMascota = "INSERT INTO GRUPO.MASCOTA (MASCOTA_ID, NOMBRE, ESPECIE, EDAD, PESO, CLIENTE_ID, VETERINARIO_ID) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sqlMascota = "INSERT INTO MASCOTA (MASCOTA_ID, NOMBRE, ESPECIE, EDAD, PESO, CLIENTE_ID, VETERINARIO_ID) VALUES (?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement mas = conn.prepareStatement(sqlMascota);
             mas.setString(1, idMascota);
             mas.setString(2, mascota);
@@ -159,7 +159,8 @@ public class Boleta extends javax.swing.JFrame {
             mas.setString(6, idCliente);
             mas.setString(7, veterinario);
             mas.executeQuery();
-            System.out.println("mascota");
+            
+            JOptionPane.showMessageDialog(null, "Registro insertado con exito", "Felicidades", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Ocurrio un error", "Error", JOptionPane.WARNING_MESSAGE);
         }
