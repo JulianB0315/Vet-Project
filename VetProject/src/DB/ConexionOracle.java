@@ -1,4 +1,3 @@
-
 package DB;
 
 import java.sql.Connection;
@@ -10,7 +9,7 @@ public class ConexionOracle {
     public static Connection getConnection() throws SQLException{
         String url = "jdbc:oracle:thin:@localhost:1521:XE";//Url de acuerdo ala configuracion
         String user ="GRUPO";//Usuario de la conexion
-        String password = "1234";//Contraseña de la conexion
+        String password = "root";//Contraseña de la conexion
 
         try {
             Class.forName("oracle.jdbc.OracleDriver");//Diver de la base de datos
