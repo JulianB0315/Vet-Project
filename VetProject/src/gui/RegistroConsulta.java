@@ -374,33 +374,36 @@ public class RegistroConsulta extends javax.swing.JFrame {
     }
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {
-        // Este boton debe mostrar un Joption Pane para confirmar el registro de los
-        // datos
-        // If se confirma el registro debe mandar le ventana de Boleta donde deben
-        // aparecer todos los datos del formulario más el subtotal
+        // Este boton debe mostrar un Joption Pane para confirmar el registro de los datos
+        // If se confirma el registro debe mandar le ventana de Boleta donde deben aparecer todos los datos del formulario más el subtotal
         // Else, no se abrirá nada
         // Recuperar los datos
         String idCliente = generateIdCliente();
         String dueño = txtDueño.getText();
         String mascota = txtMascota.getText();
-        double peso = Double.parseDouble(txtPeso.getText());
+        String pesoString = txtPeso.getText();
         String especie = (String) cbxEspecie.getSelectedItem();
         String TPrimario = (String) cbxTPrim.getSelectedItem();
         String TSegundario = (String) cbxTSec.getSelectedItem();
-        int edad = Integer.parseInt(txtEdad.getText());
+        String edadString = txtEdad.getText();
         String telefono = txtTelf.getText();
         // Meses o años
+
+        if (!edadString.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Ingresar una edad valida","Error",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         String STiempo = (String) cbxTiempo.getSelectedItem();
         switch (STiempo) {
             case "Meses":
-                if (edad > 11) {
-                    JOptionPane.showMessageDialog(null, "Error");
+                if (Integer.parseInt(edadString) > 11) {
+                    JOptionPane.showMessageDialog(null, "Ingresar una edad valida","Error",JOptionPane.WARNING_MESSAGE);
                     return;
                 }
             break;
             case "Años":
-                if (edad>18) {
-                    JOptionPane.showConfirmDialog(null,"Error");
+                if (Integer.parseInt(edadString)>18) {
+                    JOptionPane.showMessageDialog(null, "Ingresar una edad valida","Error",JOptionPane.WARNING_MESSAGE);
                     return;        
                 }
             break;
@@ -408,26 +411,31 @@ public class RegistroConsulta extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Ingresar edad del la mascota");
             break;
         }
-
+        if (!pesoString.matches("\\d+(\\.\\d+)?")) {
+            JOptionPane.showMessageDialog(null, "Ingresar un peso válido", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         // validare el nombre del dueño este bien
         if (!dueño.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
-            JOptionPane.showMessageDialog(null, "Ingresar un nombre valido");
+            JOptionPane.showMessageDialog(null, "Ingresar un nombre valido","Error",JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         // Validar nombre de la mascota
         if (!mascota.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
-            JOptionPane.showMessageDialog(null, "Ingresar un nombre valido para la mascota");
+            JOptionPane.showMessageDialog(null, "Ingresar un nombre valido para la mascota","Error",JOptionPane.WARNING_MESSAGE);
             return;
         }
         if(!telefono.matches("\\d{9}")){
-            JOptionPane.showMessageDialog(null, "Numero invalido");
+            JOptionPane.showMessageDialog(null, "Numero invalido","Error",JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if (dueño.isEmpty() || mascota.isEmpty() || peso==0.0 || especie.isEmpty()|| TPrimario.isEmpty() || edad==0 || STiempo.isEmpty()||telefono.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor Ingresar completar todos los datos");
+        if (dueño.isEmpty() || mascota.isEmpty() || pesoString.isEmpty()|| especie.isEmpty()|| TPrimario.isEmpty() || edadString.isEmpty()|| STiempo.isEmpty()||telefono.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor Ingresar completar todos los datos","Error",JOptionPane.WARNING_MESSAGE);
             return;
         }
+        int edad = Integer.parseInt(edadString);
+        double peso = Double.parseDouble(pesoString);
         Boleta boleta = new Boleta(idCliente,dueño,mascota,peso,especie,TPrimario,TSegundario,edad,telefono); 
         boleta.setVisible(true);
         boleta.setLocationRelativeTo(null);
@@ -436,8 +444,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
     }
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {
-        int x=JOptionPane.showConfirmDialog(null, "¿Desea Salir?","Veterinaria",
-               JOptionPane.YES_NO_OPTION ); 
+        int x=JOptionPane.showConfirmDialog(null, "¿Desea Salir?","Veterinaria",JOptionPane.YES_NO_OPTION ); 
                 if(x==0){
                     System.exit(0);
                  }
