@@ -2,18 +2,56 @@ package gui;
 
 import java.awt.Color;
 import java.awt.print.PrinterException;
+import java.security.SecureRandom;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import DB.ConexionOracle;
 
 public class Boleta extends javax.swing.JFrame {
-    public Boleta(String idCita,String dueño, String mascota, String peso, String especie, String tPrimario, String tSegundario, String edad) {
+    private String idCliente;
+    private String dueño;
+    private String mascota;
+    private Double peso;
+    private String especie;
+    private int edad;
+    private String telefono;
+
+    public Boleta(String idCliente, String dueño, String mascota, double peso, String especie, String tPrimario,String tSegundario, int edad, String telefono) {
         initComponents();
         this.setTitle("Vet Link - Boleta");
-        String textoBoleta="Dueño "+idCita+dueño+mascota+peso+especie+tPrimario+tSegundario+edad;
+        String textoBoleta =    
+        "*****************************************\n" +
+        "*          BOLETA VETERINARIA           *\n" +
+        "*****************************************\n\n" +
+        String.format("%-20s : %s\n", "ID Cliente", idCliente) +
+        String.format("%-20s : %s\n", "Dueño", dueño) +
+        String.format("%-20s : %s\n", "Mascota", mascota) +
+        String.format("%-20s : %s kg\n", "Peso", peso) +
+        String.format("%-20s : %s\n", "Especie", especie) +
+        String.format("%-20s : %s\n", "Tratamiento Primario", tPrimario) +
+        String.format("%-20s : %s\n", "Tratamiento Secundario", tSegundario) +
+        String.format("%-20s : %s años\n", "Edad", edad) +
+        String.format("%-20s : %s\n", "Teléfono", telefono) +
+        "*****************************************";
+
         txtBoleta.setText(textoBoleta);
+        this.edad = edad;
+        this.idCliente = idCliente;
+        this.dueño = dueño;
+        this.mascota = mascota;
+        this.peso = peso;
+        this.especie = especie;
+        this.telefono = telefono;
     }
+
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         panelMainBoleta = new javax.swing.JPanel();
@@ -50,6 +88,7 @@ public class Boleta extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAcceptMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnAcceptMouseExited(evt);
             }
@@ -72,6 +111,7 @@ public class Boleta extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnPrintMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnPrintMouseExited(evt);
             }
@@ -88,34 +128,75 @@ public class Boleta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAcceptMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAcceptMouseEntered
+    private void btnAcceptMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnAcceptMouseEntered
         btnAccept.setBackground(new Color(121, 180, 211));
-    }//GEN-LAST:event_btnAcceptMouseEntered
+    }// GEN-LAST:event_btnAcceptMouseEntered
 
-    private void btnAcceptMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAcceptMouseExited
-        btnAccept.setBackground(new Color(13,92,141));
-    }//GEN-LAST:event_btnAcceptMouseExited
+    private void btnAcceptMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnAcceptMouseExited
+        btnAccept.setBackground(new Color(13, 92, 141));
+    }// GEN-LAST:event_btnAcceptMouseExited
 
-    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcceptActionPerformed
-        // Aqui debe insertar los datos a la tabla Boleta
-    }//GEN-LAST:event_btnAcceptActionPerformed
+    private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAcceptActionPerformed
+        String idMascota = generarID();
+        String veterinario = "00000001";
+        try (Connection conn = ConexionOracle.getConnection()) {
+            // tabla Cliente
+            String sqlDueño = "INSERT INTO GRUPO.CLIENTE (CLIENTE_ID, NOMBRE, TELEFONO) VALUES (?, ?, ?)";
+            PreparedStatement due = conn.prepareStatement(sqlDueño);
+            due.setString(1, idCliente);
+            due.setString(2, dueño);
+            due.setString(3, telefono);
+            due.executeQuery();
+            System.out.println("Dueño");
+            // Tabla mascota
+            String sqlMascota = "INSERT INTO GRUPO.MASCOTA (MASCOTA_ID, NOMBRE, ESPECIE, EDAD, PESO, CLIENTE_ID, VETERINARIO_ID) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement mas = conn.prepareStatement(sqlMascota);
+            mas.setString(1, idMascota);
+            mas.setString(2, mascota);
+            mas.setString(3, especie);
+            mas.setInt(4, edad);
+            mas.setDouble(5, peso);
+            mas.setString(6, idCliente);
+            mas.setString(7, veterinario);
+            mas.executeQuery();
+            System.out.println("mascota");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Ocurrio un error", "Error", JOptionPane.WARNING_MESSAGE);
+        }
+    }// GEN-LAST:event_btnAcceptActionPerformed
 
-    private void btnPrintMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintMouseEntered
+    private void btnPrintMouseEntered(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnPrintMouseEntered
         btnPrint.setBackground(new Color(202, 210, 210));
-    }//GEN-LAST:event_btnPrintMouseEntered
+    }// GEN-LAST:event_btnPrintMouseEntered
 
-    private void btnPrintMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPrintMouseExited
-        btnPrint.setBackground(new Color(121,180,211));
-    }//GEN-LAST:event_btnPrintMouseExited
+    private void btnPrintMouseExited(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_btnPrintMouseExited
+        btnPrint.setBackground(new Color(121, 180, 211));
+    }// GEN-LAST:event_btnPrintMouseExited
 
-    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnPrintActionPerformed
         // Impresión de la boleta
         try {
             txtBoleta.print();
         } catch (PrinterException ex) {
             Logger.getLogger(Boleta.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btnPrintActionPerformed
+    }// GEN-LAST:event_btnPrintActionPerformed
+
+    // Método privado para generar el ID
+    private static String generarID() {
+        int ID_LENGTH = 8;
+        SecureRandom random = new SecureRandom();
+        String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        StringBuilder sb = new StringBuilder(ID_LENGTH);
+
+        for (int i = 0; i < ID_LENGTH; i++) {
+            int index = random.nextInt(CHARACTERS.length());
+            sb.append(CHARACTERS.charAt(index));
+        }
+
+        return sb.toString();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccept;
     private javax.swing.JButton btnPrint;
