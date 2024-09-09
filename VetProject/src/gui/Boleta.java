@@ -10,7 +10,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import DB.ConexionOracle;
-
+import javax.swing.JFrame;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.print.PrinterJob;
+import java.awt.print.Printable;
+import java.awt.print.PageFormat;
 public class Boleta extends javax.swing.JFrame {
     private String idCliente;
     private String dueño;
@@ -20,23 +25,38 @@ public class Boleta extends javax.swing.JFrame {
     private int edad;
     private String telefono;
 
-    public Boleta(String idCliente, String dueño, String mascota, double peso, String especie, String tPrimario,String tSegundario, int edad, String telefono) {
+    public Boleta(String idCliente, String dueño, String mascota, double peso, String especie, String tPrimario,
+            String tSegundario, int edad, String telefono) {
         initComponents();
         this.setTitle("Vet Link - Boleta");
-        String textoBoleta =    
-        "*****************************************\n" +
-        "*          BOLETA VETERINARIA           *\n" +
-        "*****************************************\n\n" +
-        String.format("%-20s : %s\n", "ID Cliente", idCliente) +
-        String.format("%-20s : %s\n", "Dueño", dueño) +
-        String.format("%-20s : %s\n", "Mascota", mascota) +
-        String.format("%-20s : %s kg\n", "Peso", peso) +
-        String.format("%-20s : %s\n", "Especie", especie) +
-        String.format("%-20s : %s\n", "Tratamiento Primario", tPrimario) +
-        String.format("%-20s : %s\n", "Tratamiento Secundario", tSegundario) +
-        String.format("%-20s : %s \n", "Edad", edad) +
-        String.format("%-20s : %s\n", "Teléfono", telefono) +
-        "*****************************************";
+        String textoBoleta = "<html>" +
+                "<head>" +
+                "<style>" +
+                "body { font-family: Arial, sans-serif; font-size: 12px; margin: 20px; }" +
+                "h1 { font-size: 24px; text-align: center; margin-bottom: 20px; }" +
+                "table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }" +
+                "th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }" +
+                "th { background-color: #f4f4f4; }" +
+                "tr:nth-child(even) { background-color: #f9f9f9; }" +
+                "caption { font-size: 18px; font-weight: bold; margin: 10px 0; }" +
+                "</style>" +
+                "</head>" +
+                "<body>" +
+                "<h1>Boleta Veterinaria</h1>" +
+                "<table>" +
+                "<caption>Detalles de la Mascota</caption>" +
+                "<tr><th>ID Cliente:</th><td>" + idCliente + "</td></tr>" +
+                "<tr><th>Dueño:</th><td>" + dueño + "</td></tr>" +
+                "<tr><th>Mascota:</th><td>" + mascota + "</td></tr>" +
+                "<tr><th>Peso:</th><td>" + peso + " kg</td></tr>" +
+                "<tr><th>Especie:</th><td>" + especie + "</td></tr>" +
+                "<tr><th>Tratamiento Primario:</th><td>" + tPrimario + "</td></tr>" +
+                "<tr><th>Tratamiento Secundario:</th><td>" + tSegundario + "</td></tr>" +
+                "<tr><th>Edad:</th><td>" + edad + " años</td></tr>" +
+                "<tr><th>Teléfono:</th><td>" + telefono + "</td></tr>" +
+                "</table>" +
+                "</body>" +
+                "</html>";
 
         txtBoleta.setText(textoBoleta);
         this.edad = edad;
@@ -51,7 +71,8 @@ public class Boleta extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         panelMainBoleta = new javax.swing.JPanel();
@@ -76,6 +97,7 @@ public class Boleta extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnAcceptMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnAcceptMouseExited(evt);
             }
@@ -98,6 +120,7 @@ public class Boleta extends javax.swing.JFrame {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnPrintMouseEntered(evt);
             }
+
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnPrintMouseExited(evt);
             }
@@ -112,6 +135,7 @@ public class Boleta extends javax.swing.JFrame {
         txtBoleta.setBackground(new java.awt.Color(255, 255, 255));
         txtBoleta.setFont(new java.awt.Font("Courier New", 1, 14)); // NOI18N
         txtBoleta.setForeground(new java.awt.Color(0, 102, 153));
+        txtBoleta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         panelMainBoleta.add(txtBoleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 440, 670));
 
         getContentPane().add(panelMainBoleta, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 800));
@@ -150,8 +174,9 @@ public class Boleta extends javax.swing.JFrame {
             mas.setString(6, idCliente);
             mas.setString(7, veterinario);
             mas.executeQuery();
-            
-            JOptionPane.showMessageDialog(null, "Registro insertado con exito", "Felicidades", JOptionPane.INFORMATION_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "Registro insertado con exito", "Felicidades",
+                    JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Ocurrio un error", "Error", JOptionPane.WARNING_MESSAGE);
         }
@@ -166,12 +191,31 @@ public class Boleta extends javax.swing.JFrame {
     }// GEN-LAST:event_btnPrintMouseExited
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnPrintActionPerformed
-        // Impresión de la boleta
-        //try {
-            //txtBoleta.print();
-        //} catch (PrinterException ex) {
-           // Logger.getLogger(Boleta.class.getName()).log(Level.SEVERE, null, ex);
-        //}
+         //Metodo para imprimir
+        try {
+            // Obtiene un objeto PrinterJob para gestionar la impresión
+            PrinterJob printerJob = PrinterJob.getPrinterJob();
+            printerJob.setPrintable(new Printable() {
+                @Override
+                public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+                    if (pageIndex > 0) {
+                        return NO_SUCH_PAGE;
+                    }
+                    Graphics2D g2d = (Graphics2D) graphics;
+                    g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
+                    g2d.scale(0.8, 0.8);
+                    txtBoleta.printAll(graphics);
+                    return PAGE_EXISTS;
+                }
+            });
+            boolean printAccepted = printerJob.printDialog();
+            if (printAccepted) {
+                printerJob.print(); 
+            }
+        } catch (PrinterException e) {
+            JOptionPane.showMessageDialog(this, "Error al imprimir: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
     }// GEN-LAST:event_btnPrintActionPerformed
 
     // Método privado para generar el ID
