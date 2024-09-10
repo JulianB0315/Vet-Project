@@ -26,21 +26,165 @@ public class RegistroVets extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        labelLogo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        btnVolver = new javax.swing.JButton();
+        panelForm = new javax.swing.JPanel();
+        lblNombresVet = new javax.swing.JLabel();
+        txtNombresVet = new javax.swing.JTextField();
+        lblApellidos = new javax.swing.JLabel();
+        txtApesVet = new javax.swing.JTextField();
+        lblDni = new javax.swing.JLabel();
+        txtDni = new javax.swing.JTextField();
+        lblEspeciialidades = new javax.swing.JLabel();
+        cmb = new javax.swing.JComboBox<>();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(151, 189, 183));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        labelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/logocircle.png"))); // NOI18N
+        jPanel1.add(labelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 0, 180, 190));
+
+        jPanel2.setBackground(new java.awt.Color(243, 244, 247));
+
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/arrow-left-solid.png"))); // NOI18N
+        btnVolver.setBorder(null);
+        btnVolver.setContentAreaFilled(false);
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(btnVolver)
+                .addContainerGap(613, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(btnVolver)
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 100));
+
+        panelForm.setBackground(new java.awt.Color(151, 189, 183));
+        panelForm.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(13, 92, 141), 3, true));
+        panelForm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblNombresVet.setBackground(new java.awt.Color(13, 92, 141));
+        lblNombresVet.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        lblNombresVet.setForeground(new java.awt.Color(13, 92, 141));
+        lblNombresVet.setText("Nombres:");
+        lblNombresVet.setToolTipText("");
+        panelForm.add(lblNombresVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        txtNombresVet.setBackground(new java.awt.Color(151, 189, 183));
+        txtNombresVet.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        txtNombresVet.setForeground(new java.awt.Color(13, 92, 141));
+        txtNombresVet.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(13, 92, 141)));
+        txtNombresVet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombresVetActionPerformed(evt);
+            }
+        });
+        panelForm.add(txtNombresVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 270, 40));
+
+        lblApellidos.setBackground(new java.awt.Color(13, 92, 141));
+        lblApellidos.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        lblApellidos.setForeground(new java.awt.Color(13, 92, 141));
+        lblApellidos.setText("Apellidos:");
+        lblApellidos.setToolTipText("");
+        panelForm.add(lblApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+
+        txtApesVet.setBackground(new java.awt.Color(151, 189, 183));
+        txtApesVet.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        txtApesVet.setForeground(new java.awt.Color(13, 92, 141));
+        txtApesVet.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(13, 92, 141)));
+        txtApesVet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApesVetActionPerformed(evt);
+            }
+        });
+        panelForm.add(txtApesVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, 270, 40));
+
+        lblDni.setBackground(new java.awt.Color(13, 92, 141));
+        lblDni.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        lblDni.setForeground(new java.awt.Color(13, 92, 141));
+        lblDni.setText("DNI:");
+        lblDni.setToolTipText("");
+        panelForm.add(lblDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
+
+        txtDni.setBackground(new java.awt.Color(151, 189, 183));
+        txtDni.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
+        txtDni.setForeground(new java.awt.Color(13, 92, 141));
+        txtDni.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(13, 92, 141)));
+        txtDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDniActionPerformed(evt);
+            }
+        });
+        panelForm.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 270, 40));
+
+        lblEspeciialidades.setBackground(new java.awt.Color(13, 92, 141));
+        lblEspeciialidades.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        lblEspeciialidades.setForeground(new java.awt.Color(13, 92, 141));
+        lblEspeciialidades.setText("Especialidades:");
+        lblEspeciialidades.setToolTipText("");
+        panelForm.add(lblEspeciialidades, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
+
+        cmb.setBackground(new java.awt.Color(151, 189, 183));
+        cmb.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        cmb.setForeground(new java.awt.Color(13, 92, 141));
+        cmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(13, 92, 141)));
+        panelForm.add(cmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 440, 280, 50));
+
+        jPanel1.add(panelForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 200, 450, 510));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 645, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtNombresVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombresVetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombresVetActionPerformed
+
+    private void txtApesVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApesVetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApesVetActionPerformed
+
+    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
+        InicioVet inicio=new InicioVet();
+        inicio.setVisible(true);
+        inicio.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +223,18 @@ public class RegistroVets extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JComboBox<String> cmb;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel labelLogo;
+    private javax.swing.JLabel lblApellidos;
+    private javax.swing.JLabel lblDni;
+    private javax.swing.JLabel lblEspeciialidades;
+    private javax.swing.JLabel lblNombresVet;
+    private javax.swing.JPanel panelForm;
+    private javax.swing.JTextField txtApesVet;
+    private javax.swing.JTextField txtDni;
+    private javax.swing.JTextField txtNombresVet;
     // End of variables declaration//GEN-END:variables
 }
