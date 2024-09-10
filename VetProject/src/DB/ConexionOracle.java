@@ -14,9 +14,9 @@ public class ConexionOracle {
     //Metodo para conectar la base de datos
     try{
         Class.forName("oracle.jdbc.OracleDriver"); //Driver de la DB
-        url = "";//"jdbc:oracle:thin:@localhost:1521:XE"; //Url de tu conexion
-        user = "";//"C##Conexion"; //User del sql Developer
-        password = "";//"Conexion"; //Contraseña del user
+        url = "jdbc:oracle:thin:@localhost:1521:XE"; //Url de tu conexion
+        user = "C##Conexion"; //User del sql Developer
+        password = "Conexion"; //Contraseña del user
         conn = DriverManager.getConnection(url, user, password);
         System.out.println("Conexion exitosa.");
     }catch (Exception e){
