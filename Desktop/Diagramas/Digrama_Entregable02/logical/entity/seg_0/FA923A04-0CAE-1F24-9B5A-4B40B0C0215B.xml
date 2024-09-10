@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="FA923A04-0CAE-1F24-9B5A-4B40B0C0215B" name="Usuario">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:28:02 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_user" id="61D67B7B-4893-2230-9CE1-C91C4CB66DFB">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:28:10 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="68FE8209-B476-3D18-D3FB-D8D2FC2EB442">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:28:47 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="correo" id="5A659EBD-0803-D9F8-5C7D-79336CC43B1E">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:28:58 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="contraseña" id="CD5E9855-8252-DB0F-ABF8-72301B29626A">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:29:13 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>12</dataTypeSize>
+<ownDataTypeParameters>12,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rol" id="823D8D2A-7821-99C1-C38E-707AF8AF95DD">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:29:24 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="2095119E-0D7D-3BB1-FDBE-9160F1A9AE1C" name="Usuario PK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:29:35 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>61D67B7B-4893-2230-9CE1-C91C4CB66DFB</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

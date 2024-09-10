@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="82CDC5E4-655E-7604-ADAF-6972609EC999" name="Empleado">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>A7626231-6D6C-F730-D237-0578C8400D68</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_Empleado" id="08C9601B-CF8F-F9A3-B603-ABD041E3B00C">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>ACC285FF-0637-DD2B-4EC8-99328400B145</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nombre" id="FF57ECB4-2B99-C213-5D2E-3D1F3C60DB3D">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>9F22F235-D84A-9D36-A1F4-5E8293C80DA3</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Apellido" id="0AC70607-83FE-5AAF-07CB-EAD576AEE75C">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>05DC1336-0C51-7CCB-E272-906FEF5B40E5</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Correo" id="C634D7FA-5F7D-9C46-9968-268A18D771AB">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>4E7A61F5-4D9A-7212-E323-3F6851C77FC3</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Telefono" id="BE9205E0-CE7B-FFBD-9DDE-D22FF19D7ED7">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>22C23ED9-42AA-8C9A-D900-CA7DFD069D92</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Direccion" id="F25B85F3-324D-18B4-CD24-92AF77C1F9D4">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>11CEAB92-8B21-1535-B95F-2B77BB5CDAD9</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9589DD96-6638-D980-B1AD-4467B969A476" name="Empleado_PK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>0F6C5358-3AB3-C950-B983-0CB17FC16C42</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="08C9601B-CF8F-F9A3-B603-ABD041E3B00C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

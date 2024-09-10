@@ -1,0 +1,143 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F46ECE7F-74F0-D340-5E1C-99B337DCA607" name="Cliente">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>9582B571-9E4D-90E6-E412-A4581E48562A</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID_Cliente" id="7D763609-0B9C-B470-5A04-E067EBD94721">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>64A610FC-6BB9-F99E-CB8C-1C1C17F31E40</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Nombre" id="77A3252B-5007-4B45-7D82-C33B25817AC1">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>4193B52E-3A0A-45AA-A0E7-28FE779CAB94</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Apellido" id="6D35C9A9-6DF1-7BA0-E731-D88D57E71584">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>A25A6419-DACA-61C5-5063-649A5E8CBDEE</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DNI" id="CEB2A0F5-1780-4177-D491-0FBD3D67F2A1">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>8619A8A5-50A5-4D3F-F286-116EEFDF4CAF</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Telefono" id="0A2C8BA0-195B-4DD2-2C3E-FB12D27E4E74">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>347429C9-163D-6E73-603B-42D81C6E29B1</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>9</dataTypeSize>
+<ownDataTypeParameters>9,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Direccion" id="566D41FF-1C6E-4854-ABA7-4C2EAAF93C72">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>5A2CA45E-7375-76A2-3155-0CCA38DC7067</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Correo" id="A9602990-195D-E43D-59C5-8F92D54F05DE">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>5DE14BED-E994-3185-DB2A-84F46BDE21F6</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Empleado_ID_Empleado" id="B7134553-9CF5-0025-36D7-96EF29A35654">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>3BCB9B50-B854-9185-086B-276EEE23D8A9</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5C584109-813F-9D72-CA50-FFCA9CA7809C" referredColumn="08C9601B-CF8F-F9A3-B603-ABD041E3B00C"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CA5B0200-8CA7-2C32-8BD8-221BCAC39B98" name="Cliente_PK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>53EE4E07-CC7B-2B71-EF57-5E5B127B33F2</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="7D763609-0B9C-B470-5A04-E067EBD94721"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1C74E981-CFA4-7A5B-FE82-AF1A7B73467B" name="Cliente_Empleado_FK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:05:02 UTC</createdTime>
+<generatorID>A777B32E-37EE-C658-5473-DCFC19E64B18</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B7134553-9CF5-0025-36D7-96EF29A35654"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,91 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C216E404-727B-7830-413D-3DD702C068EC" name="Color">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>33FA3656-CE0A-BB48-0EFD-31228534A80D</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_color" id="0CBF4327-7EBA-D3C3-ED82-C024EE1B2CDA">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>13D060F8-039A-2B3B-3EBE-40FEDAFF9022</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="id_producto" id="DE7E2294-A20C-7A16-B6EA-037834A81F4E">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>12CF2CE0-9F0F-B653-CF7E-A6559EAE044B</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nombre_color" id="D8507FB8-3D22-121A-6817-F0134E265281">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>42E37F0A-DACA-7DFE-E977-7DA6627CF1AE</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Producto_id_producto" id="D8A333F8-5BE7-25A6-79B0-CA1C088C5FB3">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>3A85479E-F85B-E4BC-1306-5AF285C03B54</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B17BDE75-98B2-A7EC-8824-C18BEAC31D98" referredColumn="803F663B-34F2-98B4-70FE-99D4D00E07F0"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="AD5236AE-D134-F89D-DF97-2F963D5221AC" name="Color_PK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>DAE73B7D-C1BE-8824-EF51-A72941CA7D86</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0CBF4327-7EBA-D3C3-ED82-C024EE1B2CDA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AF16F4EB-9FE0-0BA5-701A-0FF1A485B3B3" name="Color_Producto_FK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:39:32 UTC</createdTime>
+<generatorID>D727D6E2-56B5-534A-3C9E-C0974EB88800</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D8A333F8-5BE7-25A6-79B0-CA1C088C5FB3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

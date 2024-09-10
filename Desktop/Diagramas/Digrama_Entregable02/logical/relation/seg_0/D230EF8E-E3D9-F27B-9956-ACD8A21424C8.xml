@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="DetalleCompra" directorySegmentName="seg_0" id="D230EF8E-E3D9-F27B-9956-ACD8A21424C8">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:43:41 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>B3131283-4EF3-7624-7591-AA2D68742018</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>79077902-4C8F-2778-C5A8-C93C021FE148</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>
