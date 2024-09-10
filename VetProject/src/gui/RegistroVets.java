@@ -1,10 +1,12 @@
 package gui;
 
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class RegistroVets extends javax.swing.JFrame {
     public RegistroVets() {
         initComponents();
+        this.setTitle("Vet Link - Registrar Trabajadores");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -320,15 +322,18 @@ public class RegistroVets extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnRegistroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroMouseEntered
-        // TODO add your handling code here:
+       btnRegistro.setBackground(new Color(121, 180, 211));
     }//GEN-LAST:event_btnRegistroMouseEntered
 
     private void btnRegistroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroMouseExited
-        // TODO add your handling code here:
+        btnRegistro.setBackground(new Color(13, 92, 141));
     }//GEN-LAST:event_btnRegistroMouseExited
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-        // TODO add your handling code here:
+        Registrarse reg=new Registrarse();
+        reg.setVisible(true);
+        reg.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnRegistroActionPerformed
 
 
