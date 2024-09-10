@@ -71,7 +71,7 @@ public class InicioVet extends javax.swing.JFrame {
         labelTitle.setFont(new java.awt.Font("Leelawadee", 1, 48)); // NOI18N
         labelTitle.setForeground(new java.awt.Color(0, 102, 102));
         labelTitle.setText("Bienvenido a VetLink");
-        panelInicioVet.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 290, -1, -1));
+        panelInicioVet.add(labelTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, -1, -1));
 
         btnMani.setBackground(new java.awt.Color(28, 155, 128));
         btnMani.setFont(new java.awt.Font("Lucida Sans", 1, 24)); // NOI18N
@@ -141,9 +141,9 @@ public class InicioVet extends javax.swing.JFrame {
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
         // Hace aparecer la ventana de Registro
-        RegistroConsulta register = new RegistroConsulta();
-        register.setVisible(true);
-        register.setLocationRelativeTo(null);
+        LoginVet log=new LoginVet();
+        log.setVisible(true);
+        log.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnRegistroActionPerformed
 
@@ -215,7 +215,10 @@ public class InicioVet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroVetMouseReleased
 
     private void btnRegistroVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroVetActionPerformed
-        // TODO add your handling code here:
+        RegistroVets vets = new RegistroVets();
+        vets.setVisible(true);
+        vets.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnRegistroVetActionPerformed
 
 
