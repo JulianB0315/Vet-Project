@@ -16,9 +16,9 @@ public class InicioVet extends javax.swing.JFrame {
         labelBanner = new javax.swing.JLabel();
         btnRegistro = new javax.swing.JButton();
         labelSlogan = new javax.swing.JLabel();
-        labelSubt = new javax.swing.JLabel();
         labelTitle = new javax.swing.JLabel();
         btnMani = new javax.swing.JButton();
+        btnRegistroVet = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -61,17 +61,12 @@ public class InicioVet extends javax.swing.JFrame {
                 btnRegistroActionPerformed(evt);
             }
         });
-        panelInicioVet.add(btnRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 420, 270, 60));
+        panelInicioVet.add(btnRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 270, 60));
 
         labelSlogan.setFont(new java.awt.Font("Calibri Light", 1, 28)); // NOI18N
         labelSlogan.setForeground(new java.awt.Color(0, 102, 102));
         labelSlogan.setText("Conecta. Cuida. Protege.");
         panelInicioVet.add(labelSlogan, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, -1, -1));
-
-        labelSubt.setFont(new java.awt.Font("Calibri Light", 1, 36)); // NOI18N
-        labelSubt.setForeground(new java.awt.Color(0, 102, 102));
-        labelSubt.setText("Registre su Consulta");
-        panelInicioVet.add(labelSubt, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 360, -1, -1));
 
         labelTitle.setFont(new java.awt.Font("Leelawadee", 1, 48)); // NOI18N
         labelTitle.setForeground(new java.awt.Color(0, 102, 102));
@@ -107,9 +102,39 @@ public class InicioVet extends javax.swing.JFrame {
                 btnManiActionPerformed(evt);
             }
         });
-        panelInicioVet.add(btnMani, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 500, 270, 60));
+        panelInicioVet.add(btnMani, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 540, 270, 60));
 
-        getContentPane().add(panelInicioVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 600));
+        btnRegistroVet.setBackground(new java.awt.Color(28, 155, 128));
+        btnRegistroVet.setFont(new java.awt.Font("Lucida Sans", 1, 24)); // NOI18N
+        btnRegistroVet.setForeground(new java.awt.Color(217, 227, 234));
+        btnRegistroVet.setText("Registrar Trabajador");
+        btnRegistroVet.setBorder(null);
+        btnRegistroVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistroVet.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnRegistroVetMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRegistroVetMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRegistroVetMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnRegistroVetMousePressed(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                btnRegistroVetMouseReleased(evt);
+            }
+        });
+        btnRegistroVet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistroVetActionPerformed(evt);
+            }
+        });
+        panelInicioVet.add(btnRegistroVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, 270, 60));
+
+        getContentPane().add(panelInicioVet, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 890, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -127,7 +152,7 @@ public class InicioVet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroMouseEntered
 
     private void btnRegistroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroMouseExited
-        btnRegistro.setBackground(new Color(28,155,128));
+        btnRegistro.setBackground(new Color(28,155,128));                                       
     }//GEN-LAST:event_btnRegistroMouseExited
 
     private void btnRegistroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroMouseClicked
@@ -169,14 +194,38 @@ public class InicioVet extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnManiActionPerformed
 
+    private void btnRegistroVetMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroVetMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistroVetMouseClicked
+
+    private void btnRegistroVetMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroVetMouseEntered
+        btnRegistroVet.setBackground(new Color(86, 168, 124)); 
+    }//GEN-LAST:event_btnRegistroVetMouseEntered
+
+    private void btnRegistroVetMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroVetMouseExited
+        btnRegistroVet.setBackground(new Color(28,155,128));
+    }//GEN-LAST:event_btnRegistroVetMouseExited
+
+    private void btnRegistroVetMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroVetMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistroVetMousePressed
+
+    private void btnRegistroVetMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistroVetMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistroVetMouseReleased
+
+    private void btnRegistroVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroVetActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegistroVetActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnMani;
     private javax.swing.JButton btnRegistro;
+    javax.swing.JButton btnRegistroVet;
     private javax.swing.JLabel labelBanner;
     private javax.swing.JLabel labelLogo;
     private javax.swing.JLabel labelSlogan;
-    private javax.swing.JLabel labelSubt;
     private javax.swing.JLabel labelTitle;
     private javax.swing.JPanel panelInicioVet;
     // End of variables declaration//GEN-END:variables

@@ -19,6 +19,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
         panelRegistro = new javax.swing.JPanel();
         labelLogo = new javax.swing.JLabel();
         panelLogo = new javax.swing.JPanel();
+        btnVolver = new javax.swing.JButton();
         labelDueño = new javax.swing.JLabel();
         txtDueño = new javax.swing.JTextField();
         separador1 = new javax.swing.JSeparator();
@@ -61,15 +62,31 @@ public class RegistroConsulta extends javax.swing.JFrame {
 
         panelLogo.setBackground(new java.awt.Color(243, 244, 247));
 
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/arrow-left-solid.png"))); // NOI18N
+        btnVolver.setBorder(null);
+        btnVolver.setContentAreaFilled(false);
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLogoLayout = new javax.swing.GroupLayout(panelLogo);
         panelLogo.setLayout(panelLogoLayout);
         panelLogoLayout.setHorizontalGroup(
             panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1050, Short.MAX_VALUE)
+            .addGroup(panelLogoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1008, Short.MAX_VALUE))
         );
         panelLogoLayout.setVerticalGroup(
             panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(panelLogoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnVolver)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         panelRegistro.add(panelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 100));
@@ -328,6 +345,13 @@ public class RegistroConsulta extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDueñoActionPerformed
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
+        InicioVet inicio=new InicioVet();
+        inicio.setVisible(true);
+        inicio.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnVolverActionPerformed
+
     private void txtMascotaActionPerformed(java.awt.event.ActionEvent evt) {
         
     }
@@ -468,6 +492,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnRegistro;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cbxEspecie;
     private javax.swing.JComboBox<String> cbxTPrim;
     private javax.swing.JComboBox<String> cbxTSec;
