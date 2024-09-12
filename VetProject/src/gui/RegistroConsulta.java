@@ -1,14 +1,20 @@
 package gui;
 
+import DB.ConexionOracle;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import java.util.Random;
+import javax.swing.table.DefaultTableModel;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 public class RegistroConsulta extends javax.swing.JFrame {
 
     public RegistroConsulta() {
         initComponents();
-        this.setTitle("Vet Link - Registro Consulta");
+        this.setTitle("Vet Link - Registrar Consulta");
     }
 
     @SuppressWarnings("unchecked")
@@ -19,6 +25,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
         panelRegistro = new javax.swing.JPanel();
         labelLogo = new javax.swing.JLabel();
         panelLogo = new javax.swing.JPanel();
+        btnVolver = new javax.swing.JButton();
         labelDueño = new javax.swing.JLabel();
         txtDueño = new javax.swing.JTextField();
         separador1 = new javax.swing.JSeparator();
@@ -61,15 +68,31 @@ public class RegistroConsulta extends javax.swing.JFrame {
 
         panelLogo.setBackground(new java.awt.Color(243, 244, 247));
 
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/arrow-left-solid.png"))); // NOI18N
+        btnVolver.setBorder(null);
+        btnVolver.setContentAreaFilled(false);
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelLogoLayout = new javax.swing.GroupLayout(panelLogo);
         panelLogo.setLayout(panelLogoLayout);
         panelLogoLayout.setHorizontalGroup(
             panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1050, Short.MAX_VALUE)
+            .addGroup(panelLogoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1008, Short.MAX_VALUE))
         );
         panelLogoLayout.setVerticalGroup(
             panelLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(panelLogoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnVolver)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         panelRegistro.add(panelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1050, 100));
@@ -321,22 +344,29 @@ public class RegistroConsulta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
-        
+
     }//GEN-LAST:event_btnCancelMouseClicked
 
     private void txtDueñoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDueñoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDueñoActionPerformed
 
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
+        InicioVet inicio = new InicioVet();
+        inicio.setVisible(true);
+        inicio.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btnVolverActionPerformed
+
     private void txtMascotaActionPerformed(java.awt.event.ActionEvent evt) {
-        
+
     }
 
     private void txtEdadActionPerformed(java.awt.event.ActionEvent evt) {
     }
 
     private void txtPesoActionPerformed(java.awt.event.ActionEvent evt) {
-       
+
     }
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {
@@ -357,6 +387,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
     private void btnRegistroMouseExited(java.awt.event.MouseEvent evt) {
         btnRegistro.setBackground(new Color(13, 92, 141));
     }
+
     private void btnCancelMouseEntered(java.awt.event.MouseEvent evt) {
         btnCancel.setBackground(new Color(202, 210, 210));
     }
@@ -370,90 +401,132 @@ public class RegistroConsulta extends javax.swing.JFrame {
     }
 
     private void btnExitMouseExited(java.awt.event.MouseEvent evt) {
-        btnExit.setBackground(new Color(13,92,141));
+        btnExit.setBackground(new Color(13, 92, 141));
+    }
+
+    //Metodo para generar el id unico de la mascotita
+    private String generateIdMascota() {
+        //Usa la fecha y la hora para el id (por si las moscas)
+        return "MASC" + System.currentTimeMillis();
     }
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {
-        // Este boton debe mostrar un Joption Pane para confirmar el registro de los
-        // datos
-        // If se confirma el registro debe mandar le ventana de Boleta donde deben
-        // aparecer todos los datos del formulario más el subtotal
-        // Else, no se abrirá nada
-        // Recuperar los datos
-        String idCita = generateIdCita();
+        // Recuperar los datos del formulario
+        String idCliente = generateIdCliente(); // Asumo que tienes un método para generar el ID del cliente
         String dueño = txtDueño.getText();
         String mascota = txtMascota.getText();
-        String peso = txtPeso.getText();
+        String pesoString = txtPeso.getText();
         String especie = (String) cbxEspecie.getSelectedItem();
         String TPrimario = (String) cbxTPrim.getSelectedItem();
         String TSegundario = (String) cbxTSec.getSelectedItem();
-        String edad = txtEdad.getText();
-        // Meses o años
+        String edadString = txtEdad.getText();
+        String telefono = txtTelf.getText();
+
+        // Validaciones (tal como las tienes actualmente)
+        if (!edadString.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Ingresar una edad válida", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         String STiempo = (String) cbxTiempo.getSelectedItem();
         switch (STiempo) {
-            case "Meses" -> {
-                if (Integer.parseInt(edad) > 11) {
-                    JOptionPane.showMessageDialog(null, "Error");
+            case "Meses":
+                if (Integer.parseInt(edadString) > 11) {
+                    JOptionPane.showMessageDialog(null, "Ingresar una edad válida", "Error", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
-            }
-            case "Años" ->{
-                if (Integer.parseInt(edad)>18) {
-                    JOptionPane.showConfirmDialog(null,"Error");
-                    return;        
+                break;
+            case "Años":
+                if (Integer.parseInt(edadString) > 18) {
+                    JOptionPane.showMessageDialog(null, "Ingresar una edad válida", "Error", JOptionPane.WARNING_MESSAGE);
+                    return;
                 }
-            }
-
-            default -> {
-                JOptionPane.showMessageDialog(null, "Ingresar edad del la mascota");
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Ingresar edad de la mascota");
                 return;
+        }
+
+        if (!pesoString.matches("\\d+(\\.\\d+)?")) {
+            JOptionPane.showMessageDialog(null, "Ingresar un peso válido", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (!dueño.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(null, "Ingresar un nombre válido", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (!mascota.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(null, "Ingresar un nombre válido para la mascota", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (!telefono.matches("\\d{9}")) {
+            JOptionPane.showMessageDialog(null, "Número inválido", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (dueño.isEmpty() || mascota.isEmpty() || pesoString.isEmpty() || especie.isEmpty() || TPrimario.isEmpty() || edadString.isEmpty() || STiempo.isEmpty() || telefono.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor completar todos los datos", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        int edad = Integer.parseInt(edadString);
+        double peso = Double.parseDouble(pesoString);
+
+        // Confirmación del registro
+        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Confirmar registro de los datos?", "Confirmar", JOptionPane.YES_NO_OPTION);
+
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            // Guardar en la base de datos
+            try {
+                Connection conn = ConexionOracle.getConnection(); // Asegúrate de tener una conexión válida
+
+                // Inserción en la tabla CLIENTE
+                String sqlCliente = "INSERT INTO CLIENTE (cliente_id, nombre, telefono) VALUES (?, ?, ?)";
+                PreparedStatement psCliente = conn.prepareStatement(sqlCliente);
+                psCliente.setString(1, idCliente);
+                psCliente.setString(2, dueño);
+                psCliente.setString(3, telefono);
+                psCliente.executeUpdate();
+
+                // Inserción en la tabla MASCOTA
+                String sqlMascota = "INSERT INTO MASCOTA (mascota_id, cliente_id, nombre, especie, peso, edad, tipo_primario, tipo_secundario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                PreparedStatement psMascota = conn.prepareStatement(sqlMascota);
+                psMascota.setString(1, generateIdMascota()); // Genera el ID de la mascota
+                psMascota.setString(2, idCliente);
+                psMascota.setString(3, mascota);
+                psMascota.setString(4, especie);
+                psMascota.setDouble(5, peso);
+                psMascota.setInt(6, edad);
+                psMascota.setString(7, TPrimario);
+                psMascota.setString(8, TSegundario);
+                psMascota.executeUpdate();
+
+                JOptionPane.showMessageDialog(null, "Registro exitoso.");
+
+                // Esto para la boleta 
+                Boleta boleta = new Boleta(idCliente, dueño, mascota, peso, especie, TPrimario, TSegundario, edad, telefono);
+                boleta.setVisible(true);
+                boleta.setLocationRelativeTo(null);
+                this.dispose();
+
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al registrar los datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-
-        // validar edad
-        if (!edad.matches("\\d{2}")) {
-            JOptionPane.showMessageDialog(null, "Ingresar una edad correcta!!");
-            return;
-        }
-
-        // validare el nombre del dueño este bien
-        if (!dueño.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
-            JOptionPane.showMessageDialog(null, "Ingresar un nombre valido");
-            return;
-        }
-
-        // Validar nombre de la mascota
-        if (!mascota.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
-            JOptionPane.showMessageDialog(null, "Ingresar un nombre valido para la mascota");
-            return;
-        }
-        // Validar peso
-        if (!peso.matches("\\d{2}")) {
-            JOptionPane.showMessageDialog(null, "Poner un peso valido");
-            return;
-        }
-        if (dueño.isEmpty() || mascota.isEmpty() || peso.isEmpty() || especie.isEmpty()
-                || TPrimario.isEmpty() || edad.isEmpty() || STiempo.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Por favor Ingresar completar todos los datos");
-            return;
-        }
-        Boleta boleta = new Boleta(idCita,dueño,mascota,peso,especie,TPrimario,TSegundario,edad); 
-        boleta.setVisible(true);
-        boleta.setLocationRelativeTo(null);
-        this.dispose();
-        //Registrar en la base de datos 
     }
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {
-        int x=JOptionPane.showConfirmDialog(null, "¿Desea Salir?","Veterinaria",
-               JOptionPane.YES_NO_OPTION ); 
-                if(x==0){
-                    System.exit(0);
-                 }
+        int x = JOptionPane.showConfirmDialog(null, "¿Desea Salir?", "Veterinaria", JOptionPane.YES_NO_OPTION);
+        if (x == 0) {
+            System.exit(0);
+        }
     }
 
     //metodo para crear idCita
-    private String generateIdCita() {
+    private String generateIdCliente() {
         String characters = "0123456789";
         Random rnd = new Random();
         StringBuilder sb = new StringBuilder();
@@ -470,6 +543,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnRegistro;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cbxEspecie;
     private javax.swing.JComboBox<String> cbxTPrim;
     private javax.swing.JComboBox<String> cbxTSec;

@@ -9,6 +9,5 @@ public class VetProject {
         vet.setLocationRelativeTo(null);
         //Conectar la base de datos al ejecutar el sistema
         ConexionOracle conn = new ConexionOracle();
-        //conn.desconectar();
     }
 }
