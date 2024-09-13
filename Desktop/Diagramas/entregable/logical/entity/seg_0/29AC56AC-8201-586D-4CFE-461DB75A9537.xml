@@ -1,0 +1,131 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="29AC56AC-8201-586D-4CFE-461DB75A9537" name="Cuenta_Bancaria">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 21:59:36 UTC</createdTime>
+<ownerDesignName>entregable</ownerDesignName>
+<engineerTo>
+<item key="D662A819-B69E-640A-9D9E-B1BF1ADEA479" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="ID_Cuenta" id="E37EB544-7FC6-ED11-3F0F-6593D466BFC4">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 21:59:46 UTC</createdTime>
+<ownerDesignName>entregable</ownerDesignName>
+<engineerTo>
+<item key="D662A819-B69E-640A-9D9E-B1BF1ADEA479" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID_Cliente" id="C0985918-DB6B-FF61-3642-D870610AF2B9">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:00:09 UTC</createdTime>
+<ownerDesignName>entregable</ownerDesignName>
+<engineerTo>
+<item key="D662A819-B69E-640A-9D9E-B1BF1ADEA479" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Tipo_Cuenta" id="0C978448-69E7-1E58-4101-71FD049E399A">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:00:21 UTC</createdTime>
+<ownerDesignName>entregable</ownerDesignName>
+<engineerTo>
+<item key="D662A819-B69E-640A-9D9E-B1BF1ADEA479" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Saldo" id="8C71D9B8-E951-3790-A307-461FD9062D12">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:00:36 UTC</createdTime>
+<ownerDesignName>entregable</ownerDesignName>
+<engineerTo>
+<item key="D662A819-B69E-640A-9D9E-B1BF1ADEA479" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT026</logicalDatatype>
+<dataTypePrecision>15</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,15,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Fecha_Creacion" id="6798874A-8ED4-1E11-726E-916B15BC54D4">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:00:52 UTC</createdTime>
+<ownerDesignName>entregable</ownerDesignName>
+<engineerTo>
+<item key="D662A819-B69E-640A-9D9E-B1BF1ADEA479" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Estado" id="F9E624B4-A7C8-8C50-1E2D-B11C792E88BD">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:01:04 UTC</createdTime>
+<ownerDesignName>entregable</ownerDesignName>
+<engineerTo>
+<item key="D662A819-B69E-640A-9D9E-B1BF1ADEA479" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="ID_Empleado" id="939531BF-CAC9-AB97-CDCB-291E74D28770">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:04:25 UTC</createdTime>
+<generatorID>01F11BDF-10A8-1C37-8994-DC98CE70270F</generatorID>
+<ownerDesignName>entregable</ownerDesignName>
+<engineerTo>
+<item key="D662A819-B69E-640A-9D9E-B1BF1ADEA479" value="true"/>
+</engineerTo>
+<referedAttribute>ACC285FF-0637-DD2B-4EC8-99328400B145</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="787F859D-BA6E-18CF-7031-168B58F2037B" name="Cuenta_Bancaria PK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-08-24 22:00:08 UTC</createdTime>
+<ownerDesignName>entregable</ownerDesignName>
+<engineerTo>
+<item key="D662A819-B69E-640A-9D9E-B1BF1ADEA479" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>E37EB544-7FC6-ED11-3F0F-6593D466BFC4</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

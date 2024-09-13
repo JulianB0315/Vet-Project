@@ -1,0 +1,90 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="33FA3656-CE0A-BB48-0EFD-31228534A80D" name="Color">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:34:06 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_color" id="13D060F8-039A-2B3B-3EBE-40FEDAFF9022">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:34:22 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_producto" id="12CF2CE0-9F0F-B653-CF7E-A6559EAE044B">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:34:32 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>8,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre_color" id="42E37F0A-DACA-7DFE-E977-7DA6627CF1AE">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:34:44 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_producto1" id="3A85479E-F85B-E4BC-1306-5AF285C03B54">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:38:13 UTC</createdTime>
+<generatorID>D727D6E2-56B5-534A-3C9E-C0974EB88800</generatorID>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="true"/>
+</engineerTo>
+<referedAttribute>B93B906B-1EC7-1ED1-2E84-76374DA003C7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>8</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="DAE73B7D-C1BE-8824-EF51-A72941CA7D86" name="Color PK">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:34:26 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="E995EE8E-D01F-689E-69E2-D1E64E23D79A" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>13D060F8-039A-2B3B-3EBE-40FEDAFF9022</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

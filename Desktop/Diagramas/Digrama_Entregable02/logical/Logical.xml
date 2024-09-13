@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="95FD9A37-1737-F86B-E539-363DDD552E01" mainViewID="3B9C6176-5EC0-1F70-F476-EC39EEC29733">
+<createdBy>Usuario</createdBy>
+<createdTime>2024-05-24 17:25:40 UTC</createdTime>
+<ownerDesignName>Digrama_Entregable02</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>
