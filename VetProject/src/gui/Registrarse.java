@@ -5,12 +5,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Registrarse extends javax.swing.JFrame {
+    private String dni;
     ImageIcon eye = new ImageIcon(getClass().getResource("/resources/eye.png"));
     ImageIcon eyeslash = new ImageIcon(getClass().getResource("/resources/eye-slash.png"));
     private boolean novisible=true;
-    public Registrarse() {
+    public Registrarse(String dni) {
         initComponents();
         this.setTitle("Vet Link - Registrarse");
+        this.dni=dni;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -195,6 +197,21 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
         // Debe insertar la contraseña y el usuario, solo eso, dependiendo el dni que introduzcan.
+        String user=txtNewUser.getText();
+        String contra=txtNewPassword.getText();
+        if(user.isEmpty()||contra.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor completar todos los datos", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else if(contra.length()<8){
+           JOptionPane.showMessageDialog(null, "La contraseña tiene que ser, como mínimo de 8 dígitos","Error",JOptionPane.ERROR_MESSAGE);
+       }
+        else {
+            int confirmacion = JOptionPane.showConfirmDialog(null, "¿Confirmar registro de los datos?", "Confirmar", JOptionPane.YES_NO_OPTION);
+            if(confirmacion==JOptionPane.YES_OPTION){
+                // AQUI INSERTEN DATOS DE USUARIO Y CONTRA AL VET, HACER PRIMERO SELECT DEL DNI 
+            }
+        }
     }//GEN-LAST:event_btnAccederActionPerformed
 
     private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked

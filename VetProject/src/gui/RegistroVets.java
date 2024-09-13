@@ -1,6 +1,8 @@
 package gui;
 
 import java.awt.Color;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 public class RegistroVets extends javax.swing.JFrame {
@@ -330,10 +332,52 @@ public class RegistroVets extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroMouseExited
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-        Registrarse reg=new Registrarse();
-        reg.setVisible(true);
-        reg.setLocationRelativeTo(null);
-        this.dispose();
+        String noms=txtNombresVet.getText();
+        String apes=txtApesVet.getText();
+        String dni=txtDni.getText();
+        String telf=txtTelf.getText();
+        String esp=(String)cmb.getSelectedItem();
+        Date f_nac=dateFNac.getDate();
+        Calendar fNac=Calendar.getInstance();
+        fNac.setTime(f_nac);
+        Calendar fechaActual = Calendar.getInstance();
+        int diferencia = fechaActual.get(Calendar.YEAR) - fNac.get(Calendar.YEAR);
+        if(noms.isEmpty()||apes.isEmpty()||dni.isEmpty()||telf.isEmpty()||f_nac==null){
+            JOptionPane.showMessageDialog(null, "Por favor completar todos los datos", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else if (!noms.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(null, "Ingresar un nombre válido", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        // Verifica que solo se ingresen caracteres para los apellidos del vet
+        else if (!apes.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(null, "Ingresar apellidos válidos", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        // Verifica que solo se ingresen numeros para el telefono con un limite de 9 numeros, nada menos ni nada mas
+        else if (!telf.matches("\\d{9}")) {
+            JOptionPane.showMessageDialog(null, "Número de teléfono inválido", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else if (!dni.matches("\\d{8}")) {
+            JOptionPane.showMessageDialog(null, "El DNI solo debe contener números", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else if(diferencia<18){
+            JOptionPane.showMessageDialog(null, "El Empleado debe ser mayor de 18 años", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else{
+            int confirmacion = JOptionPane.showConfirmDialog(null, "¿Confirmar registro de los datos?", "Confirmar", JOptionPane.YES_NO_OPTION);
+            if (confirmacion == JOptionPane.YES_OPTION){
+                // AQUI DEBEN HACER LOS INSERT
+                Registrarse reg=new Registrarse(dni);
+                reg.setVisible(true);
+                reg.setLocationRelativeTo(null);
+                this.dispose();
+            }
+        }
     }//GEN-LAST:event_btnRegistroActionPerformed
 
 

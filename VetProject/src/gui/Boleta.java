@@ -152,6 +152,8 @@ public class Boleta extends javax.swing.JFrame {
     }// GEN-LAST:event_btnAcceptMouseExited
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAcceptActionPerformed
+        // JULIAN TIENES QUE BORRAR ESTO PORQUE PEDRO YA HIZO LOS INSERT EN LA VENTANA ANTERIOR
+        // AQUI INSERTA DATOS A LA TABLA BOLETA NOMAS
         String idMascota = generarID();
         String veterinario = "00000001";
         try (Connection conn = ConexionOracle.getConnection()) {
