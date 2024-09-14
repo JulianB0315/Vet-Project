@@ -1,7 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="110004C7-2C26-DEE8-5D3D-9592B90419C1">
-<createdBy>Usuario</createdBy>
-<createdTime>2024-05-24 17:25:40 UTC</createdTime>
-<ownerDesignName>Digrama_Entregable02</ownerDesignName>
-<shouldBeOpen>false</shouldBeOpen>
-</BusinessInfoDesign>

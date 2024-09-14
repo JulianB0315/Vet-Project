@@ -3,7 +3,12 @@ package gui;
 import java.awt.Color;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
+import java.sql.SQLException;
+import DB.ConexionOracle;
 
 public class RegistroVets extends javax.swing.JFrame {
     public RegistroVets() {
@@ -28,9 +33,9 @@ public class RegistroVets extends javax.swing.JFrame {
         lblEspeciialidades = new javax.swing.JLabel();
         cmb = new javax.swing.JComboBox<>();
         lblFNac = new javax.swing.JLabel();
-        dateFNac = new com.toedter.calendar.JDateChooser();
         lblTelf = new javax.swing.JLabel();
         txtTelf = new javax.swing.JTextField();
+        dateFNac = new com.toedter.calendar.JDateChooser();
         btnCancel = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         btnRegistro = new javax.swing.JButton();
@@ -154,12 +159,7 @@ public class RegistroVets extends javax.swing.JFrame {
         lblFNac.setForeground(new java.awt.Color(13, 92, 141));
         lblFNac.setText("Fecha de Nacimiento:");
         lblFNac.setToolTipText("");
-        panelForm.add(lblFNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, -1));
-
-        dateFNac.setBackground(new java.awt.Color(151, 189, 183));
-        dateFNac.setForeground(new java.awt.Color(13, 92, 141));
-        dateFNac.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
-        panelForm.add(dateFNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 270, 40));
+        panelForm.add(lblFNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, -1, -1));
 
         lblTelf.setBackground(new java.awt.Color(13, 92, 141));
         lblTelf.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
@@ -178,6 +178,10 @@ public class RegistroVets extends javax.swing.JFrame {
             }
         });
         panelForm.add(txtTelf, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 270, 40));
+
+        dateFNac.setBackground(new java.awt.Color(151, 189, 183));
+        dateFNac.setForeground(new java.awt.Color(13, 92, 141));
+        panelForm.add(dateFNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 280, 30));
 
         jPanel1.add(panelForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 690, 400));
 
@@ -371,15 +375,42 @@ public class RegistroVets extends javax.swing.JFrame {
         else{
             int confirmacion = JOptionPane.showConfirmDialog(null, "¿Confirmar registro de los datos?", "Confirmar", JOptionPane.YES_NO_OPTION);
             if (confirmacion == JOptionPane.YES_OPTION){
-                // AQUI DEBEN HACER LOS INSERT
+            String veterinario_id=generateIdVeterinario();
+               try (Connection conn = ConexionOracle.getConnection()){
+                String sql = "INSERT INTO VETERINARIO (veterinario_id, nombre, apellidos, fecha_nacimiento, especialidad, telefono,dni) VALUES (?, ?, ?, ?, ?, ?,?)";
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setString(1, veterinario_id);
+                ps.setString(2, noms);            
+                ps.setString(3, apes);            
+                ps.setDate(4, new java.sql.Date(f_nac.getTime()));         
+                ps.setString(5, esp);             
+                ps.setString(6, telf);       
+                ps.setString(7, dni);     
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Se completos la primera parte del resgistro", "Felicidades", JOptionPane.INFORMATION_MESSAGE);
                 Registrarse reg=new Registrarse(dni);
                 reg.setVisible(true);
                 reg.setLocationRelativeTo(null);
                 this.dispose();
+               } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Algo salio mal","Error",JOptionPane.WARNING_MESSAGE);
+               }
             }
         }
     }//GEN-LAST:event_btnRegistroActionPerformed
+    private String generateIdVeterinario() {
+        String characters = "0123456789";
+        Random rnd = new Random();
+        StringBuilder sb = new StringBuilder();
 
+        // Generar 8 dígitos aleatorios
+        for (int i = 0; i < 8; i++) {
+            int index = rnd.nextInt(characters.length());
+            sb.append(characters.charAt(index));
+        }
+
+        return sb.toString();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
