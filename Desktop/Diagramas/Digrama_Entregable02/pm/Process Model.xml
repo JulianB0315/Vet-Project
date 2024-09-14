@@ -1,7 +1,0 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
-<ProcessModel class="oracle.dbtools.crest.model.design.process.ProcessModel" name="Process Model" id="3E1F455F-6B21-7207-9BFD-5B51961CF308">
-<createdBy>Usuario</createdBy>
-<createdTime>2024-05-24 17:25:40 UTC</createdTime>
-<ownerDesignName>Digrama_Entregable02</ownerDesignName>
-<shouldBeOpen>false</shouldBeOpen>
-</ProcessModel>
