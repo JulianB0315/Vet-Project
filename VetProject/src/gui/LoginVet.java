@@ -228,9 +228,9 @@ public class LoginVet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAccederMouseExited
 
     private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
-        RegistroConsulta register = new RegistroConsulta();
-        register.setVisible(true);
-        register.setLocationRelativeTo(null);
+        InicioVet ini = new InicioVet();
+        ini.setVisible(true);
+        ini.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_btnAccederActionPerformed
 
