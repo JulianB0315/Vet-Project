@@ -414,9 +414,16 @@ public class RegistroConsulta extends javax.swing.JFrame {
     }
 
     //Metodo para generar el id unico de la mascotita
-    private String generateIdMascota() {
-        //Usa la fecha y la hora para el id (por si las moscas)
-        return "MASC" + System.currentTimeMillis();
+    private String generarIDMascota(){
+        String prefijo = "MAS";
+        String nums = "0123456789";
+        Random rnd = new Random();
+        StringBuilder sb = new StringBuilder(prefijo); 
+        while (sb.length() < 8) {
+            int index = rnd.nextInt(nums.length()); 
+            sb.append(nums.charAt(index));
+        }
+        return sb.toString();
     }
     // Método para generar una id para el cliente
     private String generarIDCli(){
@@ -442,7 +449,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
         String edadString = txtEdad.getText();
         String telefono = txtTelf.getText();
         // PUSE EN UNA VARIABLE EL MÉTODO PARA MÁS COMODIDAD
-        String idMascot=generateIdMascota();
+        String idMascot=generarIDMascota();
         int edad = Integer.parseInt(edadString);
         double peso = Double.parseDouble(pesoString);
         // Validaciones
@@ -514,7 +521,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
                     psCliente.executeUpdate();
                     // Inserción en la tabla MASCOTA
                     // FALTARIA HACER UN SELECT PARA RELACIONARLO CON UN VETERINARIO
-                    String sqlMascota = "INSERT INTO MASCOTA (mascota_id, cliente_id, nombre, especie, peso, edad, tipo_primario, tipo_secundario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                    String sqlMascota = "INSERT INTO MASCOTA (mascota_id, cliente_id, nombre, especie, peso, edad) VALUES (?, ?, ?, ?, ?, ?)";
                     PreparedStatement psMascota = conn.prepareStatement(sqlMascota);
                     psMascota.setString(1, idMascot); // Genera el ID de la mascota
                     psMascota.setString(2, idCliente);
@@ -522,12 +529,10 @@ public class RegistroConsulta extends javax.swing.JFrame {
                     psMascota.setString(4, especie);
                     psMascota.setDouble(5, peso);
                     psMascota.setInt(6, edad);
-                    psMascota.setString(7, TPrimario);
-                    psMascota.setString(8, TSegundario);
                     psMascota.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Registro exitoso.");
                     // Constructor para la boleta 
-                    Boleta boleta = new Boleta(idCliente, dueño, mascota, peso, especie, TPrimario, TSegundario, edad, telefono);
+                    Boleta boleta = new Boleta(idCliente,idMascot,TPrimario,TSegundario);
                     boleta.setVisible(true);
                     boleta.setLocationRelativeTo(null);
                     this.dispose();
@@ -544,21 +549,6 @@ public class RegistroConsulta extends javax.swing.JFrame {
         if (x == 0) {
             System.exit(0);
         }
-    }
-
-    //metodo para crear idCita
-    private String generateIdCliente() {
-        String characters = "0123456789";
-        Random rnd = new Random();
-        StringBuilder sb = new StringBuilder();
-
-        // Generar 8 dígitos aleatorios
-        for (int i = 0; i < 8; i++) {
-            int index = rnd.nextInt(characters.length());
-            sb.append(characters.charAt(index));
-        }
-
-        return sb.toString();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;

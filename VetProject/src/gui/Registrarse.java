@@ -2,7 +2,12 @@ package gui;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import DB.ConexionOracle;
 
 public class Registrarse extends javax.swing.JFrame {
     private String dni;
@@ -13,6 +18,10 @@ public class Registrarse extends javax.swing.JFrame {
         initComponents();
         this.setTitle("Vet Link - Registrarse");
         this.dni=dni;
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        String user=dni;
+        txtNewUser.setText(user);
+        txtNewUser.setEnabled(false);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -197,8 +206,9 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
         // Debe insertar la contraseña y el usuario, solo eso, dependiendo el dni que introduzcan.
-        String user=txtNewUser.getText();
+        String user=dni;
         String contra=txtNewPassword.getText();
+        
         if(user.isEmpty()||contra.isEmpty()){
             JOptionPane.showMessageDialog(null, "Por favor completar todos los datos", "Error", JOptionPane.WARNING_MESSAGE);
             return;
@@ -209,7 +219,16 @@ public class Registrarse extends javax.swing.JFrame {
         else {
             int confirmacion = JOptionPane.showConfirmDialog(null, "¿Confirmar registro de los datos?", "Confirmar", JOptionPane.YES_NO_OPTION);
             if(confirmacion==JOptionPane.YES_OPTION){
-                // AQUI INSERTEN DATOS DE USUARIO Y CONTRA AL VET, HACER PRIMERO SELECT DEL DNI 
+                try (Connection conn = ConexionOracle.getConnection()){
+                    String sql = "UPDATE VETERINARIO SET contraseña = ? WHERE veterinario_id=?";
+                    PreparedStatement ps =conn.prepareStatement(sql);
+                    ps.setString(1, contra);
+                    ps.setString(2, user);
+                    ps.executeUpdate();
+                    JOptionPane.showMessageDialog(null,"Se completo el regsitro","felicidades",JOptionPane.INFORMATION_MESSAGE);
+                } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "En completar el formulario", "Error", JOptionPane.WARNING_MESSAGE);
+                }
             }
         }
     }//GEN-LAST:event_btnAccederActionPerformed

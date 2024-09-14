@@ -5,67 +5,44 @@ import java.awt.print.PrinterException;
 import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import DB.ConexionOracle;
-import javax.swing.JFrame;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.print.PrinterJob;
 import java.awt.print.Printable;
 import java.awt.print.PageFormat;
+
 public class Boleta extends javax.swing.JFrame {
     private String idCliente;
-    private String dueño;
-    private String mascota;
-    private Double peso;
-    private String especie;
-    private int edad;
+    private String idMascot;
+    // Datos del dueño
+    private String nombreDueño;
     private String telefono;
+    // Datos de la mascota
+    private String nombreMascota;
+    private String especie;
+    // Tratamientos
+    private String tPrimario;
+    private String tSegundario;
+    // id y precios
+    private String tratamiento_id_principal;
+    private Double precio_principal;
+    private String tratamientos_id_secundario;
+    private Double precio_segundario;
 
-    public Boleta(String idCliente, String dueño, String mascota, double peso, String especie, String tPrimario,
-            String tSegundario, int edad, String telefono) {
+    public Boleta(String idCliente, String idMascot, String tPrimario, String tSegundario) {
         initComponents();
         this.setTitle("Vet Link - Boleta");
-        String textoBoleta = "<html>" +
-                "<head>" +
-                "<style>" +
-                "body { font-family: Arial, sans-serif; font-size: 12px; margin: 20px; }" +
-                "h1 { font-size: 24px; text-align: center; margin-bottom: 20px; }" +
-                "table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }" +
-                "th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }" +
-                "th { background-color: #f4f4f4; }" +
-                "tr:nth-child(even) { background-color: #f9f9f9; }" +
-                "caption { font-size: 18px; font-weight: bold; margin: 10px 0; }" +
-                "</style>" +
-                "</head>" +
-                "<body>" +
-                "<h1>Boleta Veterinaria</h1>" +
-                "<table>" +
-                "<caption>Detalles de la Mascota</caption>" +
-                "<tr><th>ID Cliente:</th><td>" + idCliente + "</td></tr>" +
-                "<tr><th>Dueño:</th><td>" + dueño + "</td></tr>" +
-                "<tr><th>Mascota:</th><td>" + mascota + "</td></tr>" +
-                "<tr><th>Peso:</th><td>" + peso + " kg</td></tr>" +
-                "<tr><th>Especie:</th><td>" + especie + "</td></tr>" +
-                "<tr><th>Tratamiento Primario:</th><td>" + tPrimario + "</td></tr>" +
-                "<tr><th>Tratamiento Secundario:</th><td>" + tSegundario + "</td></tr>" +
-                "<tr><th>Edad:</th><td>" + edad + " años</td></tr>" +
-                "<tr><th>Teléfono:</th><td>" + telefono + "</td></tr>" +
-                "</table>" +
-                "</body>" +
-                "</html>";
-
-        txtBoleta.setText(textoBoleta);
-        this.edad = edad;
         this.idCliente = idCliente;
-        this.dueño = dueño;
-        this.mascota = mascota;
-        this.peso = peso;
-        this.especie = especie;
-        this.telefono = telefono;
+        this.idMascot = idMascot;
+        this.tPrimario = tPrimario;
+        this.tSegundario = tSegundario;
+        cargarDatos(idCliente, idMascot);
+        cargarTratamientos();
+        mostrarBoleta();
     }
 
     @SuppressWarnings("unchecked")
@@ -152,35 +129,27 @@ public class Boleta extends javax.swing.JFrame {
     }// GEN-LAST:event_btnAcceptMouseExited
 
     private void btnAcceptActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnAcceptActionPerformed
-        // JULIAN TIENES QUE BORRAR ESTO PORQUE PEDRO YA HIZO LOS INSERT EN LA VENTANA ANTERIOR
-        // AQUI INSERTA DATOS A LA TABLA BOLETA NOMAS
-        String idMascota = generarID();
-        String veterinario = "00000001";
+        String boleta_id = generarID();
+        Double totalSinIgv = precio_principal + precio_segundario;
+        Double igv = totalSinIgv * 0.18;
+        Double total = totalSinIgv + igv;
         try (Connection conn = ConexionOracle.getConnection()) {
-            // tabla Cliente
-            String sqlDueño = "INSERT INTO CLIENTE (CLIENTE_ID, NOMBRE, TELEFONO) VALUES (?, ?, ?)";
-            PreparedStatement due = conn.prepareStatement(sqlDueño);
-            due.setString(1, idCliente);
-            due.setString(2, dueño);
-            due.setString(3, telefono);
-            due.executeQuery();
-
-            // Tabla mascota
-            String sqlMascota = "INSERT INTO MASCOTA (MASCOTA_ID, NOMBRE, ESPECIE, EDAD, PESO, CLIENTE_ID, VETERINARIO_ID) VALUES (?, ?, ?, ?, ?, ?, ?)";
-            PreparedStatement mas = conn.prepareStatement(sqlMascota);
-            mas.setString(1, idMascota);
-            mas.setString(2, mascota);
-            mas.setString(3, especie);
-            mas.setInt(4, edad);
-            mas.setDouble(5, peso);
-            mas.setString(6, idCliente);
-            mas.setString(7, veterinario);
-            mas.executeQuery();
-
-            JOptionPane.showMessageDialog(null, "Registro insertado con exito", "Felicidades",
+            String sqlBoleta = "INSERT INTO BOLETA (boleta_id, cliente_id, mascota_id, tratamiento_id_principal, tratamiento_id_secundario, total_sin_igv, igv, total, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement psBoleta = conn.prepareStatement(sqlBoleta);
+            psBoleta.setString(1, boleta_id);
+            psBoleta.setString(2, idCliente);
+            psBoleta.setString(3, idMascot);
+            psBoleta.setString(4, tratamiento_id_principal);
+            psBoleta.setString(5, tratamientos_id_secundario);
+            psBoleta.setDouble(6, totalSinIgv);
+            psBoleta.setDouble(7, igv);
+            psBoleta.setDouble(8, total);
+            psBoleta.setString(9, "activo");
+            psBoleta.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Boleta registrada con éxito", "Felicidades",
                     JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Ocurrio un error", "Error", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al registrar la boleta", "Error", JOptionPane.WARNING_MESSAGE);
         }
     }// GEN-LAST:event_btnAcceptActionPerformed
 
@@ -193,7 +162,7 @@ public class Boleta extends javax.swing.JFrame {
     }// GEN-LAST:event_btnPrintMouseExited
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_btnPrintActionPerformed
-         //Metodo para imprimir
+        // Metodo para imprimir
         try {
             // Obtiene un objeto PrinterJob para gestionar la impresión
             PrinterJob printerJob = PrinterJob.getPrinterJob();
@@ -212,10 +181,11 @@ public class Boleta extends javax.swing.JFrame {
             });
             boolean printAccepted = printerJob.printDialog();
             if (printAccepted) {
-                printerJob.print(); 
+                printerJob.print();
             }
         } catch (PrinterException e) {
-            JOptionPane.showMessageDialog(this, "Error al imprimir: " + e.getMessage(), "Error",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error al imprimir: " + e.getMessage(), "Error",
+                    JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
     }// GEN-LAST:event_btnPrintActionPerformed
@@ -233,6 +203,97 @@ public class Boleta extends javax.swing.JFrame {
         }
 
         return sb.toString();
+    }
+
+    private void cargarDatos(String idCliente, String idMascot) {
+        String sqlCargarMascota = "SELECT nombre, especie FROM MASCOTA WHERE mascota_id = ?";
+        String sqlCargarDueño = "SELECT nombre, telefono FROM CLIENTE WHERE cliente_id = ?";
+        try (Connection conn = ConexionOracle.getConnection()) {
+            // Cargar datos de la mascota
+            PreparedStatement psMascota = conn.prepareStatement(sqlCargarMascota);
+            psMascota.setString(1, idMascot);
+            ResultSet rsMascot = psMascota.executeQuery();
+            if (rsMascot.next()) {
+                this.nombreMascota = rsMascot.getString("nombre");
+                this.especie = rsMascot.getString("especie");
+            }
+            // Cargar datos del dueño
+            PreparedStatement psDueño = conn.prepareStatement(sqlCargarDueño);
+            psDueño.setString(1, idCliente);
+            ResultSet rsDueño = psDueño.executeQuery();
+            if (rsDueño.next()) {
+                this.nombreDueño = rsDueño.getString("nombre");
+                this.telefono = rsDueño.getString("telefono");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar los datos del cliente o la mascota", "Error",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    // Cargar precios
+    private void cargarTratamientos() {
+        String sqlTratamiento = "SELECT tratamiento_id, precio FROM TRATAMIENTO WHERE nombre_tratamiento = ?";
+        try (Connection conn = ConexionOracle.getConnection()) {
+            // Tratamiento primario
+            PreparedStatement psPrimario = conn.prepareStatement(sqlTratamiento);
+            psPrimario.setString(1, tPrimario);
+            ResultSet rsPrimario = psPrimario.executeQuery();
+            if (rsPrimario.next()) {
+                this.tratamiento_id_principal = rsPrimario.getString("tratamiento_id");
+                this.precio_principal = rsPrimario.getDouble("precio");
+            }
+            // Tratamiento secundario
+            PreparedStatement psSecundario = conn.prepareStatement(sqlTratamiento);
+            psSecundario.setString(1, tSegundario);
+            ResultSet rsSecundario = psSecundario.executeQuery();
+            if (rsSecundario.next()) {
+                this.tratamientos_id_secundario = rsSecundario.getString("tratamiento_id");
+                this.precio_segundario = rsSecundario.getDouble("precio");
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al cargar los tratamientos", "Error",
+                    JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+    private void mostrarBoleta() {
+        Double totalSinIgv = precio_principal + precio_segundario;
+        Double igv = totalSinIgv * 0.18;
+        Double total = totalSinIgv + igv;
+
+        String boletaTexto = "<html>" +
+"<table width='440' height='670' cellpadding='10' style='border-collapse: collapse; font-family: Arial, sans-serif; font-size: 12px;'>"+
+    "<tr>" +
+        "<td colspan='2' style='background-color: rgb(13, 92, 141); color: white; text-align: center; font-size: 18px;'><strong>Boleta de Venta</strong></td>" +
+    "</tr>" +
+    "<tr>" +
+        "<td style='width: 50%;'><strong style='color: rgb(13, 92, 141);'>Cliente:</strong> " + nombreDueño + "<br>" +
+        "<strong style='color: rgb(13, 92, 141);'>Teléfono:</strong> " + telefono + "</td>" +
+        "<td style='width: 50%;'><strong style='color: rgb(13, 92, 141);'>Mascota:</strong> " + nombreMascota + "<br>" +
+        "<strong style='color: rgb(13, 92, 141);'>Especie:</strong> " + especie + "</td>" +
+    "</tr>" +
+    "<tr>" +
+        "<td colspan='2'>" +
+        "<table width='100%' style='font-size: 14px; border-collapse: collapse;'>"+
+            "<tr><td><strong style='color: rgb(13, 92, 141);'>Tratamiento Primario:</strong></td><td style='color: rgb(151, 189, 183); font-weight: bold;'>" + tPrimario + "</td><td>(S/ " + precio_principal + ")</td></tr>" +
+            "<tr><td><strong style='color: rgb(13, 92, 141);'>Tratamiento Secundario:</strong></td><td style='color: rgb(151, 189, 183); font-weight: bold;'>" + tSegundario + "</td><td>(S/ " + precio_segundario + ")</td></tr>" +
+        "</table>" +
+        "</td>" +
+    "</tr>" +
+    "<tr>" +
+        "<td colspan='2'>" +
+        "<p style='font-size: 14px;'>" +
+        "<strong style='color: rgb(13, 92, 141);'>Total sin IGV:</strong> S/ " + totalSinIgv + "<br>" +
+        "<strong style='color: rgb(13, 92, 141);'>IGV (18%):</strong> S/ " + igv + "<br>" +
+        "<strong style='color: rgb(13, 92, 141); font-size: 16px;'>Total:</strong> S/ " + total +
+        "</p>" +
+        "</td>" +
+    "</tr>" +
+"</table>" +
+"</html>";
+
+        txtBoleta.setText(boletaTexto);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

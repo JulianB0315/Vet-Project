@@ -1,8 +1,16 @@
 package gui;
 
 import java.awt.Color;
+import java.io.IOException;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import java.net.URL;
+import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+
 
 public class LoginVet extends javax.swing.JFrame {
     ImageIcon eye = new ImageIcon(getClass().getResource("/resources/eye.png"));
@@ -228,10 +236,10 @@ public class LoginVet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAccederMouseExited
 
     private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
+        playSoundInLoop("resources/xd.wav");
         InicioVet ini = new InicioVet();
         ini.setVisible(true);
         ini.setLocationRelativeTo(null);
-        this.dispose();
     }//GEN-LAST:event_btnAccederActionPerformed
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
@@ -245,9 +253,21 @@ public class LoginVet extends javax.swing.JFrame {
             txtPassword.setEchoChar((char) 0);
         }
     }//GEN-LAST:event_btnVerActionPerformed
-
-
-
+    private void playSoundInLoop(String soundFileName) {
+        try {
+            // Cargar el archivo de audio desde el classpath
+            URL soundFileURL = getClass().getResource("/" + soundFileName);
+            if (soundFileURL == null) {
+                throw new IOException("Archivo de audio no encontrado: " + soundFileName);
+            }
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFileURL);
+            Clip audioClip = AudioSystem.getClip();
+            audioClip.open(audioIn);
+            audioClip.loop(Clip.LOOP_CONTINUOUSLY); // Reproduce en bucle continuo
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+            e.printStackTrace();
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcceder;
     private javax.swing.JButton btnCancel;
