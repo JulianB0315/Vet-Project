@@ -1,12 +1,19 @@
 package gui;
 
 import java.awt.Color;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class InicioVet extends javax.swing.JFrame {
-    public InicioVet() {
+    private String idVet;
+    public InicioVet(String idVet) {
         initComponents();
         this.setTitle("Vet Link");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/resources/logocircle.png"));
+        Image logo = icon.getImage();
+        setIconImage(logo);
+        this.idVet=idVet;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -154,21 +161,21 @@ public class InicioVet extends javax.swing.JFrame {
     }//GEN-LAST:event_menuExitActionPerformed
 
     private void menuRegVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegVetActionPerformed
-        RegistroVets vets = new RegistroVets();
+        RegistroVets vets = new RegistroVets(idVet);
         vets.setVisible(true);
         vets.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_menuRegVetActionPerformed
 
     private void menuRegConActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRegConActionPerformed
-        RegistroConsulta cons = new RegistroConsulta();
+        RegistroConsulta cons = new RegistroConsulta(idVet);
         cons.setVisible(true);
         cons.setLocationRelativeTo(null);
         this.dispose();
     }//GEN-LAST:event_menuRegConActionPerformed
 
     private void menuManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManActionPerformed
-        Manipulacion man=new Manipulacion();
+        Manipulacion man=new Manipulacion(idVet);
         man.setLocationRelativeTo(null);
         man.setVisible(true);
         this.dispose();

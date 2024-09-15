@@ -11,9 +11,11 @@ import javax.swing.JOptionPane;
 import DB.ConexionOracle;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.print.PrinterJob;
 import java.awt.print.Printable;
 import java.awt.print.PageFormat;
+import javax.swing.ImageIcon;
 
 public class Boleta extends javax.swing.JFrame {
     private String idCliente;
@@ -36,6 +38,9 @@ public class Boleta extends javax.swing.JFrame {
     public Boleta(String idCliente, String idMascot, String tPrimario, String tSegundario) {
         initComponents();
         this.setTitle("Vet Link - Boleta");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/resources/logocircle.png"));
+        Image logo = icon.getImage();
+        setIconImage(logo);
         this.idCliente = idCliente;
         this.idMascot = idMascot;
         this.tPrimario = tPrimario;
@@ -144,7 +149,7 @@ public class Boleta extends javax.swing.JFrame {
             psBoleta.setDouble(6, totalSinIgv);
             psBoleta.setDouble(7, igv);
             psBoleta.setDouble(8, total);
-            psBoleta.setString(9, "activo");
+            psBoleta.setString(9, "PAGADO");
             psBoleta.executeUpdate();
             JOptionPane.showMessageDialog(null, "Boleta registrada con éxito", "Felicidades",
                     JOptionPane.INFORMATION_MESSAGE);

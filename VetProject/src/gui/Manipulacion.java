@@ -3,23 +3,29 @@ package gui;
 import DB.ConexionOracle;
 import java.awt.Color;
 import gui.InicioVet;
+import java.awt.Image;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Manipulacion extends javax.swing.JFrame {
 
     DefaultTableModel mt = new DefaultTableModel();
-
-    public Manipulacion() {
+    private String idVete;
+    public Manipulacion(String idVet) {
         initComponents();
         String IDS[] = {"Nombre", "Telefono", "Edad Mascota", "Peso Mascota"}; //"Nombre Veterinario", "Apellido Veterinario", "Telefono Veterinario", "Especialidad Veterinario"}; //Aca va tambien lo de su mascota
         mt.setColumnIdentifiers(IDS);
         tabla.setModel(mt);
         this.setTitle("Vet Link - Manipular Datos");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/resources/logocircle.png"));
+        Image logo = icon.getImage();
+        setIconImage(logo);
+        this.idVete=idVet;
     }
 
     @SuppressWarnings("unchecked")
@@ -177,7 +183,7 @@ public class Manipulacion extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
-        InicioVet inicio = new InicioVet();
+        InicioVet inicio = new InicioVet(idVete);
         inicio.setVisible(true);
         inicio.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnVolverActionPerformed

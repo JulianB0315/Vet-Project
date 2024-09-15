@@ -9,11 +9,18 @@ import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
 import DB.ConexionOracle;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 public class RegistroVets extends javax.swing.JFrame {
-    public RegistroVets() {
+    private String idVete;
+    public RegistroVets(String idVet) {
         initComponents();
         this.setTitle("Vet Link - Registrar Trabajadores");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/resources/logocircle.png"));
+        Image logo = icon.getImage();
+        setIconImage(logo);
+        this.idVete=idVet;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -283,7 +290,7 @@ public class RegistroVets extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
-        InicioVet inicio=new InicioVet();
+        InicioVet inicio=new InicioVet(idVete);
         inicio.setVisible(true);
         inicio.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnVolverActionPerformed
@@ -377,7 +384,7 @@ public class RegistroVets extends javax.swing.JFrame {
             if (confirmacion == JOptionPane.YES_OPTION){
             String veterinario_id=generateIdVeterinario();
                try (Connection conn = ConexionOracle.getConnection()){
-                String sql = "INSERT INTO VETERINARIO (veterinario_id, nombre, apellidos, fecha_nacimiento, especialidad, telefono,dni) VALUES (?, ?, ?, ?, ?, ?,?)";
+                String sql = "INSERT INTO VETERINARIO (veterinario_id, nombre, apellidos, fecha_nacimiento, especialidad, telefono,dni, contraseña) VALUES (?, ?, ?, ?, ?, ?,?,?)";
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ps.setString(1, veterinario_id);
                 ps.setString(2, noms);            
@@ -386,9 +393,10 @@ public class RegistroVets extends javax.swing.JFrame {
                 ps.setString(5, esp);             
                 ps.setString(6, telf);       
                 ps.setString(7, dni);     
+                ps.setString(8," ");
                 ps.executeUpdate();
                 JOptionPane.showMessageDialog(null, "Se completos la primera parte del resgistro", "Felicidades", JOptionPane.INFORMATION_MESSAGE);
-                Registrarse reg=new Registrarse(dni);
+                Registrarse reg=new Registrarse(idVete, dni);
                 reg.setVisible(true);
                 reg.setLocationRelativeTo(null);
                 this.dispose();
@@ -398,17 +406,16 @@ public class RegistroVets extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnRegistroActionPerformed
-    private String generateIdVeterinario() {
-        String characters = "0123456789";
+    // Nuevo metodo para id del vet, para formato
+    private String generateIdVeterinario(){
+        String prefijo = "VT";
+        String nums = "0123456789";
         Random rnd = new Random();
-        StringBuilder sb = new StringBuilder();
-
-        // Generar 8 dígitos aleatorios
-        for (int i = 0; i < 8; i++) {
-            int index = rnd.nextInt(characters.length());
-            sb.append(characters.charAt(index));
+        StringBuilder sb = new StringBuilder(prefijo); 
+        while (sb.length() < 8) {
+            int index = rnd.nextInt(nums.length()); 
+            sb.append(nums.charAt(index));
         }
-
         return sb.toString();
     }
 
