@@ -510,6 +510,10 @@ public class RegistroConsulta extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Número de teléfono inválido", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        else if (TPrimario.equals("Ninguno") && TSegundario.equals("Ninguno")) {
+            JOptionPane.showMessageDialog(null, "Seleccionar un tratamiento", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
         else{
             // Confirmación del registro
             int confirmacion = JOptionPane.showConfirmDialog(null, "¿Confirmar registro de los datos?", "Confirmar", JOptionPane.YES_NO_OPTION);
@@ -538,7 +542,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
                     psMascota.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Registro exitoso.");
                     // Constructor para la boleta 
-                    Boleta boleta = new Boleta(idCliente,idMascot,TPrimario,TSegundario);
+                    Boleta boleta = new Boleta(idCliente,idMascot,TPrimario,TSegundario,idVete);
                     boleta.setVisible(true);
                     boleta.setLocationRelativeTo(null);
                     this.dispose();

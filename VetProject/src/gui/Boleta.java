@@ -34,8 +34,12 @@ public class Boleta extends javax.swing.JFrame {
     private Double precio_principal;
     private String tratamientos_id_secundario;
     private Double precio_segundario;
+    //Veterinario
+    private String idVete;
+    private String nombreVet;
+    private String apellidoVet;
 
-    public Boleta(String idCliente, String idMascot, String tPrimario, String tSegundario) {
+    public Boleta(String idCliente, String idMascot, String tPrimario, String tSegundario, String idVete) {
         initComponents();
         this.setTitle("Vet Link - Boleta");
         ImageIcon icon = new ImageIcon(getClass().getResource("/resources/logocircle.png"));
@@ -45,6 +49,8 @@ public class Boleta extends javax.swing.JFrame {
         this.idMascot = idMascot;
         this.tPrimario = tPrimario;
         this.tSegundario = tSegundario;
+        this.idVete = idVete;
+        cargarVeterinario(idVete);
         cargarDatos(idCliente, idMascot);
         cargarTratamientos();
         mostrarBoleta();
@@ -261,41 +267,58 @@ public class Boleta extends javax.swing.JFrame {
                     JOptionPane.WARNING_MESSAGE);
         }
     }
+    private void cargarVeterinario(String idVete){
+        String sqlVete="SELECT NOMBRE,APELLIDOS FROM VETERINARIO WHERE VETERINARIO_ID=?";
+        try(Connection conn = ConexionOracle.getConnection()){
+            PreparedStatement ps = conn.prepareStatement(sqlVete);
+            ps.setString(1, idVete);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                this.nombreVet = rs.getString("NOMBRE");
+                this.apellidoVet=rs.getString("APELLIDOS");
+            }
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "Error al cargar los datos del veterinario", "Error",JOptionPane.WARNING_MESSAGE);
+        }
+    }
 
     private void mostrarBoleta() {
         Double totalSinIgv = precio_principal + precio_segundario;
         Double igv = totalSinIgv * 0.18;
         Double total = totalSinIgv + igv;
+        String veterinario=nombreVet+" "+apellidoVet;
 
         String boletaTexto = "<html>" +
-"<table width='440' height='670' cellpadding='10' style='border-collapse: collapse; font-family: Arial, sans-serif; font-size: 12px;'>"+
-    "<tr>" +
-        "<td colspan='2' style='background-color: rgb(13, 92, 141); color: white; text-align: center; font-size: 18px;'><strong>Boleta de Venta</strong></td>" +
-    "</tr>" +
-    "<tr>" +
-        "<td style='width: 50%;'><strong style='color: rgb(13, 92, 141);'>Cliente:</strong> " + nombreDueño + "<br>" +
-        "<strong style='color: rgb(13, 92, 141);'>Teléfono:</strong> " + telefono + "</td>" +
-        "<td style='width: 50%;'><strong style='color: rgb(13, 92, 141);'>Mascota:</strong> " + nombreMascota + "<br>" +
-        "<strong style='color: rgb(13, 92, 141);'>Especie:</strong> " + especie + "</td>" +
-    "</tr>" +
-    "<tr>" +
-        "<td colspan='2'>" +
-        "<table width='100%' style='font-size: 14px; border-collapse: collapse;'>"+
-            "<tr><td><strong style='color: rgb(13, 92, 141);'>Tratamiento Primario:</strong></td><td style='color: rgb(151, 189, 183); font-weight: bold;'>" + tPrimario + "</td><td>(S/ " + precio_principal + ")</td></tr>" +
-            "<tr><td><strong style='color: rgb(13, 92, 141);'>Tratamiento Secundario:</strong></td><td style='color: rgb(151, 189, 183); font-weight: bold;'>" + tSegundario + "</td><td>(S/ " + precio_segundario + ")</td></tr>" +
-        "</table>" +
-        "</td>" +
-    "</tr>" +
-    "<tr>" +
-        "<td colspan='2'>" +
-        "<p style='font-size: 14px;'>" +
-        "<strong style='color: rgb(13, 92, 141);'>Total sin IGV:</strong> S/ " + totalSinIgv + "<br>" +
-        "<strong style='color: rgb(13, 92, 141);'>IGV (18%):</strong> S/ " + igv + "<br>" +
-        "<strong style='color: rgb(13, 92, 141); font-size: 16px;'>Total:</strong> S/ " + total +
-        "</p>" +
-        "</td>" +
-    "</tr>" +
+"<head>" +
+"<style>" +
+"body { font-family: Arial, sans-serif; font-size: 14px; margin: 20px; }" +
+"table { width: 100%; margin-bottom: 20px; border-collapse: collapse; background-color: rgb(121,180,211); border: 3px solid rgb(121,180,211); }" +  // Fondo de la tabla y borde
+"td { padding: 8px 0; font-size: 14px; color: rgb(0,51,153); }" +  // Color del texto
+".titulo { font-weight: bold; width: 30%; color: rgb(0,51,153); }" +  // Color de los títulos
+".valor { width: 70%; }" +  // Ajuste de ancho para los valores
+"h1 { text-align: center; color: rgb(0,51,153); margin-bottom: 20px; font-size: 24px; }" +  // Título de la tabla
+"th { background-color: rgb(121,180,211); color: rgb(0,51,153); padding: 10px; border: 2px solid rgb(0,51,153); }" +  // Estilo del encabezado
+"</style>" +
+"</head>" +
+"<body>" +
+"<table>" +
+"<tr>" +
+    "<th colspan='2'>Boleta</th>" +
+"</tr>" +
 "</table>" +
+"<table>" +
+"<tr><td class='titulo'>Cliente:</td><td class='valor'>" + nombreDueño + "</td></tr>" +
+"<tr><td class='titulo'>Teléfono:</td><td class='valor'>" + telefono + "</td></tr>" +
+"<tr><td class='titulo'>Mascota:</td><td class='valor'>" + nombreMascota + "</td></tr>" +
+"<tr><td class='titulo'>Especie:</td><td class='valor'>" + especie + "</td></tr>" +
+"<tr><td class='titulo'>Veterinario:</td><td class='valor'>" + veterinario + "</td></tr>" +
+"<tr><td class='titulo'>Tratamiento Primario:</td><td class='valor'>" + tPrimario + " (S/ " + precio_principal + ")</td></tr>" +
+"<tr><td class='titulo'>Tratamiento Secundario:</td><td class='valor'>" + tSegundario + " (S/ " + precio_segundario + ")</td></tr>" +
+"<tr><td class='titulo'>Total sin IGV:</td><td class='valor'>S/ " + totalSinIgv + "</td></tr>" +
+"<tr><td class='titulo'>IGV (18%):</td><td class='valor'>S/ " + igv + "</td></tr>" +
+"<tr><td class='titulo'><strong>Total:</strong></td><td class='valor'><strong>S/ " + total + "</strong></td></tr>" +
+"</table>" +
+"</body>" +
 "</html>";
 
         txtBoleta.setText(boletaTexto);
