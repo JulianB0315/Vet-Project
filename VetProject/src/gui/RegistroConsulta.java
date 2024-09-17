@@ -46,18 +46,18 @@ public class RegistroConsulta extends javax.swing.JFrame {
         separador5 = new javax.swing.JSeparator();
         labelTPrim = new javax.swing.JLabel();
         separador6 = new javax.swing.JSeparator();
-        cbxTPrim = new javax.swing.JComboBox<>();
+        cbxTPrim = new javax.swing.JComboBox();
         separador2 = new javax.swing.JSeparator();
         labelTSec = new javax.swing.JLabel();
-        cbxTSec = new javax.swing.JComboBox<>();
+        cbxTSec = new javax.swing.JComboBox();
         jSeparator7 = new javax.swing.JSeparator();
         labelEspecie = new javax.swing.JLabel();
-        cbxEspecie = new javax.swing.JComboBox<>();
+        cbxEspecie = new javax.swing.JComboBox();
         btnExit = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         btnRegistro = new javax.swing.JButton();
         labelTiempo = new javax.swing.JLabel();
-        cbxTiempo = new javax.swing.JComboBox<>();
+        cbxTiempo = new javax.swing.JComboBox();
         separador7 = new javax.swing.JSeparator();
         labelTelf = new javax.swing.JLabel();
         txtTelf = new javax.swing.JTextField();
@@ -205,7 +205,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
         cbxTPrim.setBackground(new java.awt.Color(151, 189, 183));
         cbxTPrim.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         cbxTPrim.setForeground(new java.awt.Color(13, 92, 141));
-        cbxTPrim.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Vacunación", "Desparasitación", "Esterilización", "Urgencias", "Cirugía" }));
+        cbxTPrim.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Vacunación", "Desparasitación", "Esterilización", "Urgencias", "Cirugía" }));
         panelRegistro.add(cbxTPrim, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 480, 270, 40));
 
         separador2.setBackground(new java.awt.Color(13, 92, 141));
@@ -222,7 +222,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
         cbxTSec.setBackground(new java.awt.Color(151, 189, 183));
         cbxTSec.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         cbxTSec.setForeground(new java.awt.Color(13, 92, 141));
-        cbxTSec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Cuidado Dental", "Baño medicado", "Corte de pelo", "Corte de uñas", "Adiestramiento" }));
+        cbxTSec.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ninguno", "Cuidado Dental", "Baño medicado", "Corte de pelo", "Corte de uñas", "Adiestramiento" }));
         panelRegistro.add(cbxTSec, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 270, 40));
 
         jSeparator7.setBackground(new java.awt.Color(13, 92, 141));
@@ -239,7 +239,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
         cbxEspecie.setBackground(new java.awt.Color(151, 189, 183));
         cbxEspecie.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         cbxEspecie.setForeground(new java.awt.Color(13, 92, 141));
-        cbxEspecie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Perro", "Gato", "Conejo", "Cuy", "Pajaro", "Reptil" }));
+        cbxEspecie.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Perro", "Gato", "Conejo", "Cuy", "Pajaro", "Reptil" }));
         panelRegistro.add(cbxEspecie, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 270, 40));
 
         btnExit.setBackground(new java.awt.Color(121, 180, 211));
@@ -320,7 +320,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
         cbxTiempo.setBackground(new java.awt.Color(151, 189, 183));
         cbxTiempo.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         cbxTiempo.setForeground(new java.awt.Color(13, 92, 141));
-        cbxTiempo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Años", "Meses" }));
+        cbxTiempo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Años", "Meses" }));
         cbxTiempo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbxTiempoActionPerformed(evt);
@@ -343,6 +343,11 @@ public class RegistroConsulta extends javax.swing.JFrame {
         txtTelf.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         txtTelf.setForeground(new java.awt.Color(13, 92, 141));
         txtTelf.setBorder(null);
+        txtTelf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTelfActionPerformed(evt);
+            }
+        });
         panelRegistro.add(txtTelf, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 160, 270, 40));
 
         separador8.setBackground(new java.awt.Color(13, 92, 141));
@@ -372,6 +377,10 @@ public class RegistroConsulta extends javax.swing.JFrame {
     private void cbxTiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTiempoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxTiempoActionPerformed
+
+    private void txtTelfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTelfActionPerformed
 
     private void txtMascotaActionPerformed(java.awt.event.ActionEvent evt) {
 
@@ -561,14 +570,14 @@ public class RegistroConsulta extends javax.swing.JFrame {
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancel;
-    private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnRegistro;
+    javax.swing.JButton btnCancel;
+    javax.swing.JButton btnExit;
+    javax.swing.JButton btnRegistro;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JComboBox<String> cbxEspecie;
-    private javax.swing.JComboBox<String> cbxTPrim;
-    private javax.swing.JComboBox<String> cbxTSec;
-    private javax.swing.JComboBox<String> cbxTiempo;
+    javax.swing.JComboBox cbxEspecie;
+    javax.swing.JComboBox cbxTPrim;
+    javax.swing.JComboBox cbxTSec;
+    javax.swing.JComboBox cbxTiempo;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JLabel labelDueño;
     private javax.swing.JLabel labelEdad;
@@ -590,10 +599,10 @@ public class RegistroConsulta extends javax.swing.JFrame {
     private javax.swing.JSeparator separador6;
     private javax.swing.JSeparator separador7;
     private javax.swing.JSeparator separador8;
-    private javax.swing.JTextField txtDueño;
-    private javax.swing.JTextField txtEdad;
-    private javax.swing.JTextField txtMascota;
-    private javax.swing.JTextField txtPeso;
-    private javax.swing.JTextField txtTelf;
+    javax.swing.JTextField txtDueño;
+    javax.swing.JTextField txtEdad;
+    javax.swing.JTextField txtMascota;
+    javax.swing.JTextField txtPeso;
+    javax.swing.JTextField txtTelf;
     // End of variables declaration//GEN-END:variables
 }
