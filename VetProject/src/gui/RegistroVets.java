@@ -1,12 +1,26 @@
 package gui;
 
 import java.awt.Color;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
+import java.sql.SQLException;
+import DB.ConexionOracle;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 public class RegistroVets extends javax.swing.JFrame {
-    public RegistroVets() {
+    private String idVete;
+    public RegistroVets(String idVet) {
         initComponents();
         this.setTitle("Vet Link - Registrar Trabajadores");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/resources/logocircle.png"));
+        Image logo = icon.getImage();
+        setIconImage(logo);
+        this.idVete=idVet;
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -26,9 +40,9 @@ public class RegistroVets extends javax.swing.JFrame {
         lblEspeciialidades = new javax.swing.JLabel();
         cmb = new javax.swing.JComboBox<>();
         lblFNac = new javax.swing.JLabel();
-        dateFNac = new com.toedter.calendar.JDateChooser();
         lblTelf = new javax.swing.JLabel();
         txtTelf = new javax.swing.JTextField();
+        dateFNac = new com.toedter.calendar.JDateChooser();
         btnCancel = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         btnRegistro = new javax.swing.JButton();
@@ -152,12 +166,7 @@ public class RegistroVets extends javax.swing.JFrame {
         lblFNac.setForeground(new java.awt.Color(13, 92, 141));
         lblFNac.setText("Fecha de Nacimiento:");
         lblFNac.setToolTipText("");
-        panelForm.add(lblFNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, -1, -1));
-
-        dateFNac.setBackground(new java.awt.Color(151, 189, 183));
-        dateFNac.setForeground(new java.awt.Color(13, 92, 141));
-        dateFNac.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
-        panelForm.add(dateFNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 270, 40));
+        panelForm.add(lblFNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, -1, -1));
 
         lblTelf.setBackground(new java.awt.Color(13, 92, 141));
         lblTelf.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
@@ -176,6 +185,10 @@ public class RegistroVets extends javax.swing.JFrame {
             }
         });
         panelForm.add(txtTelf, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 270, 40));
+
+        dateFNac.setBackground(new java.awt.Color(151, 189, 183));
+        dateFNac.setForeground(new java.awt.Color(13, 92, 141));
+        panelForm.add(dateFNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 320, 280, 30));
 
         jPanel1.add(panelForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 690, 400));
 
@@ -277,7 +290,7 @@ public class RegistroVets extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
-        InicioVet inicio=new InicioVet();
+        InicioVet inicio=new InicioVet(idVete);
         inicio.setVisible(true);
         inicio.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnVolverActionPerformed
@@ -330,12 +343,81 @@ public class RegistroVets extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRegistroMouseExited
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-        Registrarse reg=new Registrarse();
-        reg.setVisible(true);
-        reg.setLocationRelativeTo(null);
-        this.dispose();
+        String noms=txtNombresVet.getText();
+        String apes=txtApesVet.getText();
+        String dni=txtDni.getText();
+        String telf=txtTelf.getText();
+        String esp=(String)cmb.getSelectedItem();
+        Date f_nac=dateFNac.getDate();
+        Calendar fNac=Calendar.getInstance();
+        fNac.setTime(f_nac);
+        Calendar fechaActual = Calendar.getInstance();
+        int diferencia = fechaActual.get(Calendar.YEAR) - fNac.get(Calendar.YEAR);
+        if(noms.isEmpty()||apes.isEmpty()||dni.isEmpty()||telf.isEmpty()||f_nac==null){
+            JOptionPane.showMessageDialog(null, "Por favor completar todos los datos", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else if (!noms.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(null, "Ingresar un nombre válido", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        // Verifica que solo se ingresen caracteres para los apellidos del vet
+        else if (!apes.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(null, "Ingresar apellidos válidos", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        // Verifica que solo se ingresen numeros para el telefono con un limite de 9 numeros, nada menos ni nada mas
+        else if (!telf.matches("\\d{9}")) {
+            JOptionPane.showMessageDialog(null, "Número de teléfono inválido", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else if (!dni.matches("\\d{8}")) {
+            JOptionPane.showMessageDialog(null, "El DNI solo debe contener números", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        else if(diferencia<18){
+            JOptionPane.showMessageDialog(null, "El Empleado debe ser mayor de 18 años", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else{
+            int confirmacion = JOptionPane.showConfirmDialog(null, "¿Confirmar registro de los datos?", "Confirmar", JOptionPane.YES_NO_OPTION);
+            if (confirmacion == JOptionPane.YES_OPTION){
+            String veterinario_id=generateIdVeterinario();
+               try (Connection conn = ConexionOracle.getConnection()){
+                String sql = "INSERT INTO VETERINARIO (veterinario_id, nombre, apellidos, fecha_nacimiento, especialidad, telefono,dni, contraseña) VALUES (?, ?, ?, ?, ?, ?,?,?)";
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setString(1, veterinario_id);
+                ps.setString(2, noms);            
+                ps.setString(3, apes);            
+                ps.setDate(4, new java.sql.Date(f_nac.getTime()));         
+                ps.setString(5, esp);             
+                ps.setString(6, telf);       
+                ps.setString(7, dni);     
+                ps.setString(8," ");
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Se completos la primera parte del resgistro", "Felicidades", JOptionPane.INFORMATION_MESSAGE);
+                Registrarse reg=new Registrarse(idVete, dni);
+                reg.setVisible(true);
+                reg.setLocationRelativeTo(null);
+                this.dispose();
+               } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Algo salio mal","Error",JOptionPane.WARNING_MESSAGE);
+               }
+            }
+        }
     }//GEN-LAST:event_btnRegistroActionPerformed
-
+    // Nuevo metodo para id del vet, para formato
+    private String generateIdVeterinario(){
+        String prefijo = "VT";
+        String nums = "0123456789";
+        Random rnd = new Random();
+        StringBuilder sb = new StringBuilder(prefijo); 
+        while (sb.length() < 8) {
+            int index = rnd.nextInt(nums.length()); 
+            sb.append(nums.charAt(index));
+        }
+        return sb.toString();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;

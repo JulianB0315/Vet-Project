@@ -1,16 +1,25 @@
 package gui;
 
 import java.awt.Color;
+import java.sql.Connection;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-
+import DB.ConexionOracle;
+import java.awt.Image;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 public class LoginVet extends javax.swing.JFrame {
     ImageIcon eye = new ImageIcon(getClass().getResource("/resources/eye.png"));
     ImageIcon eyeslash = new ImageIcon(getClass().getResource("/resources/eye-slash.png"));
     private boolean novisible=true;
+    int attempt=0;
     public LoginVet() {
         initComponents();
         this.setTitle("Vet Link - Iniciar Sesión");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/resources/logocircle.png"));
+        Image logo = icon.getImage();
+        setIconImage(logo);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -21,11 +30,10 @@ public class LoginVet extends javax.swing.JFrame {
         lblAcces = new javax.swing.JLabel();
         panelForm = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtUser = new javax.swing.JTextField();
+        txtDni = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtPassword = new javax.swing.JPasswordField();
         btnVer = new javax.swing.JButton();
-        btnVolver = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
         btnAcceder = new javax.swing.JButton();
@@ -54,15 +62,15 @@ public class LoginVet extends javax.swing.JFrame {
         jLabel1.setText("Contraseña:");
         panelForm.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 150, -1));
 
-        txtUser.setBackground(new java.awt.Color(13, 92, 141));
-        txtUser.setFont(new java.awt.Font("Leelawadee", 0, 24)); // NOI18N
-        txtUser.setForeground(new java.awt.Color(151, 189, 183));
-        txtUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(28, 155, 128)));
-        panelForm.add(txtUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 260, 40));
+        txtDni.setBackground(new java.awt.Color(13, 92, 141));
+        txtDni.setFont(new java.awt.Font("Leelawadee", 0, 24)); // NOI18N
+        txtDni.setForeground(new java.awt.Color(151, 189, 183));
+        txtDni.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(28, 155, 128)));
+        panelForm.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 260, 40));
 
         jLabel2.setFont(new java.awt.Font("Leelawadee", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(151, 189, 183));
-        jLabel2.setText("Usuario:");
+        jLabel2.setText("DNI:");
         panelForm.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 150, -1));
 
         txtPassword.setBackground(new java.awt.Color(13, 92, 141));
@@ -84,17 +92,6 @@ public class LoginVet extends javax.swing.JFrame {
         panelForm.add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 210, -1, -1));
 
         panelMainLogin.add(panelForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, 480, 300));
-
-        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/arrow-left-solid green.png"))); // NOI18N
-        btnVolver.setBorder(null);
-        btnVolver.setContentAreaFilled(false);
-        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverActionPerformed(evt);
-            }
-        });
-        panelMainLogin.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         btnCancel.setBackground(new java.awt.Color(121, 180, 211));
         btnCancel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
@@ -180,13 +177,6 @@ public class LoginVet extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        this.dispose();
-        InicioVet inicio=new InicioVet();
-        inicio.setVisible(true);
-        inicio.setLocationRelativeTo(null);
-    }//GEN-LAST:event_btnVolverActionPerformed
-
     private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
 
     }//GEN-LAST:event_btnCancelMouseClicked
@@ -201,7 +191,7 @@ public class LoginVet extends javax.swing.JFrame {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         txtPassword.setText("");
-        txtUser.setText("");
+        txtDni.setText("");
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseEntered
@@ -228,10 +218,41 @@ public class LoginVet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAccederMouseExited
 
     private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
-        RegistroConsulta register = new RegistroConsulta();
-        register.setVisible(true);
-        register.setLocationRelativeTo(null);
-        this.dispose();
+        String dni=txtDni.getText();
+        String contra=txtPassword.getText();
+        if(!dni.isEmpty() || !contra.isEmpty()){
+            try(Connection conn = ConexionOracle.getConnection()){
+                String sql="SELECT veterinario_id FROM veterinario WHERE dni=? AND contraseña=?";
+                PreparedStatement ps=conn.prepareStatement(sql);
+                ps.setString(1, dni);
+                ps.setString(2, contra);
+                ResultSet rs=ps.executeQuery();
+                if(rs.next()){
+                    String idVet=rs.getString("veterinario_id");
+                    InicioVet ini = new InicioVet(idVet);
+                    ini.setVisible(true);
+                    ini.setLocationRelativeTo(null);
+                    this.dispose();
+                    JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso", "Vet Link - Iniciar Sesion Usuario",1);
+                }
+                else{
+                    txtDni.setText("");
+                    txtPassword.setText("");
+                    JOptionPane.showMessageDialog(null, "DNI o Contraseña incorrectos. Tiene " + attempt+" intentos", "Vet Link - Incorrecto", 2);
+                    attempt += 1;
+                    if (attempt ==3){
+                        JOptionPane.showMessageDialog(null, "Número máximo de intentos alcanzado. Cerrando aplicación.","Nuevo Perú Bank",2);
+                        System.exit(0);
+                    }
+                }
+            }
+            catch(SQLException ex){
+                JOptionPane.showMessageDialog(null, "Error en la base de datos: " + ex.getMessage());
+            }
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Complete todos los campos para ingresar", "Vet Link", 2);
+        }
     }//GEN-LAST:event_btnAccederActionPerformed
 
     private void btnVerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerActionPerformed
@@ -245,22 +266,19 @@ public class LoginVet extends javax.swing.JFrame {
             txtPassword.setEchoChar((char) 0);
         }
     }//GEN-LAST:event_btnVerActionPerformed
-
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcceder;
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnVer;
-    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblAcces;
     private javax.swing.JPanel panelForm;
     private javax.swing.JPanel panelMainLogin;
+    private javax.swing.JTextField txtDni;
     private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }

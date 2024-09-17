@@ -2,15 +2,29 @@ package gui;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import DB.ConexionOracle;
+import java.awt.Image;
 
 public class Registrarse extends javax.swing.JFrame {
+    private String dni;
+    private String idVeter;
     ImageIcon eye = new ImageIcon(getClass().getResource("/resources/eye.png"));
     ImageIcon eyeslash = new ImageIcon(getClass().getResource("/resources/eye-slash.png"));
     private boolean novisible=true;
-    public Registrarse() {
+    public Registrarse(String idVete,String dni) {
         initComponents();
-        this.setTitle("Vet Link - Registrarse");
+        this.setTitle("Vet Link - Registrar Contraseña");
+        this.dni=dni;
+        ImageIcon icon = new ImageIcon(getClass().getResource("/resources/logocircle.png"));
+        Image logo = icon.getImage();
+        setIconImage(logo);
+        this.idVeter=idVete;
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -22,8 +36,6 @@ public class Registrarse extends javax.swing.JFrame {
         lblRegis = new javax.swing.JLabel();
         panelForm = new javax.swing.JPanel();
         lblContra = new javax.swing.JLabel();
-        txtNewUser = new javax.swing.JTextField();
-        lblUser = new javax.swing.JLabel();
         txtNewPassword = new javax.swing.JPasswordField();
         btnVer = new javax.swing.JButton();
         btnAcceder = new javax.swing.JButton();
@@ -63,25 +75,14 @@ public class Registrarse extends javax.swing.JFrame {
         lblContra.setFont(new java.awt.Font("Leelawadee", 1, 24)); // NOI18N
         lblContra.setForeground(new java.awt.Color(151, 189, 183));
         lblContra.setText("Contraseña:");
-        panelForm.add(lblContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 150, -1));
-
-        txtNewUser.setBackground(new java.awt.Color(13, 92, 141));
-        txtNewUser.setFont(new java.awt.Font("Leelawadee", 0, 24)); // NOI18N
-        txtNewUser.setForeground(new java.awt.Color(151, 189, 183));
-        txtNewUser.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(28, 155, 128)));
-        panelForm.add(txtNewUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 260, 40));
-
-        lblUser.setFont(new java.awt.Font("Leelawadee", 1, 24)); // NOI18N
-        lblUser.setForeground(new java.awt.Color(151, 189, 183));
-        lblUser.setText("Usuario:");
-        panelForm.add(lblUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 150, -1));
+        panelForm.add(lblContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 150, -1));
 
         txtNewPassword.setBackground(new java.awt.Color(13, 92, 141));
         txtNewPassword.setFont(new java.awt.Font("Leelawadee", 0, 24)); // NOI18N
         txtNewPassword.setForeground(new java.awt.Color(151, 189, 183));
         txtNewPassword.setToolTipText("");
         txtNewPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(28, 155, 128)));
-        panelForm.add(txtNewPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 260, 40));
+        panelForm.add(txtNewPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, 260, 40));
 
         btnVer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/eye-slash.png"))); // NOI18N
         btnVer.setBorder(null);
@@ -92,9 +93,9 @@ public class Registrarse extends javax.swing.JFrame {
                 btnVerActionPerformed(evt);
             }
         });
-        panelForm.add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 190, -1, -1));
+        panelForm.add(btnVer, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, -1, -1));
 
-        jPanel1.add(panelForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 480, 300));
+        jPanel1.add(panelForm, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 480, 180));
 
         btnAcceder.setBackground(new java.awt.Color(28, 155, 128));
         btnAcceder.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
@@ -115,7 +116,7 @@ public class Registrarse extends javax.swing.JFrame {
                 btnAccederActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, 150, 50));
+        jPanel1.add(btnAcceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 150, 50));
 
         btnCancel.setBackground(new java.awt.Color(121, 180, 211));
         btnCancel.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
@@ -140,7 +141,7 @@ public class Registrarse extends javax.swing.JFrame {
                 btnCancelActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 150, 50));
+        jPanel1.add(btnCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 150, 50));
 
         btnExit.setBackground(new java.awt.Color(121, 180, 211));
         btnExit.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
@@ -162,7 +163,7 @@ public class Registrarse extends javax.swing.JFrame {
                 btnExitActionPerformed(evt);
             }
         });
-        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 400, 130, 50));
+        jPanel1.add(btnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 130, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -172,7 +173,7 @@ public class Registrarse extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -180,7 +181,7 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
-        RegistroVets vets=new RegistroVets();
+        RegistroVets vets=new RegistroVets(idVeter);
         vets.setVisible(true);
         vets.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnVolverActionPerformed
@@ -195,6 +196,30 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void btnAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccederActionPerformed
         // Debe insertar la contraseña y el usuario, solo eso, dependiendo el dni que introduzcan.
+        String contra=txtNewPassword.getText();
+        
+        if(contra.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Por favor completar todos los datos", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else if(contra.length()<8){
+           JOptionPane.showMessageDialog(null, "La contraseña tiene que ser, como mínimo de 8 dígitos","Error",JOptionPane.ERROR_MESSAGE);
+       }
+        else {
+            int confirmacion = JOptionPane.showConfirmDialog(null, "¿Confirmar registro de los datos?", "Confirmar", JOptionPane.YES_NO_OPTION);
+            if(confirmacion==JOptionPane.YES_OPTION){
+                try (Connection conn = ConexionOracle.getConnection()){
+                    String sql = "UPDATE VETERINARIO SET contraseña = ? WHERE dni=?";
+                    PreparedStatement ps =conn.prepareStatement(sql);
+                    ps.setString(1, contra);
+                    ps.setString(2, dni);
+                    ps.executeUpdate();
+                    JOptionPane.showMessageDialog(null,"Se completo el regsitro","felicidades",JOptionPane.INFORMATION_MESSAGE);
+                } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "En completar el formulario", "Error", JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        }
     }//GEN-LAST:event_btnAccederActionPerformed
 
     private void btnCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelMouseClicked
@@ -211,7 +236,6 @@ public class Registrarse extends javax.swing.JFrame {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         txtNewPassword.setText("");
-        txtNewUser.setText("");
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnExitMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseEntered
@@ -251,9 +275,7 @@ public class Registrarse extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblContra;
     private javax.swing.JLabel lblRegis;
-    private javax.swing.JLabel lblUser;
     private javax.swing.JPanel panelForm;
     private javax.swing.JPasswordField txtNewPassword;
-    private javax.swing.JTextField txtNewUser;
     // End of variables declaration//GEN-END:variables
 }

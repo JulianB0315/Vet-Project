@@ -2,19 +2,25 @@ package gui;
 
 import DB.ConexionOracle;
 import java.awt.Color;
+import java.awt.Image;
 import javax.swing.JOptionPane;
 import java.util.Random;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class RegistroConsulta extends javax.swing.JFrame {
-
-    public RegistroConsulta() {
+    private String idVete;
+    public RegistroConsulta(String idVet) {
         initComponents();
         this.setTitle("Vet Link - Registrar Consulta");
+        ImageIcon icon = new ImageIcon(getClass().getResource("/resources/logocircle.png"));
+        Image logo = icon.getImage();
+        setIconImage(logo);
+        this.idVete=idVet;
     }
 
     @SuppressWarnings("unchecked")
@@ -315,6 +321,11 @@ public class RegistroConsulta extends javax.swing.JFrame {
         cbxTiempo.setFont(new java.awt.Font("Leelawadee UI", 0, 18)); // NOI18N
         cbxTiempo.setForeground(new java.awt.Color(13, 92, 141));
         cbxTiempo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Años", "Meses" }));
+        cbxTiempo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxTiempoActionPerformed(evt);
+            }
+        });
         panelRegistro.add(cbxTiempo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 270, 40));
 
         separador7.setBackground(new java.awt.Color(13, 92, 141));
@@ -353,10 +364,14 @@ public class RegistroConsulta extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
-        InicioVet inicio = new InicioVet();
+        InicioVet inicio = new InicioVet(idVete);
         inicio.setVisible(true);
         inicio.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void cbxTiempoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxTiempoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxTiempoActionPerformed
 
     private void txtMascotaActionPerformed(java.awt.event.ActionEvent evt) {
 
@@ -405,14 +420,32 @@ public class RegistroConsulta extends javax.swing.JFrame {
     }
 
     //Metodo para generar el id unico de la mascotita
-    private String generateIdMascota() {
-        //Usa la fecha y la hora para el id (por si las moscas)
-        return "MASC" + System.currentTimeMillis();
+    private String generarIDMascota(){
+        String prefijo = "MAS";
+        String nums = "0123456789";
+        Random rnd = new Random();
+        StringBuilder sb = new StringBuilder(prefijo); 
+        while (sb.length() < 8) {
+            int index = rnd.nextInt(nums.length()); 
+            sb.append(nums.charAt(index));
+        }
+        return sb.toString();
     }
-
+    // Método para generar una id para el cliente
+    private String generarIDCli(){
+        String prefijo = "CL";
+        String nums = "0123456789";
+        Random rnd = new Random();
+        StringBuilder sb = new StringBuilder(prefijo); 
+        while (sb.length() < 8) {
+            int index = rnd.nextInt(nums.length()); 
+            sb.append(nums.charAt(index));
+        }
+        return sb.toString();
+    }
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {
         // Recuperar los datos del formulario
-        String idCliente = generateIdCliente(); // Asumo que tienes un método para generar el ID del cliente
+        String idCliente = generarIDCli(); // Asumo que tienes un método para generar el ID del cliente
         String dueño = txtDueño.getText();
         String mascota = txtMascota.getText();
         String pesoString = txtPeso.getText();
@@ -421,23 +454,23 @@ public class RegistroConsulta extends javax.swing.JFrame {
         String TSegundario = (String) cbxTSec.getSelectedItem();
         String edadString = txtEdad.getText();
         String telefono = txtTelf.getText();
-
-        // Validaciones (tal como las tienes actualmente)
-        if (!edadString.matches("\\d+")) {
-            JOptionPane.showMessageDialog(null, "Ingresar una edad válida", "Error", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
+        // PUSE EN UNA VARIABLE EL MÉTODO PARA MÁS COMODIDAD
+        String idMascot=generarIDMascota();
+        int edad = Integer.parseInt(edadString);
+        double peso = Double.parseDouble(pesoString);
+        // Validaciones
         String STiempo = (String) cbxTiempo.getSelectedItem();
         switch (STiempo) {
             case "Meses":
                 if (Integer.parseInt(edadString) > 11) {
+                    // No puede ser mayor a 11 meses porque pasaría a ser años.
                     JOptionPane.showMessageDialog(null, "Ingresar una edad válida", "Error", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
                 break;
             case "Años":
-                if (Integer.parseInt(edadString) > 18) {
+                if (Integer.parseInt(edadString) > 20) {
+                    // Según estudios hay perros y gatos que pueden llegar a 20 años de edad maxima, sin embargo siempre pueden haber excepciones
                     JOptionPane.showMessageDialog(null, "Ingresar una edad válida", "Error", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
@@ -446,74 +479,77 @@ public class RegistroConsulta extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Ingresar edad de la mascota");
                 return;
         }
-
-        if (!pesoString.matches("\\d+(\\.\\d+)?")) {
-            JOptionPane.showMessageDialog(null, "Ingresar un peso válido", "Error", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        if (!dueño.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
-            JOptionPane.showMessageDialog(null, "Ingresar un nombre válido", "Error", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        if (!mascota.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
-            JOptionPane.showMessageDialog(null, "Ingresar un nombre válido para la mascota", "Error", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        if (!telefono.matches("\\d{9}")) {
-            JOptionPane.showMessageDialog(null, "Número inválido", "Error", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
+        // Validar que ningun campo esté vacío
         if (dueño.isEmpty() || mascota.isEmpty() || pesoString.isEmpty() || especie.isEmpty() || TPrimario.isEmpty() || edadString.isEmpty() || STiempo.isEmpty() || telefono.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Por favor completar todos los datos", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        // Verificar que solo se ingresen numeros en la edad
+        // ESTO LANZA ERROR SI NO PONES NADA O PONES LETRAS XD POR LA CONVERSION
+        else if (!edadString.matches("\\d+")) {
+            JOptionPane.showMessageDialog(null, "Ingresar una edad válida", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        // Verifica que solo se ingresen numeros o decimales para el peso
+        else if (!pesoString.matches("\\d+(\\.\\d+)?")) {
+            JOptionPane.showMessageDialog(null, "Ingresar un peso válido", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        // Verifica que solo se ingresen caracteres para el nombre del cliente
+        else if (!dueño.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(null, "Ingresar un nombre válido", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        // Verifica que solo se ingresen caracteres para el nombre de la mascota
+        else if (!mascota.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+            JOptionPane.showMessageDialog(null, "Ingresar un nombre válido para la mascota", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        // Verifica que solo se ingresen numeros para el telefono con un limite de 9 numeros, nada menos ni nada mas
+        else if (!telefono.matches("\\d{9}")) {
+            JOptionPane.showMessageDialog(null, "Número de teléfono inválido", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else if (TPrimario.equals("Ninguno") && TSegundario.equals("Ninguno")) {
+            JOptionPane.showMessageDialog(null, "Seleccionar un tratamiento", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        else{
+            // Confirmación del registro
+            int confirmacion = JOptionPane.showConfirmDialog(null, "¿Confirmar registro de los datos?", "Confirmar", JOptionPane.YES_NO_OPTION);
 
-        int edad = Integer.parseInt(edadString);
-        double peso = Double.parseDouble(pesoString);
-
-        // Confirmación del registro
-        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Confirmar registro de los datos?", "Confirmar", JOptionPane.YES_NO_OPTION);
-
-        if (confirmacion == JOptionPane.YES_OPTION) {
-            // Guardar en la base de datos
-            try {
-                Connection conn = ConexionOracle.getConnection(); // Asegúrate de tener una conexión válida
-
-                // Inserción en la tabla CLIENTE
-                String sqlCliente = "INSERT INTO CLIENTE (cliente_id, nombre, telefono) VALUES (?, ?, ?)";
-                PreparedStatement psCliente = conn.prepareStatement(sqlCliente);
-                psCliente.setString(1, idCliente);
-                psCliente.setString(2, dueño);
-                psCliente.setString(3, telefono);
-                psCliente.executeUpdate();
-
-                // Inserción en la tabla MASCOTA
-                String sqlMascota = "INSERT INTO MASCOTA (mascota_id, cliente_id, nombre, especie, peso, edad, tipo_primario, tipo_secundario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-                PreparedStatement psMascota = conn.prepareStatement(sqlMascota);
-                psMascota.setString(1, generateIdMascota()); // Genera el ID de la mascota
-                psMascota.setString(2, idCliente);
-                psMascota.setString(3, mascota);
-                psMascota.setString(4, especie);
-                psMascota.setDouble(5, peso);
-                psMascota.setInt(6, edad);
-                psMascota.setString(7, TPrimario);
-                psMascota.setString(8, TSegundario);
-                psMascota.executeUpdate();
-
-                JOptionPane.showMessageDialog(null, "Registro exitoso.");
-
-                // Esto para la boleta 
-                Boleta boleta = new Boleta(idCliente, dueño, mascota, peso, especie, TPrimario, TSegundario, edad, telefono);
-                boleta.setVisible(true);
-                boleta.setLocationRelativeTo(null);
-                this.dispose();
-
-            } catch (SQLException e) {
+            if (confirmacion == JOptionPane.YES_OPTION) {
+                // Guardar en la base de datos
+                try {
+                    Connection conn = ConexionOracle.getConnection(); // Asegúrate de tener una conexión válida
+                    // Inserción en la tabla CLIENTE
+                    String sqlCliente = "INSERT INTO CLIENTE (cliente_id, nombre, telefono) VALUES (?, ?, ?)";
+                    PreparedStatement psCliente = conn.prepareStatement(sqlCliente);
+                    psCliente.setString(1, idCliente);
+                    psCliente.setString(2, dueño);
+                    psCliente.setString(3, telefono);
+                    psCliente.executeUpdate();
+                    // Inserción en la tabla MASCOTA
+                    // FALTARIA HACER UN SELECT PARA RELACIONARLO CON UN VETERINARIO
+                    String sqlMascota = "INSERT INTO MASCOTA (mascota_id, cliente_id, nombre, especie, peso, edad) VALUES (?, ?, ?, ?, ?, ?)";
+                    PreparedStatement psMascota = conn.prepareStatement(sqlMascota);
+                    psMascota.setString(1, idMascot); // Genera el ID de la mascota
+                    psMascota.setString(2, idCliente);
+                    psMascota.setString(3, mascota);
+                    psMascota.setString(4, especie);
+                    psMascota.setDouble(5, peso);
+                    psMascota.setInt(6, edad);
+                    psMascota.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Registro exitoso.");
+                    // Constructor para la boleta 
+                    Boleta boleta = new Boleta(idCliente,idMascot,TPrimario,TSegundario,idVete);
+                    boleta.setVisible(true);
+                    boleta.setLocationRelativeTo(null);
+                    this.dispose();
+                } 
+                catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Error al registrar los datos: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
     }
@@ -523,21 +559,6 @@ public class RegistroConsulta extends javax.swing.JFrame {
         if (x == 0) {
             System.exit(0);
         }
-    }
-
-    //metodo para crear idCita
-    private String generateIdCliente() {
-        String characters = "0123456789";
-        Random rnd = new Random();
-        StringBuilder sb = new StringBuilder();
-
-        // Generar 8 dígitos aleatorios
-        for (int i = 0; i < 8; i++) {
-            int index = rnd.nextInt(characters.length());
-            sb.append(characters.charAt(index));
-        }
-
-        return sb.toString();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
