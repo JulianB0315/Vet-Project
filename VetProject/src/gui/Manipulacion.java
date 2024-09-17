@@ -200,7 +200,7 @@ public class Manipulacion extends javax.swing.JFrame {
             try {
                 conn = ConexionOracle.getConnection(); // Asegúrate de tener una conexión válida
                 
-                // Este es el query para eliminar de la tabla mascotas
+                // Este es la query para eliminar de la tabla mascotas
                 String sqlMascota = "DELETE FROM MASCOTA WHERE cliente_id=?";
                 psMascota = conn.prepareStatement(sqlMascota);
                 psMascota.setString(1, clienteID);
@@ -218,7 +218,6 @@ public class Manipulacion extends javax.swing.JFrame {
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Error al eliminar el registro: " + e.getMessage());
             } finally {
-                // Asegúrate de cerrar PreparedStatement y Connection
                 try {
                     if (psMascota != null) psMascota.close();
                     if (psCliente != null) psCliente.close();
@@ -247,7 +246,7 @@ public class Manipulacion extends javax.swing.JFrame {
             try {
                 Connection conn = ConexionOracle.getConnection(); 
                 //Esste es para el cliente papus
-                String sqlCliente = "UPDATE CLIENTE SET dni=?, nombre=?, telefono=? WHERE cliente_id=?";
+                String sqlCliente = "UPDATE CLIENTE SET nombre=?, telefono=? WHERE cliente_id=?";
                 PreparedStatement psCliente = conn.prepareStatement(sqlCliente);
                 psCliente.setString(2, nuevoNombre);
                 psCliente.setString(3, nuevoTelefono);
@@ -255,7 +254,7 @@ public class Manipulacion extends javax.swing.JFrame {
                 psCliente.executeUpdate();
 
                 // Este para actualizar la mascota
-                String sqlMascota = "UPDATE MASCOTA SET especie=?, edad=?, peso=? WHERE cliente_id=?";
+                String sqlMascota = "UPDATE MASCOTA SET edad=?, peso=? WHERE cliente_id=?";
                 PreparedStatement psMascota = conn.prepareStatement(sqlMascota);
                 psMascota.setString(2, nuevaEdad);
                 psMascota.setString(3, nuevoPeso);
