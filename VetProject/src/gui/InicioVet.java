@@ -32,6 +32,7 @@ public class InicioVet extends javax.swing.JFrame {
         menuRegVet = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuMan = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuExit = new javax.swing.JMenuItem();
 
@@ -116,7 +117,7 @@ public class InicioVet extends javax.swing.JFrame {
         menuMan.setBackground(new java.awt.Color(255, 255, 255));
         menuMan.setForeground(new java.awt.Color(0, 102, 102));
         menuMan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/database-solid.png"))); // NOI18N
-        menuMan.setText("Manipular Datos");
+        menuMan.setText("Manipular Datos Cliente");
         menuMan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuMan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,6 +125,9 @@ public class InicioVet extends javax.swing.JFrame {
             }
         });
         jMenu2.add(menuMan);
+
+        jMenuItem1.setText("Manipular Datos Veterinario");
+        jMenu2.add(jMenuItem1);
 
         jMenuBar1.add(jMenu2);
 
@@ -187,6 +191,7 @@ public class InicioVet extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel labelBanner;
     private javax.swing.JLabel labelLogo;
     private javax.swing.JLabel labelSlogan;
