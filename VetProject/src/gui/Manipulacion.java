@@ -4,7 +4,6 @@ import DB.ConexionOracle;
 import java.awt.Color;
 import gui.InicioVet;
 import java.awt.Image;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
