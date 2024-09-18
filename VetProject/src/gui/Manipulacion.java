@@ -5,7 +5,6 @@ import DB.ConexionOracle;
 import java.awt.Color;
 import gui.InicioVet;
 import java.awt.Image;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +16,6 @@ public class Manipulacion extends javax.swing.JFrame {
 
     DefaultTableModel mt = new DefaultTableModel();
     private String idVete;
-
     public Manipulacion(String idVet) {
         initComponents();
         String IDS[] = {"Nombre", "Telefono", "Edad Mascota", "Peso Mascota"}; //"Nombre Veterinario", "Apellido Veterinario", "Telefono Veterinario", "Especialidad Veterinario"}; //Aca va tambien lo de su mascota
@@ -27,8 +25,12 @@ public class Manipulacion extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(getClass().getResource("/resources/logocircle.png"));
         Image logo = icon.getImage();
         setIconImage(logo);
+<<<<<<< HEAD
         this.idVete = idVet;
         Controlador controlador = new Controlador(this);
+=======
+        this.idVete=idVet;
+>>>>>>> upstream/main
     }
 
     @SuppressWarnings("unchecked")
@@ -64,13 +66,13 @@ public class Manipulacion extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Nombre", "Telefono", "Edad Mascota", "Peso Mascota"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
         tabla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(tabla);
 
-        panelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 910, 180));
+        panelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 910, 370));
 
         btnSalir.setBackground(new java.awt.Color(13, 92, 141));
         btnSalir.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
@@ -84,7 +86,7 @@ public class Manipulacion extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        panelMain.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 380, 190, 50));
+        panelMain.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 510, 190, 50));
 
         btnUpdate.setBackground(new java.awt.Color(13, 92, 141));
         btnUpdate.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
@@ -109,7 +111,7 @@ public class Manipulacion extends javax.swing.JFrame {
                 btnUpdateActionPerformed(evt);
             }
         });
-        panelMain.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 190, 50));
+        panelMain.add(btnUpdate, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, 190, 50));
 
         btnDel.setBackground(new java.awt.Color(13, 92, 141));
         btnDel.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
@@ -130,7 +132,7 @@ public class Manipulacion extends javax.swing.JFrame {
                 btnDelActionPerformed(evt);
             }
         });
-        panelMain.add(btnDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 190, 50));
+        panelMain.add(btnDel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, 190, 50));
 
         btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/arrow-left-solid.png"))); // NOI18N
         btnVolver.setBorder(null);
@@ -151,7 +153,7 @@ public class Manipulacion extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE)
+            .addComponent(panelMain, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
 
         pack();
@@ -192,59 +194,54 @@ public class Manipulacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
-        int filaSeleccionada = tabla.getSelectedRow();
+    int filaSeleccionada = tabla.getSelectedRow();
 
-        if (filaSeleccionada >= 0) {
-            // Obtenemos el ClienteID de la fila seleccionada
-            String clienteID = (String) mt.getValueAt(filaSeleccionada, 0);
-
-            // Confirmación antes de eliminar
-            int confirmacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea eliminar este registro?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
-
-            if (confirmacion == JOptionPane.YES_OPTION) {
-                Connection conn = null;
-                PreparedStatement psMascota = null;
-                PreparedStatement psCliente = null;
-
+    if (filaSeleccionada >= 0) {
+        // Obtenemos el ClienteID de la fila seleccionada
+        String clienteID = (String) mt.getValueAt(filaSeleccionada, 0);
+        
+        // Confirmación antes de eliminar
+        int confirmacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea eliminar este registro?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            Connection conn = null;
+            PreparedStatement psMascota = null;
+            PreparedStatement psCliente = null;
+            
+            try {
+                conn = ConexionOracle.getConnection(); // Asegúrate de tener una conexión válida
+                
+                // Este es el query para eliminar de la tabla mascotas
+                String sqlMascota = "DELETE FROM MASCOTA WHERE cliente_id=?";
+                psMascota = conn.prepareStatement(sqlMascota);
+                psMascota.setString(1, clienteID);
+                psMascota.executeUpdate();
+                
+                // Este es el query para eliminar de la tabla clientes
+                String sqlCliente = "DELETE FROM CLIENTE WHERE cliente_id=?";
+                psCliente = conn.prepareStatement(sqlCliente);
+                psCliente.setString(1, clienteID);
+                psCliente.executeUpdate();
+                
+                // Eliminación exitosa
+                mt.removeRow(filaSeleccionada);
+                JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al eliminar el registro: " + e.getMessage());
+            } finally {
+                // Asegúrate de cerrar PreparedStatement y Connection
                 try {
-                    conn = ConexionOracle.getConnection(); // Asegúrate de tener una conexión válida
-
-                    // Este es la query para eliminar de la tabla mascotas
-                    String sqlMascota = "DELETE FROM MASCOTA WHERE cliente_id=?";
-                    psMascota = conn.prepareStatement(sqlMascota);
-                    psMascota.setString(1, clienteID);
-                    psMascota.executeUpdate();
-
-                    // Este es el query para eliminar de la tabla clientes
-                    String sqlCliente = "DELETE FROM CLIENTE WHERE cliente_id=?";
-                    psCliente = conn.prepareStatement(sqlCliente);
-                    psCliente.setString(1, clienteID);
-                    psCliente.executeUpdate();
-
-                    // Eliminación exitosa
-                    mt.removeRow(filaSeleccionada);
-                    JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
+                    if (psMascota != null) psMascota.close();
+                    if (psCliente != null) psCliente.close();
+                    if (conn != null) conn.close();
                 } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, "Error al eliminar el registro: " + e.getMessage());
-                } finally {
-                    try {
-                        if (psMascota != null) {
-                            psMascota.close();
-                        }
-                        if (psCliente != null) {
-                            psCliente.close();
-                        }
-                        if (conn != null) {
-                            conn.close();
-                        }
-                    } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage());
-                    }
+                    JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage());
                 }
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar una fila para eliminar.");
         }
+    } else {
+        JOptionPane.showMessageDialog(null, "Debe seleccionar una fila para eliminar.");
+    }
     }//GEN-LAST:event_btnDelActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
@@ -259,9 +256,9 @@ public class Manipulacion extends javax.swing.JFrame {
             String nuevoPeso = (String) mt.getValueAt(filaSeleccionada, 6);
 
             try {
-                Connection conn = ConexionOracle.getConnection();
+                Connection conn = ConexionOracle.getConnection(); 
                 //Esste es para el cliente papus
-                String sqlCliente = "UPDATE CLIENTE SET nombre=?, telefono=? WHERE cliente_id=?";
+                String sqlCliente = "UPDATE CLIENTE SET dni=?, nombre=?, telefono=? WHERE cliente_id=?";
                 PreparedStatement psCliente = conn.prepareStatement(sqlCliente);
                 psCliente.setString(2, nuevoNombre);
                 psCliente.setString(3, nuevoTelefono);
@@ -269,7 +266,7 @@ public class Manipulacion extends javax.swing.JFrame {
                 psCliente.executeUpdate();
 
                 // Este para actualizar la mascota
-                String sqlMascota = "UPDATE MASCOTA SET edad=?, peso=? WHERE cliente_id=?";
+                String sqlMascota = "UPDATE MASCOTA SET especie=?, edad=?, peso=? WHERE cliente_id=?";
                 PreparedStatement psMascota = conn.prepareStatement(sqlMascota);
                 psMascota.setString(2, nuevaEdad);
                 psMascota.setString(3, nuevoPeso);
@@ -286,13 +283,13 @@ public class Manipulacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btnDel;
-    public javax.swing.JButton btnSalir;
-    public javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnDel;
+    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelMain;
-    public javax.swing.JTable tabla;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

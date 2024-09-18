@@ -32,7 +32,7 @@ public class InicioVet extends javax.swing.JFrame {
         menuRegVet = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuMan = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        menuManVet = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuExit = new javax.swing.JMenuItem();
 
@@ -81,6 +81,7 @@ public class InicioVet extends javax.swing.JFrame {
 
         menuRegCon.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuRegCon.setBackground(new java.awt.Color(255, 255, 255));
+        menuRegCon.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         menuRegCon.setForeground(new java.awt.Color(0, 102, 102));
         menuRegCon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/scroll-solid.png"))); // NOI18N
         menuRegCon.setText("Registrar Consulta");
@@ -94,6 +95,7 @@ public class InicioVet extends javax.swing.JFrame {
 
         menuRegVet.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_M, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuRegVet.setBackground(new java.awt.Color(255, 255, 255));
+        menuRegVet.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         menuRegVet.setForeground(new java.awt.Color(0, 102, 102));
         menuRegVet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/address-card-solid.png"))); // NOI18N
         menuRegVet.setText("Registrar Trabajador");
@@ -110,14 +112,15 @@ public class InicioVet extends javax.swing.JFrame {
         jMenu2.setBackground(new java.awt.Color(255, 255, 255));
         jMenu2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 2, new java.awt.Color(0, 102, 102)));
         jMenu2.setForeground(new java.awt.Color(0, 102, 102));
-        jMenu2.setText("Edit");
+        jMenu2.setText("Manipular");
         jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         menuMan.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuMan.setBackground(new java.awt.Color(255, 255, 255));
+        menuMan.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         menuMan.setForeground(new java.awt.Color(0, 102, 102));
         menuMan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/database-solid.png"))); // NOI18N
-        menuMan.setText("Manipular Datos Cliente");
+        menuMan.setText("Manipular Datos");
         menuMan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         menuMan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,8 +129,19 @@ public class InicioVet extends javax.swing.JFrame {
         });
         jMenu2.add(menuMan);
 
-        jMenuItem1.setText("Manipular Datos Veterinario");
-        jMenu2.add(jMenuItem1);
+        menuManVet.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        menuManVet.setBackground(new java.awt.Color(255, 255, 255));
+        menuManVet.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
+        menuManVet.setForeground(new java.awt.Color(0, 102, 102));
+        menuManVet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/database-solid.png"))); // NOI18N
+        menuManVet.setText("Manipular datos Veterinario");
+        menuManVet.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menuManVet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuManVetActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuManVet);
 
         jMenuBar1.add(jMenu2);
 
@@ -138,6 +152,7 @@ public class InicioVet extends javax.swing.JFrame {
 
         menuExit.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         menuExit.setBackground(new java.awt.Color(255, 255, 255));
+        menuExit.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         menuExit.setForeground(new java.awt.Color(0, 102, 102));
         menuExit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/door-open-solid.png"))); // NOI18N
         menuExit.setText("Salir");
@@ -185,13 +200,19 @@ public class InicioVet extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_menuManActionPerformed
 
+    private void menuManVetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuManVetActionPerformed
+        ManipulacionVets man=new ManipulacionVets(idVet);
+        man.setLocationRelativeTo(null);
+        man.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_menuManVetActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel labelBanner;
     private javax.swing.JLabel labelLogo;
     private javax.swing.JLabel labelSlogan;
@@ -200,6 +221,7 @@ public class InicioVet extends javax.swing.JFrame {
     private javax.swing.JLabel labelTitle2;
     private javax.swing.JMenuItem menuExit;
     private javax.swing.JMenuItem menuMan;
+    private javax.swing.JMenuItem menuManVet;
     private javax.swing.JMenuItem menuRegCon;
     private javax.swing.JMenuItem menuRegVet;
     private javax.swing.JPanel panelInicioVet;
