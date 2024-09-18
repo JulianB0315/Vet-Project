@@ -113,7 +113,7 @@
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/resources/database-solid.png"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Manipular Datos Cliente"/>
+                <Property name="text" type="java.lang.String" value="Manipular Datos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Hand Cursor"/>
                 </Property>
@@ -121,11 +121,6 @@
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuManActionPerformed"/>
               </Events>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Manipular Datos Veterinario"/>
-              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
