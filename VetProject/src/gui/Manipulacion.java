@@ -1,5 +1,6 @@
 package gui;
 
+import Controlador.Controlador;
 import DB.ConexionOracle;
 import java.awt.Color;
 import gui.InicioVet;
@@ -27,6 +28,7 @@ public class Manipulacion extends javax.swing.JFrame {
         Image logo = icon.getImage();
         setIconImage(logo);
         this.idVete = idVet;
+        Controlador controlador = new Controlador(this);
     }
 
     @SuppressWarnings("unchecked")
@@ -87,7 +89,7 @@ public class Manipulacion extends javax.swing.JFrame {
         btnUpdate.setBackground(new java.awt.Color(13, 92, 141));
         btnUpdate.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
         btnUpdate.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdate.setText("Actualizar");
+        btnUpdate.setText("Listar");
         btnUpdate.setToolTipText("");
         btnUpdate.setBorder(null);
         btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
