@@ -231,7 +231,7 @@ public class Manipulacion extends javax.swing.JFrame {
                 PreparedStatement psCliente = null;
 
                 try {
-                    conn = ConexionOracle.getConnection(); // Asegúrate de tener una conexión válida
+                    conn = ConexionOracle.getConnection();
 
                     // Este es el query para eliminar de la tabla mascotas
                     String sqlMascota = "DELETE FROM MASCOTA WHERE cliente_id=?";
