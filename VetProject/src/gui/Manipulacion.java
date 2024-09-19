@@ -14,14 +14,13 @@ import javax.swing.JOptionPane;
 
 public class Manipulacion extends javax.swing.JFrame {
 
-    DefaultTableModel mt = new DefaultTableModel();
+    
     private String idVete;
 
     public Manipulacion(String idVet) {
         initComponents();
-        String IDS[] = {"Nombre", "Telefono", "Edad Mascota", "Peso Mascota"}; //"Nombre Veterinario", "Apellido Veterinario", "Telefono Veterinario", "Especialidad Veterinario"}; //Aca va tambien lo de su mascota
-        mt.setColumnIdentifiers(IDS);
-        tabla.setModel(mt);
+        
+        
         this.setTitle("Vet Link - Manipular Datos");
         ImageIcon icon = new ImageIcon(getClass().getResource("/resources/logocircle.png"));
         Image logo = icon.getImage();
@@ -36,7 +35,7 @@ public class Manipulacion extends javax.swing.JFrame {
         panelMain = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        tblDAto = new javax.swing.JTable();
         btnSalir = new javax.swing.JButton();
         btnListar = new javax.swing.JButton();
         btnDel = new javax.swing.JButton();
@@ -53,21 +52,33 @@ public class Manipulacion extends javax.swing.JFrame {
         jLabel1.setText("Manipulación de Datos");
         panelMain.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 540, -1));
 
-        tabla.setBackground(new java.awt.Color(255, 255, 255));
-        tabla.setForeground(new java.awt.Color(13, 92, 141));
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
+        tblDAto.setBackground(new java.awt.Color(255, 255, 255));
+        tblDAto.setForeground(new java.awt.Color(13, 92, 141));
+        tblDAto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID Cliente", "Nombres", "Telefono", "ID Mascota", "Edad", "Peso"
             }
-        ));
-        tabla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jScrollPane1.setViewportView(tabla);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, false, true, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblDAto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane1.setViewportView(tblDAto);
 
         panelMain.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 910, 370));
 
@@ -216,13 +227,11 @@ public class Manipulacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
-        int filaSeleccionada = tabla.getSelectedRow();
+        int filaSeleccionada = tblDAto.getSelectedRow();
 
         if (filaSeleccionada >= 0) {
-            // Obtenemos el ClienteID de la fila seleccionada
-            String clienteID = (String) mt.getValueAt(filaSeleccionada, 0);
+            String id_cliente =tblDAto.getValueAt(filaSeleccionada, 0).toString();
 
-            // Confirmación antes de eliminar
             int confirmacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea eliminar este registro?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
 
             if (confirmacion == JOptionPane.YES_OPTION) {
@@ -236,17 +245,17 @@ public class Manipulacion extends javax.swing.JFrame {
                     // Este es el query para eliminar de la tabla mascotas
                     String sqlMascota = "DELETE FROM MASCOTA WHERE cliente_id=?";
                     psMascota = conn.prepareStatement(sqlMascota);
-                    psMascota.setString(1, clienteID);
+                    psMascota.setString(1, id_cliente);
                     psMascota.executeUpdate();
 
                     // Este es el query para eliminar de la tabla clientes
                     String sqlCliente = "DELETE FROM CLIENTE WHERE cliente_id=?";
                     psCliente = conn.prepareStatement(sqlCliente);
-                    psCliente.setString(1, clienteID);
-                    psCliente.executeUpdate();
+                    psCliente.setString(1, id_cliente);
+                     psCliente.executeUpdate();
 
                     // Eliminación exitosa
-                    mt.removeRow(filaSeleccionada);
+                    
                     JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(null, "Error al eliminar el registro: " + e.getMessage());
@@ -273,27 +282,29 @@ public class Manipulacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDelActionPerformed
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        DefaultTableModel mt = (DefaultTableModel) tabla.getModel();
+        DefaultTableModel mt = (DefaultTableModel) tblDAto.getModel();
         mt.setRowCount(0);
 
         try (Connection conn = ConexionOracle.getConnection()) {
             // La query para jalar los datos
-            String sql = "SELECT c.nombre AS nombre_cliente, c.telefono AS telefono_cliente, "
-                    + "m.edad AS edad_mascota, m.peso AS peso_mascota "
-                    + "FROM CLIENTE c "
-                    + "INNER JOIN MASCOTA m ON c.cliente_id = m.cliente_id";
+            String sql = "SELECT C.cliente_id, C.nombre AS nombre_cliente, C.telefono, " +
+                       "M.mascota_id, M.edad, M.peso " +
+                       "FROM CLIENTE C " +
+                       "JOIN MASCOTA M ON C.cliente_id = M.cliente_id";
 
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
             //llenar las tablitas
             while (rs.next()) {
+                String id_cliente = rs.getString("cliente_id");
                 String nombreCliente = rs.getString("nombre_cliente");
-                String telefonoCliente = rs.getString("telefono_cliente");
-                int edadMascota = rs.getInt("edad_mascota");
-                double pesoMascota = rs.getDouble("peso_mascota");
+                String telefonoCliente = rs.getString("telefono");
+                String id_mascota = rs.getString("mascota_id");
+                int edadMascota = rs.getInt("edad");
+                double pesoMascota = rs.getDouble("peso");
 
-                Object[] fila = {nombreCliente, telefonoCliente, edadMascota, pesoMascota};
+                Object[] fila = {id_cliente,nombreCliente, telefonoCliente,id_mascota, edadMascota, pesoMascota};
                 mt.addRow(fila); // Agregar la fila al modelo de la tabla
             }
 
@@ -315,32 +326,33 @@ public class Manipulacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateMousePressed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        int filaSeleccionada = tabla.getSelectedRow();
+        int filaSeleccionada = tblDAto.getSelectedRow();
 
         if (filaSeleccionada >= 0) {
             // Obtenemos los valores de la fila seleccionada
-            String nuevoClienteID = (String) mt.getValueAt(filaSeleccionada, 0);
-            String nuevoNombre = (String) mt.getValueAt(filaSeleccionada, 2);
-            String nuevoTelefono = (String) mt.getValueAt(filaSeleccionada, 3);
-            String nuevaEdad = (String) mt.getValueAt(filaSeleccionada, 5);
-            String nuevoPeso = (String) mt.getValueAt(filaSeleccionada, 6);
-
+            String id_cliente =tblDAto.getValueAt(filaSeleccionada, 0).toString();
+            String nombre =tblDAto.getValueAt(filaSeleccionada, 1).toString();
+            String telefono = tblDAto.getValueAt(filaSeleccionada, 2).toString();
+            String edad =  tblDAto.getValueAt(filaSeleccionada, 4).toString();
+            String peso = tblDAto.getValueAt(filaSeleccionada, 5).toString();
+            int edadin = Integer.parseInt(edad);
+            Double pesoDouble = Double.parseDouble(peso); 
             try {
                 Connection conn = ConexionOracle.getConnection();
                 //Esste es para el cliente papus
-                String sqlCliente = "UPDATE CLIENTE SET dni=?, nombre=?, telefono=? WHERE cliente_id=?";
+                String sqlCliente = "UPDATE CLIENTE SET nombre=?, telefono=? WHERE cliente_id=?";
                 PreparedStatement psCliente = conn.prepareStatement(sqlCliente);
-                psCliente.setString(2, nuevoNombre);
-                psCliente.setString(3, nuevoTelefono);
-                psCliente.setString(4, nuevoClienteID);
+                psCliente.setString(1, nombre);
+                psCliente.setString(2, telefono);
+                psCliente.setString(3, id_cliente);
                 psCliente.executeUpdate();
 
                 // Este para actualizar la mascota
-                String sqlMascota = "UPDATE MASCOTA SET especie=?, edad=?, peso=? WHERE cliente_id=?";
+                String sqlMascota = "UPDATE MASCOTA SET edad=?, peso=? WHERE cliente_id=?";
                 PreparedStatement psMascota = conn.prepareStatement(sqlMascota);
-                psMascota.setString(2, nuevaEdad);
-                psMascota.setString(3, nuevoPeso);
-                psMascota.setString(4, nuevoClienteID);
+                psMascota.setInt(1, edadin);
+                psMascota.setDouble(2, pesoDouble);
+                psMascota.setString(3, id_cliente);
                 psMascota.executeUpdate();
 
                 JOptionPane.showMessageDialog(null, "Datos actualizados correctamente.");
@@ -361,6 +373,6 @@ public class Manipulacion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelMain;
-    private javax.swing.JTable tabla;
+    private javax.swing.JTable tblDAto;
     // End of variables declaration//GEN-END:variables
 }
