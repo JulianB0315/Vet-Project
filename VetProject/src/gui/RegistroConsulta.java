@@ -531,7 +531,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
                     psCliente.executeUpdate();
                     // Inserción en la tabla MASCOTA
                     // FALTARIA HACER UN SELECT PARA RELACIONARLO CON UN VETERINARIO
-                    String sqlMascota = "INSERT INTO MASCOTA (mascota_id, cliente_id, nombre, especie, peso, edad) VALUES (?, ?, ?, ?, ?, ?)";
+                    String sqlMascota = "INSERT INTO MASCOTA (mascota_id, cliente_id, nombre, especie, peso, edad, veterencia_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
                     PreparedStatement psMascota = conn.prepareStatement(sqlMascota);
                     psMascota.setString(1, idMascot); // Genera el ID de la mascota
                     psMascota.setString(2, idCliente);
@@ -539,6 +539,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
                     psMascota.setString(4, especie);
                     psMascota.setDouble(5, peso);
                     psMascota.setInt(6, edad);
+                    psMascota.setString(7,idVete);
                     psMascota.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Registro exitoso.");
                     // Constructor para la boleta 

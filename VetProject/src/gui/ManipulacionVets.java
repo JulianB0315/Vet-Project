@@ -13,14 +13,10 @@ import javax.swing.table.DefaultTableModel;
 
 public class ManipulacionVets extends javax.swing.JFrame {
 
-    DefaultTableModel mt = new DefaultTableModel();
     private String idVete;
 
     public ManipulacionVets(String idVet) {
         initComponents();
-        String IDS[] = {"Nombre Veterinario", "Apellido Veterinario", "Especialidad", "Telefono"};
-        mt.setColumnIdentifiers(IDS);
-        tabla.setModel(mt);
         this.setTitle("Vet Link - Manipular Datos");
         ImageIcon icon = new ImageIcon(getClass().getResource("/resources/logocircle.png"));
         Image logo = icon.getImage();
@@ -36,11 +32,11 @@ public class ManipulacionVets extends javax.swing.JFrame {
         btnVolver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabla = new javax.swing.JTable();
+        tblVeterinario = new javax.swing.JTable();
         btnListar = new javax.swing.JButton();
         btnDel = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
-        btnUpdate1 = new javax.swing.JButton();
+        btnActulizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,21 +59,36 @@ public class ManipulacionVets extends javax.swing.JFrame {
         jLabel1.setText("Manipulación de Datos");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 540, -1));
 
-        tabla.setBackground(new java.awt.Color(255, 255, 255));
-        tabla.setForeground(new java.awt.Color(13, 92, 141));
-        tabla.setModel(new javax.swing.table.DefaultTableModel(
+        tblVeterinario.setBackground(new java.awt.Color(255, 255, 255));
+        tblVeterinario.setForeground(new java.awt.Color(13, 92, 141));
+        tblVeterinario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Nombre Veterinario", "Apellido Veterinario", "Especialidad", "Telefono"
+                "ID Veterinario", "Nombre Veterinario", "Apellido Veterinario", "Especialidad", "Telefono"
             }
-        ));
-        tabla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jScrollPane1.setViewportView(tabla);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, true, true, true, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblVeterinario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jScrollPane1.setViewportView(tblVeterinario);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 830, 370));
 
@@ -141,30 +152,30 @@ public class ManipulacionVets extends javax.swing.JFrame {
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 510, 190, 50));
 
-        btnUpdate1.setBackground(new java.awt.Color(13, 92, 141));
-        btnUpdate1.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
-        btnUpdate1.setForeground(new java.awt.Color(255, 255, 255));
-        btnUpdate1.setText("Actualizar");
-        btnUpdate1.setToolTipText("");
-        btnUpdate1.setBorder(null);
-        btnUpdate1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnUpdate1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnActulizar.setBackground(new java.awt.Color(13, 92, 141));
+        btnActulizar.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N
+        btnActulizar.setForeground(new java.awt.Color(255, 255, 255));
+        btnActulizar.setText("Actualizar");
+        btnActulizar.setToolTipText("");
+        btnActulizar.setBorder(null);
+        btnActulizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnActulizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnUpdate1MouseEntered(evt);
+                btnActulizarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnUpdate1MouseExited(evt);
+                btnActulizarMouseExited(evt);
             }
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                btnUpdate1MousePressed(evt);
+                btnActulizarMousePressed(evt);
             }
         });
-        btnUpdate1.addActionListener(new java.awt.event.ActionListener() {
+        btnActulizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdate1ActionPerformed(evt);
+                btnActulizarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnUpdate1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, 190, 50));
+        jPanel1.add(btnActulizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, 190, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,25 +212,26 @@ public class ManipulacionVets extends javax.swing.JFrame {
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
 // Lógica para listar los datos del veterinario
-        DefaultTableModel mt = (DefaultTableModel) tabla.getModel();
+        DefaultTableModel mt = (DefaultTableModel) tblVeterinario.getModel();
         mt.setRowCount(0);
 
         try (Connection conn = ConexionOracle.getConnection()) {
             // Consulta
-            String sql = "SELECT nombre, apellidos, especialidad, telefono FROM VETERINARIO";
+            String sql = "SELECT VETERINARIO_ID,nombre, apellidos, especialidad, telefono FROM VETERINARIO";
 
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
             // Llenar la tabla con los datos de los veterinarios
             while (rs.next()) {
+                String id =rs.getString("VETERINARIO_ID");
                 String nombre = rs.getString("nombre");
                 String apellidos = rs.getString("apellidos");
                 String especialidad = rs.getString("especialidad");
                 String telefono = rs.getString("telefono");
 
                 // Agregar los datos a la tabla
-                Object[] fila = {nombre, apellidos, especialidad, telefono};
+                Object[] fila = {id,nombre, apellidos, especialidad, telefono};
                 mt.addRow(fila);
             }
         } catch (SQLException e) {
@@ -236,11 +248,11 @@ public class ManipulacionVets extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDelMouseExited
 
     private void btnDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelActionPerformed
-        int filaSeleccionada = tabla.getSelectedRow();
+        int filaSeleccionada = tblVeterinario.getSelectedRow();
 
         if (filaSeleccionada >= 0) {
             // Obtenemos el veterinario_id de la fila seleccionada
-            String veterinarioID = (String) mt.getValueAt(filaSeleccionada, 0);
+            String veterinarioID = tblVeterinario.getValueAt(filaSeleccionada, 0).toString();
 
             // Confirmación 
             int confirmacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea eliminar este registro?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
@@ -257,7 +269,6 @@ public class ManipulacionVets extends javax.swing.JFrame {
                     psVeterinario = conn.prepareStatement(sqlVeterinario);
                     psVeterinario.setString(1, veterinarioID);
                     psVeterinario.executeUpdate();
-                    mt.removeRow(filaSeleccionada);
                     JOptionPane.showMessageDialog(null, "Registro de veterinario eliminado correctamente.");
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(null, "Error al eliminar el registro: " + e.getMessage());
@@ -286,31 +297,53 @@ public class ManipulacionVets extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnUpdate1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdate1MouseEntered
+    private void btnActulizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActulizarMouseEntered
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdate1MouseEntered
+    }//GEN-LAST:event_btnActulizarMouseEntered
 
-    private void btnUpdate1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdate1MouseExited
+    private void btnActulizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActulizarMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdate1MouseExited
+    }//GEN-LAST:event_btnActulizarMouseExited
 
-    private void btnUpdate1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUpdate1MousePressed
+    private void btnActulizarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnActulizarMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdate1MousePressed
+    }//GEN-LAST:event_btnActulizarMousePressed
 
-    private void btnUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdate1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnUpdate1ActionPerformed
+    private void btnActulizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActulizarActionPerformed
+        int filaSeleccionada = tblVeterinario.getSelectedRow();
+
+        if (filaSeleccionada >= 0) {
+            String veterinarioID = tblVeterinario.getValueAt(filaSeleccionada, 0).toString();
+            String nombres = tblVeterinario.getValueAt(filaSeleccionada,1).toString();
+            String apellidos =tblVeterinario.getValueAt(filaSeleccionada,2).toString();
+            String especialidad = tblVeterinario.getValueAt(filaSeleccionada,3).toString();
+            String telefono = tblVeterinario.getValueAt(filaSeleccionada,4).toString();
+            try (Connection conn = ConexionOracle.getConnection()){
+                String sql ="UPDATE VETERINARIO SET nombre = ?, apellidos = ?, especialidad = ?, telefono = ? WHERE veterinario_id = ?";
+                PreparedStatement ps = conn.prepareStatement(sql);
+                ps.setString(1, nombres);
+                ps.setString(2, apellidos);
+                ps.setString(3, especialidad);
+                ps.setString(4, telefono);
+                ps.setString(5, veterinarioID);
+                ps.executeUpdate();
+                JOptionPane.showMessageDialog(null, "Se edito el registro: ","Felicidades",JOptionPane.INFORMATION_MESSAGE);
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al editar el registro: " + e.getMessage());
+            }
+        }
+
+    }//GEN-LAST:event_btnActulizarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActulizar;
     private javax.swing.JButton btnDel;
     private javax.swing.JButton btnListar;
     private javax.swing.JButton btnSalir;
-    private javax.swing.JButton btnUpdate1;
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabla;
+    private javax.swing.JTable tblVeterinario;
     // End of variables declaration//GEN-END:variables
 }
