@@ -66,7 +66,7 @@ public class Manipulacion extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, false, true, false
+                false, true, true, false, true, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -235,49 +235,31 @@ public class Manipulacion extends javax.swing.JFrame {
             int confirmacion = JOptionPane.showConfirmDialog(null, "¿Está seguro de que desea eliminar este registro?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
 
             if (confirmacion == JOptionPane.YES_OPTION) {
-                Connection conn = null;
-                PreparedStatement psMascota = null;
-                PreparedStatement psCliente = null;
+                 
 
-                try {
-                    conn = ConexionOracle.getConnection();
+                try (Connection conn = ConexionOracle.getConnection();){
 
                     // Este es el query para eliminar de la tabla mascotas
                     String sqlMascota = "DELETE FROM MASCOTA WHERE cliente_id=?";
-                    psMascota = conn.prepareStatement(sqlMascota);
+                    PreparedStatement psMascota = conn.prepareStatement(sqlMascota);
                     psMascota.setString(1, id_cliente);
                     psMascota.executeUpdate();
 
                     // Este es el query para eliminar de la tabla clientes
                     String sqlCliente = "DELETE FROM CLIENTE WHERE cliente_id=?";
-                    psCliente = conn.prepareStatement(sqlCliente);
+                    PreparedStatement psCliente = conn.prepareStatement(sqlCliente);
                     psCliente.setString(1, id_cliente);
-                     psCliente.executeUpdate();
+                    psCliente.executeUpdate();
 
                     // Eliminación exitosa
                     
-                    JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.");
+                    JOptionPane.showMessageDialog(null, "Registro eliminado correctamente.","Vet Link - Error",JOptionPane.INFORMATION_MESSAGE);
                 } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, "Error al eliminar el registro: " + e.getMessage());
-                } finally {
-                    // Asegúrate de cerrar PreparedStatement y Connection
-                    try {
-                        if (psMascota != null) {
-                            psMascota.close();
-                        }
-                        if (psCliente != null) {
-                            psCliente.close();
-                        }
-                        if (conn != null) {
-                            conn.close();
-                        }
-                    } catch (SQLException e) {
-                        JOptionPane.showMessageDialog(null, "Error al cerrar la conexión: " + e.getMessage());
-                    }
-                }
+                    JOptionPane.showMessageDialog(null, "Error al eliminar el registro: " + e.getMessage(),"Vet Link - Error",JOptionPane.WARNING_MESSAGE);
+                } 
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar una fila para eliminar.");
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una fila para eliminar.","Vet Link -  Advertencia",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnDelActionPerformed
 
@@ -287,10 +269,7 @@ public class Manipulacion extends javax.swing.JFrame {
 
         try (Connection conn = ConexionOracle.getConnection()) {
             // La query para jalar los datos
-            String sql = "SELECT C.cliente_id, C.nombre AS nombre_cliente, C.telefono, " +
-                       "M.mascota_id, M.edad, M.peso " +
-                       "FROM CLIENTE C " +
-                       "JOIN MASCOTA M ON C.cliente_id = M.cliente_id";
+            String sql = "SELECT C.cliente_id, C.nombre AS nombre_cliente, C.telefono, " +"M.mascota_id, M.edad, M.peso " +"FROM CLIENTE C " +"JOIN MASCOTA M ON C.cliente_id = M.cliente_id";
 
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -335,10 +314,34 @@ public class Manipulacion extends javax.swing.JFrame {
             String telefono = tblDAto.getValueAt(filaSeleccionada, 2).toString();
             String edad =  tblDAto.getValueAt(filaSeleccionada, 4).toString();
             String peso = tblDAto.getValueAt(filaSeleccionada, 5).toString();
+            if (nombre.isEmpty() || telefono.isEmpty() || edad.isEmpty() || peso.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Por favor completar todos los datos", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            // Verificar que solo se ingresen numeros en la edad
+            // ESTO LANZA ERROR SI NO PONES NADA O PONES LETRAS XD POR LA CONVERSION
+            else if (!edad.matches("\\d+")) {
+                JOptionPane.showMessageDialog(null, "Ingresar una edad válida", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            // Verifica que solo se ingresen numeros o decimales para el peso
+            else if (!peso.matches("\\d+(\\.\\d+)?")) {
+                JOptionPane.showMessageDialog(null, "Ingresar un peso válido", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            // Verifica que solo se ingresen caracteres para el nombre del cliente
+            else if (!nombre.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+                JOptionPane.showMessageDialog(null, "Ingresar un nombre válido", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            // Verifica que solo se ingresen numeros para el telefono con un limite de 9 numeros, nada menos ni nada mas
+            else if (!telefono.matches("\\d{9}")) {
+                JOptionPane.showMessageDialog(null, "Número de teléfono inválido", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }else{
             int edadin = Integer.parseInt(edad);
             Double pesoDouble = Double.parseDouble(peso); 
-            try {
-                Connection conn = ConexionOracle.getConnection();
+            try (Connection conn = ConexionOracle.getConnection()){
                 //Esste es para el cliente papus
                 String sqlCliente = "UPDATE CLIENTE SET nombre=?, telefono=? WHERE cliente_id=?";
                 PreparedStatement psCliente = conn.prepareStatement(sqlCliente);
@@ -355,13 +358,14 @@ public class Manipulacion extends javax.swing.JFrame {
                 psMascota.setString(3, id_cliente);
                 psMascota.executeUpdate();
 
-                JOptionPane.showMessageDialog(null, "Datos actualizados correctamente.");
+                JOptionPane.showMessageDialog(null, "Datos actualizados correctamente.","Edicion exitosa",JOptionPane.INFORMATION_MESSAGE);
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Error al actualizar los datos: " + e.getMessage());
+                JOptionPane.showMessageDialog(null, "Error al actualizar los datos: " + e.getMessage(),"Error",JOptionPane.WARNING_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Debe seleccionar una fila para actualizar.");
         }
+    }else{
+        JOptionPane.showMessageDialog(null, "Debe seleccionar una fila para actualizar.","Error",JOptionPane.WARNING_MESSAGE);
+    }
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

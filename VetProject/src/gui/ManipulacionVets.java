@@ -318,21 +318,43 @@ public class ManipulacionVets extends javax.swing.JFrame {
             String apellidos =tblVeterinario.getValueAt(filaSeleccionada,2).toString();
             String especialidad = tblVeterinario.getValueAt(filaSeleccionada,3).toString();
             String telefono = tblVeterinario.getValueAt(filaSeleccionada,4).toString();
-            try (Connection conn = ConexionOracle.getConnection()){
-                String sql ="UPDATE VETERINARIO SET nombre = ?, apellidos = ?, especialidad = ?, telefono = ? WHERE veterinario_id = ?";
-                PreparedStatement ps = conn.prepareStatement(sql);
-                ps.setString(1, nombres);
-                ps.setString(2, apellidos);
-                ps.setString(3, especialidad);
-                ps.setString(4, telefono);
-                ps.setString(5, veterinarioID);
-                ps.executeUpdate();
-                JOptionPane.showMessageDialog(null, "Se edito el registro: ","Felicidades",JOptionPane.INFORMATION_MESSAGE);
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null, "Error al editar el registro: " + e.getMessage());
+            if(nombres.isEmpty()||apellidos.isEmpty()||telefono.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Por favor completar todos los datos", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
             }
+            else if (!nombres.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+                JOptionPane.showMessageDialog(null, "Ingresar un nombre válido", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            // Verifica que solo se ingresen caracteres para los apellidos del vet
+            else if (!apellidos.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ\\s]+")) {
+                JOptionPane.showMessageDialog(null, "Ingresar apellidos válidos", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            // Verifica que solo se ingresen numeros para el telefono con un limite de 9 numeros, nada menos ni nada mas
+            else if (!telefono.matches("\\d{9}")) {
+                JOptionPane.showMessageDialog(null, "Número de teléfono inválido", "Error", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            else{
+                int confirmacion = JOptionPane.showConfirmDialog(null, "¿Deseas editar los datos?", "Confirmar", JOptionPane.YES_NO_OPTION);
+                if (confirmacion == JOptionPane.YES_OPTION){
+                try (Connection conn = ConexionOracle.getConnection()){
+                    String sql ="UPDATE VETERINARIO SET nombre = ?, apellidos = ?, especialidad = ?, telefono = ? WHERE veterinario_id = ?";
+                    PreparedStatement ps = conn.prepareStatement(sql);
+                    ps.setString(1, nombres);
+                    ps.setString(2, apellidos);
+                    ps.setString(3, especialidad);
+                    ps.setString(4, telefono);
+                    ps.setString(5, veterinarioID);
+                    ps.executeUpdate();
+                    JOptionPane.showMessageDialog(null, "Se edito el registro: ","Felicidades",JOptionPane.INFORMATION_MESSAGE);
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(null, "Error al editar el registro: " + e.getMessage());
+            }   
+            }   
         }
-
+    }
     }//GEN-LAST:event_btnActulizarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

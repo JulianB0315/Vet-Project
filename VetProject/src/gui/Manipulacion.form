@@ -87,7 +87,7 @@
                     <Column editable="true" title="Telefono" type="java.lang.String"/>
                     <Column editable="false" title="ID Mascota" type="java.lang.String"/>
                     <Column editable="true" title="Edad" type="java.lang.String"/>
-                    <Column editable="false" title="Peso" type="java.lang.String"/>
+                    <Column editable="true" title="Peso" type="java.lang.String"/>
                   </Table>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
