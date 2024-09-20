@@ -63,10 +63,11 @@ public class ManipulacionVets extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Leelawadee", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(13, 92, 141));
-        jLabel1.setText("Manipulación de Datos");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 540, -1));
+        jLabel1.setText("Manipulación de Datos Vets");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, 650, -1));
 
         tblVeterinario.setBackground(new java.awt.Color(255, 255, 255));
+        tblVeterinario.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         tblVeterinario.setForeground(new java.awt.Color(13, 92, 141));
         tblVeterinario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -94,7 +95,7 @@ public class ManipulacionVets extends javax.swing.JFrame {
         tblVeterinario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(tblVeterinario);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 830, 370));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 890, 370));
 
         btnListar.setBackground(new java.awt.Color(13, 92, 141));
         btnListar.setFont(new java.awt.Font("Leelawadee", 0, 18)); // NOI18N

@@ -57,9 +57,10 @@ public class Manipulacion extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Leelawadee", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(13, 92, 141));
         jLabel1.setText("Manipulación de Datos");
-        panelMain.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 540, -1));
+        panelMain.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 540, -1));
 
         tblDAto.setBackground(new java.awt.Color(255, 255, 255));
+        tblDAto.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
         tblDAto.setForeground(new java.awt.Color(13, 92, 141));
         tblDAto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

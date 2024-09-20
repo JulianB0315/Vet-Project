@@ -7,7 +7,8 @@ import java.sql.SQLException;
 public class ConexionOracle {
 
     public static Connection getConnection() throws SQLException{
-        String url = "jdbc:oracle:thin:@localhost:1521:XE";//Url de acuerdo ala configuracion
+        //String url = "jdbc:oracle:thin:@localhost:1521:XE";//Url de acuerdo ala configuracion
+        String url="jdbc:oracle:thin:@192.168.101.2:1521:XE";
         String user ="C##GRUPO";//Usuario de la conexion
         String password = "root";//Contraseña de la conexion
         try {
