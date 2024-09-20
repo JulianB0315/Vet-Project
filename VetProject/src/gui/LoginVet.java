@@ -229,6 +229,7 @@ public class LoginVet extends javax.swing.JFrame {
                 ResultSet rs=ps.executeQuery();
                 if(rs.next()){
                     String idVet=rs.getString("veterinario_id");
+                    System.out.println(idVet);
                     InicioVet ini = new InicioVet(idVet);
                     ini.setVisible(true);
                     ini.setLocationRelativeTo(null);
