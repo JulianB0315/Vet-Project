@@ -33,6 +33,7 @@ public class InicioVet extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         menuMan = new javax.swing.JMenuItem();
         menuManVet = new javax.swing.JMenuItem();
+        menuBoletas = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         menuExit = new javax.swing.JMenuItem();
 
@@ -143,6 +144,17 @@ public class InicioVet extends javax.swing.JFrame {
         });
         jMenu2.add(menuManVet);
 
+        menuBoletas.setFont(new java.awt.Font("Leelawadee", 0, 14)); // NOI18N
+        menuBoletas.setForeground(new java.awt.Color(0, 102, 102));
+        menuBoletas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/database-solid.png"))); // NOI18N
+        menuBoletas.setText("Boletas ");
+        menuBoletas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuBoletasActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuBoletas);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setBackground(new java.awt.Color(255, 255, 255));
@@ -207,6 +219,13 @@ public class InicioVet extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_menuManVetActionPerformed
 
+    private void menuBoletasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuBoletasActionPerformed
+      VistaBoleta pBoleta = new VistaBoleta(idVet);
+      pBoleta.setVisible(true);
+      pBoleta.setLocationRelativeTo(null);
+      this.dispose();
+    }//GEN-LAST:event_menuBoletasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
@@ -219,6 +238,7 @@ public class InicioVet extends javax.swing.JFrame {
     private javax.swing.JLabel labelTitle;
     private javax.swing.JLabel labelTitle1;
     private javax.swing.JLabel labelTitle2;
+    private javax.swing.JMenuItem menuBoletas;
     private javax.swing.JMenuItem menuExit;
     private javax.swing.JMenuItem menuMan;
     private javax.swing.JMenuItem menuManVet;

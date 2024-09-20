@@ -16,6 +16,7 @@ import java.awt.print.PrinterJob;
 import java.awt.print.Printable;
 import java.awt.print.PageFormat;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
 public class Boleta extends javax.swing.JFrame {
     private String idCliente;
@@ -39,8 +40,9 @@ public class Boleta extends javax.swing.JFrame {
     private String nombreVet;
     private String apellidoVet;
 
-    public Boleta(String idCliente, String idMascot, String tPrimario, String tSegundario, String idVete) {
+    public Boleta(String idCliente, String idMascot, String tPrimario, String tSegundario, String idVete,int boton) {
         initComponents();
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setTitle("Vet Link - Boleta");
         ImageIcon icon = new ImageIcon(getClass().getResource("/resources/logocircle.png"));
         Image logo = icon.getImage();
@@ -54,6 +56,9 @@ public class Boleta extends javax.swing.JFrame {
         cargarDatos(idCliente, idMascot);
         cargarTratamientos();
         mostrarBoleta();
+        if (boton > 0) {
+            btnAccept.setEnabled(false);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -145,7 +150,7 @@ public class Boleta extends javax.swing.JFrame {
         Double igv = totalSinIgv * 0.18;
         Double total = totalSinIgv + igv;
         try (Connection conn = ConexionOracle.getConnection()) {
-            String sqlBoleta = "INSERT INTO BOLETA (boleta_id, cliente_id, mascota_id, tratamiento_id_principal, tratamiento_id_secundario, total_sin_igv, igv, total, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sqlBoleta = "INSERT INTO BOLETA (boleta_id, cliente_id, mascota_id, tratamiento_id_principal, tratamiento_id_secundario, total_sin_igv, igv, total, estado,VETERINARIO_ID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement psBoleta = conn.prepareStatement(sqlBoleta);
             psBoleta.setString(1, boleta_id);
             psBoleta.setString(2, idCliente);
@@ -156,9 +161,14 @@ public class Boleta extends javax.swing.JFrame {
             psBoleta.setDouble(7, igv);
             psBoleta.setDouble(8, total);
             psBoleta.setString(9, "PAGADO");
+            psBoleta.setString(10, idVete);
             psBoleta.executeUpdate();
             JOptionPane.showMessageDialog(null, "Boleta registrada con éxito", "Felicidades",
                     JOptionPane.INFORMATION_MESSAGE);
+                    InicioVet pInicioVet = new InicioVet(idVete);
+                    pInicioVet.setVisible(true);
+                    pInicioVet.setLocationRelativeTo(null);
+                    this.dispose();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al registrar la boleta", "Error", JOptionPane.WARNING_MESSAGE);
         }

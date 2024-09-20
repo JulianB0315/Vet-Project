@@ -541,7 +541,8 @@ public class RegistroConsulta extends javax.swing.JFrame {
                     psMascota.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Registro exitoso.");
                     // Constructor para la boleta 
-                    Boleta boleta = new Boleta(idCliente,idMascot,TPrimario,TSegundario,idVet);
+                    int Boton =0;
+                    Boleta boleta = new Boleta(idCliente,idMascot,TPrimario,TSegundario,idVet,Boton);
                     boleta.setVisible(true);
                     boleta.setLocationRelativeTo(null);
                     this.dispose();
