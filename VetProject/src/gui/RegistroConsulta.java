@@ -5,22 +5,20 @@ import java.awt.Color;
 import java.awt.Image;
 import javax.swing.JOptionPane;
 import java.util.Random;
-import javax.swing.table.DefaultTableModel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 public class RegistroConsulta extends javax.swing.JFrame {
-    private String idVete;
+    private String idVet;
     public RegistroConsulta(String idVet) {
         initComponents();
         this.setTitle("Vet Link - Registrar Consulta");
         ImageIcon icon = new ImageIcon(getClass().getResource("/resources/logocircle.png"));
         Image logo = icon.getImage();
         setIconImage(logo);
-        this.idVete=idVet;
+        this.idVet=idVet;
     }
 
     @SuppressWarnings("unchecked")
@@ -364,7 +362,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
-        InicioVet inicio = new InicioVet(idVete);
+        InicioVet inicio = new InicioVet(idVet);
         inicio.setVisible(true);
         inicio.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnVolverActionPerformed
@@ -520,8 +518,8 @@ public class RegistroConsulta extends javax.swing.JFrame {
 
             if (confirmacion == JOptionPane.YES_OPTION) {
                 // Guardar en la base de datos
-                try {
-                    Connection conn = ConexionOracle.getConnection(); // Asegúrate de tener una conexión válida
+                try (Connection conn = ConexionOracle.getConnection()){
+                     // Asegúrate de tener una conexión válida
                     // Inserción en la tabla CLIENTE
                     String sqlCliente = "INSERT INTO CLIENTE (cliente_id, nombre, telefono) VALUES (?, ?, ?)";
                     PreparedStatement psCliente = conn.prepareStatement(sqlCliente);
@@ -531,7 +529,7 @@ public class RegistroConsulta extends javax.swing.JFrame {
                     psCliente.executeUpdate();
                     // Inserción en la tabla MASCOTA
                     // FALTARIA HACER UN SELECT PARA RELACIONARLO CON UN VETERINARIO
-                    String sqlMascota = "INSERT INTO MASCOTA (mascota_id, cliente_id, nombre, especie, peso, edad, veterencia_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    String sqlMascota = "INSERT INTO MASCOTA (mascota_id, cliente_id, nombre, especie, peso, edad, VETERINARIO_ID) VALUES (?, ?, ?, ?, ?, ?, ?)";
                     PreparedStatement psMascota = conn.prepareStatement(sqlMascota);
                     psMascota.setString(1, idMascot); // Genera el ID de la mascota
                     psMascota.setString(2, idCliente);
@@ -539,11 +537,11 @@ public class RegistroConsulta extends javax.swing.JFrame {
                     psMascota.setString(4, especie);
                     psMascota.setDouble(5, peso);
                     psMascota.setInt(6, edad);
-                    psMascota.setString(7,idVete);
+                    psMascota.setString(7,idVet);
                     psMascota.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Registro exitoso.");
                     // Constructor para la boleta 
-                    Boleta boleta = new Boleta(idCliente,idMascot,TPrimario,TSegundario,idVete);
+                    Boleta boleta = new Boleta(idCliente,idMascot,TPrimario,TSegundario,idVet);
                     boleta.setVisible(true);
                     boleta.setLocationRelativeTo(null);
                     this.dispose();
