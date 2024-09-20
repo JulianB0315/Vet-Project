@@ -107,7 +107,7 @@
                     <Column editable="false" title="ID Veterinario" type="java.lang.String"/>
                     <Column editable="true" title="Nombre Veterinario" type="java.lang.String"/>
                     <Column editable="true" title="Apellido Veterinario" type="java.lang.String"/>
-                    <Column editable="true" title="Especialidad" type="java.lang.String"/>
+                    <Column editable="false" title="Especialidad" type="java.lang.String"/>
                     <Column editable="true" title="Telefono" type="java.lang.Object"/>
                   </Table>
                 </Property>

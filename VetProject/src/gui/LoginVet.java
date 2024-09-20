@@ -13,7 +13,7 @@ public class LoginVet extends javax.swing.JFrame {
     ImageIcon eye = new ImageIcon(getClass().getResource("/resources/eye.png"));
     ImageIcon eyeslash = new ImageIcon(getClass().getResource("/resources/eye-slash.png"));
     private boolean novisible=true;
-    int attempt=0;
+    int attempt=3;
     public LoginVet() {
         initComponents();
         this.setTitle("Vet Link - Iniciar Sesión");
@@ -239,8 +239,8 @@ public class LoginVet extends javax.swing.JFrame {
                     txtDni.setText("");
                     txtPassword.setText("");
                     JOptionPane.showMessageDialog(null, "DNI o Contraseña incorrectos. Tiene " + attempt+" intentos", "Vet Link - Incorrecto", 2);
-                    attempt += 1;
-                    if (attempt ==3){
+                    attempt -= 1;
+                    if (attempt ==0){
                         JOptionPane.showMessageDialog(null, "Número máximo de intentos alcanzado. Cerrando aplicación.","Nuevo Perú Bank",2);
                         System.exit(0);
                     }
