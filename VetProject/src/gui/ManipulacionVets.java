@@ -2,6 +2,7 @@ package gui;
 
 import DB.ConexionOracle;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 
 public class ManipulacionVets extends javax.swing.JFrame {
 
@@ -22,6 +24,11 @@ public class ManipulacionVets extends javax.swing.JFrame {
         Image logo = icon.getImage();
         setIconImage(logo);
         this.idVete = idVet;
+        JTableHeader header = tblVeterinario.getTableHeader(); // Objeto y metodo para obtener el encabezado de la tabla y poder editarlo
+        header.setBackground(new Color(24,183,177));  // Color de fondo del encabezado
+        header.setForeground(new Color(13,82,84)); // Color para la fuente del encabezado
+        header.setFont(new Font("Lewadee", Font.BOLD, 18)); // Tipo y tamaño de fuente para el encabezado
+        tblVeterinario.setRowHeight(25); // Asignamos una altura a las filas
     }
 
     @SuppressWarnings("unchecked")
