@@ -70,10 +70,7 @@ public class ManipulacionVets extends javax.swing.JFrame {
         tblVeterinario.setForeground(new java.awt.Color(13, 92, 141));
         tblVeterinario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+
             },
             new String [] {
                 "ID Veterinario", "Nombre Veterinario", "Apellido Veterinario", "Especialidad", "Telefono"
@@ -83,7 +80,7 @@ public class ManipulacionVets extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true
+                false, true, true, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
